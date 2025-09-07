@@ -17,7 +17,7 @@ function HeroSection() {
       />
 
       {/* Botões sobre a imagem */}
-      <div className=" absolute bottom-8 left-1/2 -translate-x-1/2 w-[90%] bg-[#145251]/50 rounded-xl shadow-lg p-3 flex justify-between border-2 border-[#005E61]/40">
+      <div className=" absolute bottom-8 left-1/2 -translate-x-1/2 w-[90%] bg-[#145251] rounded-xl shadow-lg p-3 flex justify-between border-2 border-[#005E61]/40">
         <div className="flex gap-7 items-start justify-center text-center text-[#bfdada] ">
 
           {/* Ícone de Terapia */}
