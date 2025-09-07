@@ -12,7 +12,7 @@ function Topbar() {
         <FaBars className="h-6 w-6 cursor-pointer text-[#b1cece]" />
 
         {/* Logotipo e nome */}
-        <div className="flex flex-col items-center gap-1">
+        <div className="flex  items-center gap-1">
           <Image
           width={48}
           height={48}
@@ -20,9 +20,10 @@ function Topbar() {
             alt="Leonardo Barreto"
             className="h-16 w-16"
           />
-          <div className='flex flex-col items-center justify-center'>
-            <span className="text-sm font-[600]  text-[#DBE8E8] tracking-wide">LEONARDO BARRETO</span>
-            <span className="text-xs text-[#29B8B4] font-extralight ">PSIQUIATRA</span>
+          <div className='flex flex-col h-full items-center justify-center'>
+            <div className='w-1 h-2'/>
+            <span className="text-[15px] font-[600]  text-[#DBE8E8] tracking-wide">LEONARDO BARRETO</span>
+            <span className="text-[13px] text-[#8fa3a3] leading-2">PSIQUIATRA</span>
           </div>
 
         </div>
