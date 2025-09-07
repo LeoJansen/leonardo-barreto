@@ -4,30 +4,30 @@ import React from 'react';
 
 function About() {
     return (
-        <section className="bg-[#EAF5F5] p-6 px-12">
+        <section className="bg-[#EBFCFF] p-6 px-12">
             <div className='flex flex-col'>
             {/* Título */}
-            <h2 className="text-[35px] md:text-2xl leading-1 font-extralight text-[#7e7e7e]">
+            <h2 className="text-[30px] md:text-2xl tracking-[-0.0645em] leading-1 font-extralight text-[#7e7e7e]">
                 Uma paixão pela
             </h2>
-            <h2 className="text-[54px] tracking-[-0.045em]      text-[#1C7A79]">
+            <h2 className="text-[50px] tracking-[-0.07645em]      text-[#1C7A79]">
                 Saúde Mental
             </h2>
             <div className='flex items-start w-0-full justify-end'>
-                <h2 className="text-[40px] md:text-4xl leading-0 font-medium text-[#176565] tracking-[-0.045em] ">
+                <h2 className="text-[40px] md:text-4xl leading-0 font-medium text-[#06aaa2] tracking-[-0.045em] ">
                     e
                 </h2>
-                <h2 className="text-[50px] md:text-4xl leading-3 font-medium text-[#176565] tracking-[-0.045em] ml-2">
+                <h2 className="text-[50px] md:text-4xl leading-3 font-medium text-[#30CCC9] tracking-[-0.045em] ml-2">
                     Bem-Estar
                 </h2>
             </div>
-            <h2 className="text-2xl md:text-3xl font-light text-[#6B7777] text-right">
+            <h2 className="text-[35px] md:text-3xl leading-14 text-[#008582] text-right">
                 Integral
             </h2>
             </div>
 
             {/* Parágrafos de texto */}
-            <div className="mt-6 text-gray-700 leading-relaxed space-y-4">
+            <div className="mt-6 text-gray-700 leading-relaxed text-justify space-y-4">
                 <p>
                     Desde o início de sua jornada na medicina, o Dr. Leonardo Barreto nutriu um
                     interesse profundo pela complexidade da mente humana e sua relação com o

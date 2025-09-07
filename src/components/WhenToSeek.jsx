@@ -4,15 +4,15 @@ import React from 'react';
 
 function WhenToSeek() {
   return (
-    <section className="bg-[#EBFCFF] p-10 px-12 text-center ">
+    <section className="bg-[#EBFCFF] p-10 px-10 text-center mt-10">
         <div className='flex flex-col items-start leading-[1.2]'>
 
         
       {/* Título */}
-      <h2 className="text-[36px]  font-extralight tracking-[-0.08em] leading-5 text-[#6B7777]">
+      <h2 className="text-[35px]  font-extralight tracking-[-0.08em] leading-5 text-[#6B7777]">
         Quando procurar um
       </h2>
-      <h2 className="text-[50px] md:text-4xl font-medium text-[#176565] tracking-[-0.045em]">
+      <h2 className="text-[53px] md:text-4xl font-medium text-[#176565] tracking-[-0.045em]">
         PSIQUIATRA?
       </h2>
 </div>
