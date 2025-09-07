@@ -5,7 +5,7 @@ import HeroSection from '../components/HeroSection';
 
 export default function Home() {
   return (
-    <main className="min-w-screen min-h-screen">
+    <main className="max-w-screen min-h-screen">
       <Topbar />
       <HeroSection />
     </main>
