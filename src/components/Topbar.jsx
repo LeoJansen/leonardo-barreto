@@ -1,25 +1,28 @@
 // src/components/Topbar.jsx
 
+import Image from 'next/image';
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
 
 function Topbar() {
   return (
-    <header className="bg-[#005E61] text-white p-3">
+    <header className="bg-[#145251] text-white p-3">
       <div className="container mx-auto flex justify-between items-center">
         {/* Ícone do menu de hambúrguer */}
-        <FaBars className="h-6 w-6 cursor-pointer text-[#DAE7E7]" />
+        <FaBars className="h-6 w-6 cursor-pointer text-[#b1cece]" />
 
         {/* Logotipo e nome */}
         <div className="flex flex-col items-center gap-1">
-          <img
+          <Image
+          width={48}
+          height={48}
             src="/assets/logobranco.svg"
             alt="Leonardo Barreto"
-            className="h-12"
+            className="h-16 w-16"
           />
           <div className='flex flex-col items-center justify-center'>
-            <span className="text-sm font-semibold  text-[#DAE7E7]">LEONARDO BARRETO</span>
-            <span className="text-xs text-[#DAE7E7] font-extralight ">PSIQUIATRA</span>
+            <span className="text-sm font-[600]  text-[#DBE8E8] tracking-wide">LEONARDO BARRETO</span>
+            <span className="text-xs text-[#29B8B4] font-extralight ">PSIQUIATRA</span>
           </div>
 
         </div>

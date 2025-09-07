@@ -1,10 +1,10 @@
 <svg width="117" height="117" viewBox="0 0 117 117" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<circle cx="58.5" cy="58.5" r="56.25" stroke="#025C5C" stroke-width="4.5"/>
+<circle cx="58.5" cy="58.5" r="56.25" stroke="#DEFFFF" stroke-width="4.5"/>
 <mask id="mask0_48_25" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="29" y="22" width="60" height="60">
 <rect x="29" y="22" width="60" height="60" fill="url(#pattern0_48_25)"/>
 </mask>
 <g mask="url(#mask0_48_25)">
-<circle cx="57.8458" cy="52.4803" r="52.3073" fill="#025C5C"/>
+<circle cx="57.8458" cy="52.4803" r="52.3073" fill="#DEFFFF"/>
 </g>
 <defs>
 <pattern id="pattern0_48_25" patternContentUnits="objectBoundingBox" width="1" height="1">
