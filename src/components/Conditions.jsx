@@ -34,7 +34,7 @@ function Conditions() {
         ))}
       </div>
       <div className='flex justify-center items-center bg-[#2E3333] '>
-        <div className='py-8'>
+        <div className='py-18'>
             <Image
               src="/assets/sofrer.png"
               alt="Insônia"
