@@ -18,19 +18,19 @@ function HeroSection() {
 
       {/* Botões sobre a imagem */}
       <div className=" absolute bottom-8 left-1/2 -translate-x-1/2 w-[90%] bg-[#145251] rounded-xl shadow-lg p-3 flex justify-between border-2 border-[#005E61]/40">
-        <div className="flex gap-7 items-start justify-center text-center text-[#bfdada] ">
+        <div className="flex gap-7 items-start justify-center text-center text-[#bfdada] text-sm">
 
           {/* Ícone de Terapia */}
-          <div className='flex flex-col items-center justify-center gap-1 w-1/3'>
-            <Image src="/assets/Terapia2.svg" alt="Terapia" width={40} height={40} className='w-16 h-16' />
+          <div className='flex flex-col items-center justify-center gap-1 w-1/3 '>
+            <Image src="/assets/Terapia2.svg" alt="Terapia" width={40} height={40} className='w-12 h-12' />
             <p>Terapia<br />Online</p>
           </div>
           <div className='flex flex-col items-center justify-center gap-1 w-1/3'>
-            <Image src="/assets/Medicacao2.svg" alt="Medicação" width={40} height={40} className='w-16 h-16' />
+            <Image src="/assets/Medicacao2.svg" alt="Medicação" width={40} height={40} className='w-12 h-12' />
             <p>Medicação<br />Precisa</p>
           </div>
           <div className='flex flex-col items-center justify-center gap-1 w-1/3'>
-            <Image src="/assets/atendimento.svg" alt="Atendimento" width={40} height={40} className='w-16 h-16' />
+            <Image src="/assets/atendimento.svg" alt="Atendimento" width={40} height={40} className='w-12 h-12 ' />
             <p>Atendimento Humanizado</p>
           </div>
 
