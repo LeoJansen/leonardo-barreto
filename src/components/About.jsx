@@ -4,7 +4,7 @@ import React from 'react';
 
 function About() {
     return (
-        <section className="p-6 px-12">
+        <section className="p-6 px-10">
             <div className='flex flex-col'>
             {/* Título */}
             <h2 className="text-[30px] md:text-2xl tracking-[-0.0645em] leading-1 font-extralight text-[#7e7e7e]">
@@ -27,7 +27,7 @@ function About() {
             </div>
 
             {/* Parágrafos de texto */}
-            <div className="mt-6 text-gray-700 leading-relaxed text-justify space-y-4">
+            <div className="mt-6 text-sm text-[#5e5e5e] leading-relaxed text-justify space-y-4 px-2">
                 <p>
                     Desde o início de sua jornada na medicina, o Dr. Leonardo Barreto nutriu um
                     interesse profundo pela complexidade da mente humana e sua relação com o

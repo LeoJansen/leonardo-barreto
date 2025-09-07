@@ -16,9 +16,9 @@ function WhenToSeek() {
         PSIQUIATRA?
       </h2>
 </div>
-<div className='px-4'>
+<div className='px-2'>
       {/* Parágrafo de texto */}
-      <p className="mt-8 text-sm md:text-base text-[#5e5e5e] leading-relaxed text-justify">
+      <p className="mt-8 text-sm md:text-base text-[#5e5e5e] leading-relaxed text-justify ">
         Ter a mente saudável é essencial para o bem-estar e reflete
         positivamente em diversos outros aspectos da vida, como família,
         trabalho e relações sociais. Algumas situações difíceis podem

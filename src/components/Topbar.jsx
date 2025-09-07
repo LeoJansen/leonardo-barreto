@@ -23,7 +23,7 @@ function Topbar() {
           <div className='flex flex-col h-full items-center justify-center'>
             <div className='w-1 h-2'/>
             <span className="text-[15px] font-[600]  text-[#DBE8E8] tracking-wide">LEONARDO BARRETO</span>
-            <span className="text-[13px] text-[#8fa3a3] leading-2">PSIQUIATRA</span>
+            <span className="text-[13px] text-[#878f8f] leading-2">PSIQUIATRA</span>
           </div>
 
         </div>

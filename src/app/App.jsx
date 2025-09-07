@@ -3,6 +3,7 @@ import HeroSection from '../components/HeroSection'
 import WhenToSeek from '../components/WhenToSeek'
 import Topbar from '../components/Topbar'
 import About from '../components/About'
+import Conditions from '../components/Conditions'
 
 const App = () => {
     return (
@@ -11,6 +12,7 @@ const App = () => {
             <HeroSection />
             <WhenToSeek />
             <About />
+            <Conditions />
         </div>
 
     )
