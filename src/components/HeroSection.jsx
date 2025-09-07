@@ -23,11 +23,11 @@ function HeroSection() {
           {/* Ícone de Terapia */}
           <div className='flex flex-col items-center justify-center gap-1 w-1/3'>
             <Image src="/assets/Terapia2.svg" alt="Terapia" width={40} height={40} className='w-16 h-16' />
-            <p>Terapia Online</p>
+            <p>Terapia<br />Online</p>
           </div>
           <div className='flex flex-col items-center justify-center gap-1 w-1/3'>
             <Image src="/assets/Medicacao2.svg" alt="Medicação" width={40} height={40} className='w-16 h-16' />
-            <p>Medicação Precisa</p>
+            <p>Medicação<br />Precisa</p>
           </div>
           <div className='flex flex-col items-center justify-center gap-1 w-1/3'>
             <Image src="/assets/Atendimento2.svg" alt="Atendimento" width={40} height={40} className='w-16 h-16' />
