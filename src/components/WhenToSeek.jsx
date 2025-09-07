@@ -4,7 +4,7 @@ import React from 'react';
 
 function WhenToSeek() {
   return (
-    <section className="bg-[#EBFCFF] p-10 px-10 text-center mt-10">
+    <section className="p-10 px-10 text-center mt-10">
         <div className='flex flex-col items-start leading-[1.2]'>
 
         

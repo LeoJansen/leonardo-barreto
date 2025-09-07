@@ -4,7 +4,7 @@ import React from 'react';
 
 function About() {
     return (
-        <section className="bg-[#EBFCFF] p-6 px-12">
+        <section className="p-6 px-12">
             <div className='flex flex-col'>
             {/* Título */}
             <h2 className="text-[30px] md:text-2xl tracking-[-0.0645em] leading-1 font-extralight text-[#7e7e7e]">
