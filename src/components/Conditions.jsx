@@ -5,10 +5,10 @@ import Image from 'next/image';
 
 function Conditions() {
   const conditions = [
-    { name: 'DEPRESSÃO', icon: '/assets/depressao.svg' },
-    { name: 'ANSIEDADE', icon: '/assets/ansiedade.svg' },
-    { name: 'INSÔNIA', icon: '/assets/insonia.svg' },
-    { name: 'TDAH', icon: '/assets/tdah.svg' },
+    { name: 'DEPRESSÃO', icon: '/assets/depressao3.svg' },
+    { name: 'ANSIEDADE', icon: '/assets/ansiedade3.svg' },
+    { name: 'INSÔNIA', icon: '/assets/insonia3.svg' },
+    { name: 'TDAH', icon: '/assets/tdah3.svg' },
   ];
 
   return (
