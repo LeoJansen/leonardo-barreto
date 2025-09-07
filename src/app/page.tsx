@@ -1,13 +1,12 @@
 // src/app/page.jsx
 
-import Topbar from '../components/Topbar';
-import HeroSection from '../components/HeroSection';
+
+import App from './App';
 
 export default function Home() {
   return (
-    <main className="max-w-screen min-h-screen">
-      <Topbar />
-      <HeroSection />
+    <main>
+      <App />
     </main>
   );
 }
