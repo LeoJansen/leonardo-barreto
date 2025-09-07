@@ -30,7 +30,7 @@ function HeroSection() {
             <p>Medicação<br />Precisa</p>
           </div>
           <div className='flex flex-col items-center justify-center gap-1 w-1/3'>
-            <Image src="/assets/Atendimento2.svg" alt="Atendimento" width={40} height={40} className='w-16 h-16' />
+            <Image src="/assets/atendimento.svg" alt="Atendimento" width={40} height={40} className='w-16 h-16' />
             <p>Atendimento Humanizado</p>
           </div>
 
