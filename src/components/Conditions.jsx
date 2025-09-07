@@ -1,6 +1,6 @@
 // src/components/Conditions.jsx
 
-import React from 'react';
+
 import Image from 'next/image';
 
 function Conditions() {

@@ -4,6 +4,7 @@ import WhenToSeek from '../components/WhenToSeek'
 import Topbar from '../components/Topbar'
 import About from '../components/About'
 import Conditions from '../components/Conditions'
+import Specialization from '../components/Specialization'
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
             <WhenToSeek />
             <About />
             <Conditions />
+            <Specialization />
         </div>
 
     )

@@ -1,7 +1,7 @@
 // src/components/HeroSection.jsx
 
 import Image from 'next/image';
-import React from 'react';
+
 
 function HeroSection() {
   return (

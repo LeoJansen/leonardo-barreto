@@ -1,6 +1,6 @@
 // src/components/WhenToSeek.jsx
 
-import React from 'react';
+
 
 function WhenToSeek() {
   return (
