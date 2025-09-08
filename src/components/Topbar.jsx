@@ -5,7 +5,7 @@ import { FaBars } from 'react-icons/fa';
 
 function Topbar() {
   return (
-    <header className="bg-[#145251] text-white p-3">
+    <nav className="bg-[#145251] text-white p-3">
       <div className="container mx-auto flex justify-between items-center">
         {/* Ícone do menu de hambúrguer */}
         <FaBars className="h-6 w-6 cursor-pointer text-[#b1cece]" />
@@ -21,7 +21,7 @@ function Topbar() {
           />
           <div className='flex flex-col h-full items-center justify-center'>
             <div className='w-1 h-2'/>
-            <span className="text-[15px] font-[600]  text-[#DBE8E8] tracking-wide">LEONARDO BARRETO</span>
+            <span className="text-[15px] font-[500] text-[#DBE8E8] tracking-wide">LEONARDO BARRETO</span>
             <span className="text-[13px] text-[#878f8f] leading-2">PSIQUIATRA</span>
           </div>
 
@@ -30,7 +30,7 @@ function Topbar() {
         {/* Placeholder para alinhar o layout */}
         <div className="h-6 w-6"></div>
       </div>
-    </header>
+    </nav>
   );
 }
 

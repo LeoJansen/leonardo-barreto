@@ -5,6 +5,7 @@ import Topbar from '../components/Topbar'
 import About from '../components/About'
 import Conditions from '../components/Conditions'
 import Specialization from '../components/Specialization'
+import Footer from '../components/Footer'
 
 const App = () => {
     return (
@@ -15,6 +16,7 @@ const App = () => {
             <About />
             <Conditions />
             <Specialization />
+            <Footer />
         </div>
 
     )

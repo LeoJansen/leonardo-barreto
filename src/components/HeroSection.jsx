@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 function HeroSection() {
   return (
-    <div className="relative h-[80vh] flex">
+    <header className="relative h-[80vh] flex">
       {/* Imagem de fundo */}
       <Image
         width={1920}
@@ -40,7 +40,7 @@ function HeroSection() {
 
 
       </div>
-    </div>
+    </header>
   );
 }
 
