@@ -11,9 +11,9 @@ function HeroSection() {
         width={1920}
         height={1080}
         quality={100}
-        src="/assets/leonardo-barreto-hero.jpeg"
+        src="/assets/leonardo-barreto-hero.png"
         alt="Leonardo Barreto"
-        className="w-full h-auto object-cover"
+        className="w-full h-auto object-cover object-top"
       />
 
       {/* Botões sobre a imagem */}
