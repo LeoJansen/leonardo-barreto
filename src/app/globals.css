@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
+
+.specialization {
+background: #025C5C;
+background: -webkit-linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
+background: -moz-linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
+background: linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#025C5C", endColorstr="#FFFFFF", GradientType=0);
+}

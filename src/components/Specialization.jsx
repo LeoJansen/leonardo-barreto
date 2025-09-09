@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 function Specialization() {
     return (
-        <div className="bg-gradient-to-b from-[hsl(174,33%,81%)] via-[hsl(204,91%,95%)] to-[hsl(204,91%,100%)]">
+        <div className="specialization py-8 px-4">
             <section className=" text-center  ">
-                <div className='p-4  flex flex-col w-full items-end justify-center py-10 bg-[#025C5C]'>
+                <div className='   flex flex-col w-full items-start justify-center'>
                     {/* Título da seção */}
                     <h2 className="text-[30px] tracking-[-0.008em] leading-5 text-[#99d1cf] font-light">
                         Especialização em
@@ -19,25 +19,25 @@ function Specialization() {
 
 
                 {/* Área da foto e da forma circular */}
-                <div className="relative my-2 inline-block">
+                <div className="relative  inline-block">
                     {/* Foto do Dr. Leonardo Barreto */}
 
                     {/* Forma circular abstrata sobre a imagem */}
-                    <div className="relative  ">
+                    <div className="flex">
                         <Image
                             quality={100}
                             src="/assets/especializacao.png"
                             alt="Forma abstrata"
                             width={300} // Ajuste conforme o SVG
                             height={300} // Ajuste conforme o SVG
-                            className="w-full h-full"
+                            className="w-[400px] h-[400px]  "
                             
                         />
                     </div>
                 </div>
 
                 {/* Texto da instituição */}
-              <div className='flex flex-col w-full items-end justify-center mt-2 p-4 py-2'>
+              <div className='flex flex-col w-full items-end justify-center mt-2 p-4'>
                     {/* Título da seção */}
                     <h2 className="text-[30px] tracking-[-0.008em] leading-5 text-[#0F3D3B] font-extralight">
                         pelo Hospital
