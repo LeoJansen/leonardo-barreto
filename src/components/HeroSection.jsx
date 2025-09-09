@@ -13,7 +13,7 @@ function HeroSection() {
         quality={100}
         src="/assets/leonardo-barreto-hero.png"
         alt="Leonardo Barreto"
-        className="w-full h-auto object-cover object-top"
+        className="w-full h-auto object-cover object-center"
       />
 
       {/* Botões sobre a imagem */}
