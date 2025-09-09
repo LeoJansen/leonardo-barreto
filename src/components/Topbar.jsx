@@ -11,18 +11,18 @@ function Topbar() {
         <FaBars className="h-6 w-6 cursor-pointer text-[#b1cece]" />
 
         {/* Logotipo e nome */}
-        <div className="flex  items-center gap-1">
+        <div className="flex  items-center gap-1 xl:gap-2">
           <Image
           width={48}
           height={48}
             src="/assets/logobranco.svg"
             alt="Leonardo Barreto"
-            className="h-16 w-16"
+            className="h-16 xl:h-19 w-16 xl:w-19"
           />
-          <div className='flex flex-col h-full items-center justify-center'>
+          <div className='flex flex-col h-full items-center justify-center xl:gap-1'>
             <div className='w-1 h-2'/>
-            <span className="text-[15px] font-[500] text-[#DBE8E8] tracking-wide">LEONARDO BARRETO</span>
-            <span className="text-[13px] text-[#878f8f] leading-2">PSIQUIATRA</span>
+            <span className="text-[15px] xl:text-[18px]  font-[500] text-[#DBE8E8] tracking-wide">LEONARDO BARRETO</span>
+            <span className="text-[13px] xl:text-[17px] text-[#878f8f] leading-2">PSIQUIATRA</span>
           </div>
 
         </div>
