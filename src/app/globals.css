@@ -25,45 +25,51 @@ body {
 }
 
 .specialization {
-background: #025C5C;
-background: -webkit-linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
-background: -moz-linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
-background: linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#025C5C", endColorstr="#FFFFFF", GradientType=0);
+  background: #025C5C;
+  background: -webkit-linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
+  background: -moz-linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
+  background: linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#025C5C", endColorstr="#FFFFFF", GradientType=0);
 }
 
 @utility flex-center {
-    @apply flex justify-center items-center;
+  @apply flex justify-center items-center;
 }
 
 @utility col-center {
-    @apply flex flex-col justify-center items-center;
+  @apply flex flex-col justify-center items-center;
 }
 
 @utility abs-center {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
 @utility text-gradient {
-    background: linear-gradient(to bottom, #ffffff, #898989);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  background: linear-gradient(to bottom, #ffffff, #898989);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 @utility radial-gradient {
-    background: radial-gradient(
-            circle at center,
-            #434343 0%,
-            #000 50%,
-            transparent 100%
-    );
+  background: radial-gradient(circle at center,
+      #434343 0%,
+      #000 50%,
+      transparent 100%);
 }
 
 @utility masked-img {
-    mask-image: url("/assets/albertEinsteinLogo.png");
-    mask-repeat: no-repeat;
-    mask-position: center;
-   
+  mask-image: url("/assets/albertEinsteinLogo.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+
 }
 
+.gradient1 {
+  background: linear-gradient(90deg,rgb(0, 153, 148) 0%, rgb(12, 90, 86) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}

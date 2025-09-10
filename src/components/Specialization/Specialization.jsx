@@ -11,7 +11,7 @@ function Specialization() {
                     <h2 className="text-[23px] xl:text-[25px] tracking-[-0.008em] leading-3 xl:leading-8 text-[#29B8B4] font-extralight">
                         Especialização em
                     </h2>
-                    <h2 className="text-[40px] xl:text-[55px] tracking-[-0.08em] font-light leading-14 text-[#f2fffd]">
+                    <h2 className="text-[40px] xl:text-[55px] tracking-[-0.08em] font-semilight leading-14 text-[#f2fffd]">
                         PSIQUIATRIA
                     </h2>
                 </div>
@@ -27,7 +27,7 @@ function Specialization() {
                 {/* Título da seção */}
                 <h2 className="text-[25px] xl:text-[30px] tracking-[-0.0678em] leading-3 xl:leading-6 text-[#0F3D3B] font-light">
                     pelo Hospital                </h2>
-                <h2 className="text-[50px] xl:text-[60px] tracking-[-0.08em] font-light leading-14 text-[#1C7A79]">
+                <h2 className="text-[50px] xl:text-[60px] tracking-[-0.08em] font-medium leading-14 gradient1">
                     Albert Einstein
                 </h2>
             </div>
