@@ -4,7 +4,7 @@
 
 function WhenToSeek() {
   return (
-    <section className="p-10 px-10 text-center mt-10">
+    <section className="p-10 text-center mt-10 max-w-[100vw]">
         <div className='flex flex-col items-start leading-[1.2]'>
 
         
@@ -12,7 +12,7 @@ function WhenToSeek() {
       <h2 className="text-[35px]  font-extralight tracking-[-0.08em] leading-5 text-[#6B7777]">
         Quando procurar um
       </h2>
-      <h2 className="text-[53px] md:text-4xl font-medium text-[#176565] tracking-[-0.045em]">
+      <h2 className="text-[40px] md:text-4xl font-medium text-[#176565] tracking-[-0.045em]">
         PSIQUIATRA?
       </h2>
 </div>

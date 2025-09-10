@@ -4,8 +4,11 @@ import WhenToSeek from '../components/WhenToSeek'
 import Topbar from '../components/Topbar'
 import About from '../components/About'
 import Conditions from '../components/Conditions'
-import Specialization from '../components/Specialization'
+import Specialization from '../components/Specialization/Specialization'
 import Footer from '../components/Footer'
+import { ScrollTrigger, SplitText } from "gsap/all"
+import gsap from "gsap"
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
     return (
@@ -16,7 +19,9 @@ const App = () => {
             <About />
             <Conditions />
             <Specialization />
+         
             <Footer />
+            <div className='h-200 w-full bg-black'></div>
         </div>
 
     )
