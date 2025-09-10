@@ -21,7 +21,7 @@ const App = () => {
             <Specialization />
          
             <Footer />
-            <div className='h-200 w-full bg-black'></div>
+         
         </div>
 
     )
