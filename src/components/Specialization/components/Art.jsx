@@ -23,7 +23,7 @@ function Specialization() {
         });
 
         maskTimeline
-            .to('.masked-img', { scale: 1.3, maskPosition: 'center', maskSize: '500%', duration: 2, ease: 'power1.inOut' }, '<');
+            .to('.masked-img', { scale: 1.3, maskPosition: 'center', maskSize: isMobile ? '100%' : '500%', duration: 2, ease: 'power1.inOut' }, '<');
 
         // Limpeza ao desmontar
         return () => {

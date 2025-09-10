@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
     return (
-        <div className="max-w-screen min-h-screen">
+        <div className="max-w-screen min-h-screen overflow-x-hidden">
             <Topbar />
             <HeroSection />
             <WhenToSeek />
