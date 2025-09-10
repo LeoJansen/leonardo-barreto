@@ -64,6 +64,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#025C5C", endC
     mask-image: url("/assets/albertEinsteinLogo.png");
     mask-repeat: no-repeat;
     mask-position: center;
-    mask-size: 50%;
+   
 }
 
