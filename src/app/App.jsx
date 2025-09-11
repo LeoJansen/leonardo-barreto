@@ -8,6 +8,9 @@ import Specialization from '../components/Specialization/Specialization'
 import Footer from '../components/Footer'
 import { ScrollTrigger, SplitText } from "gsap/all"
 import gsap from "gsap"
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(useGSAP); 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
