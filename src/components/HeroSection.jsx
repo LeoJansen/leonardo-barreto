@@ -5,19 +5,26 @@ import Image from 'next/image';
 
 function HeroSection() {
   return (
-    <header className="relative h-[80vh] flex">
+    <header className="relative h-[90vh] flex flex-col justify-around">
       {/* Imagem de fundo */}
       <Image
-        width={1920}
-        height={1080}
+        fill
         quality={100}
         src="/assets/leonardo-barreto-hero.png"
         alt="Leonardo Barreto"
-        className="w-full h-auto object-cover object-center"
+        style={{ objectFit: 'cover' }}
+      />
+      <Image
+        width={387}
+        height={129}
+        quality={100}
+        src="/assets/plaqueta.png"
+        alt="Leonardo Barreto"
+        className='w-[309.6px] h-[103.2px] xl:w-[387px] xl:h-[129px] z-20'
       />
 
       {/* Botões sobre a imagem */}
-      <div className=" absolute bottom-8 left-1/2 md:left-1/4 -translate-x-1/2  max-w-[400px] w-[90%] bg-[#145251] rounded-xl shadow-lg p-4 flex border-2 border-[#005E61]/40">
+      <div className="max-w-[400px] w-[90%] bg-[#145251] rounded-xl shadow-lg p-4 flex border-2 border-[#005E61]/40 z-20">
         <div className="flex gap-7 w-full items-start justify-center text-center font-medium text-[#afc9c9] text-[13px]">
 
           {/* Ícone de Terapia */}
