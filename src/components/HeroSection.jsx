@@ -47,16 +47,9 @@ function HeroSection() {
 
       <div
         ref={plaqueRef}
-        className="relative w-[309.6px] h-[103.2px] md:w-[387px] md:h-[129px] z-20 rounded-r-[4px] bg-[#f0feff]"
+        className="relative w-[309.6px] h-[103.2px] md:w-[387px] md:h-[129px] z-20 rounded-r-[4px] bg-[#145251]"
       >
-        <Image
-          fill
-          quality={100}
-          src="/assets/plaqueta.png"
-          alt="Leonardo Barreto"
-          className="rounded-r-[4px]"
-          style={{ zIndex: 1 }}
-        />
+      
        
       </div>
 
