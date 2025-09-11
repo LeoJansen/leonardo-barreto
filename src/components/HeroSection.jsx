@@ -20,26 +20,11 @@ function HeroSection() {
       .from(buttonsRef.current, { opacity: 0, x: 500, duration: 0.7, ease: "power2.out" }, '-=0.3');
 
     // Efeito de iluminação intermitente na plaqueta
-    const glow = document.getElementById('plaqueta-glow');
-    if (glow) {
-      gsap.set(glow, {
-        boxShadow: '0 0 0px 0px rgba(230,255,255,0.004)',
-        background: 'rgba(235,255,255,0)',
-      });
-      gsap.to(glow, {
-        boxShadow: '0 0 60px 60px rgba(255,255,255,0.304)',
-        background: 'rgba(255,255,255,0.208)',
-        repeat: -1,
-        yoyo: true,
-        duration: 1.7,
-        ease: 'power1.inOut',
-        delay: 1.2,
-      });
-    }
+
   }, []);
 
   return (
-    <header ref={headerRef} className="relative h-[93vh] flex flex-col justify-between pt-20">
+    <header ref={headerRef} className="relative h-[93vh] flex flex-col justify-between pt-[40vh] ">
       {/* Imagem de fundo */}
       <Image
         fill
@@ -47,12 +32,22 @@ function HeroSection() {
         src="/assets/leonardo-barreto-hero.png"
         alt="Leonardo Barreto"
         style={{ objectFit: 'cover' }}
-        className=''
+        className='hidden md:block'
+        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      />
+         <Image
+        fill
+        quality={100}
+        src="/assets/leonardo-barreto-hero.jpeg"
+        alt="Leonardo Barreto"
+        style={{ objectFit: 'cover' }}
+        className='md:hidden'
+        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 100vw, 100vw"
       />
 
       <div
         ref={plaqueRef}
-        className="relative w-[309.6px] h-[103.2px] md:w-[387px] md:h-[129px] z-20 rounded-r-[4px]"
+        className="relative w-[309.6px] h-[103.2px] md:w-[387px] md:h-[129px] z-20 rounded-r-[4px] bg-[#f0feff]"
       >
         <Image
           fill
@@ -62,11 +57,7 @@ function HeroSection() {
           className="rounded-r-[4px]"
           style={{ zIndex: 1 }}
         />
-        <div
-          className="absolute inset-0 pointer-events-none rounded-r-[4px]"
-          style={{ zIndex: 2 }}
-          id="plaqueta-glow"
-        />
+       
       </div>
 
       {/* Botões sobre a imagem */}
