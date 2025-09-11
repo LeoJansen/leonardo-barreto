@@ -33,7 +33,7 @@ function Specialization() {
     }, [isMobile]);
 
     return (
-        <div id="art" className="relative h-80 xl:h-[600px] flex w-full xl:my-20 -z-10 overflow-hidden">
+        <div id="art" className="relative h-80 xl:h-[600px] flex w-full xl:my-20  overflow-hidden">
             <div className=" w-full h-full xl:rounded-2xl">
                 <div className="content">
                     <div className="relative cocktail-img  max-w-full h-80  xl:h-[600px] flex w-full">

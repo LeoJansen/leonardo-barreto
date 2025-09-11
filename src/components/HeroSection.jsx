@@ -17,7 +17,7 @@ function HeroSection() {
     tl
       .from(headerRef.current, { opacity: 0, duration: 1, ease: "power2.out" })
       .from(plaqueRef.current, { opacity: 0, x: -80, duration: 0.8, ease: "power2.out" }, '+=0.2')
-      .from(buttonsRef.current, { opacity: 0, x: 500, duration: 2.7, ease: "power2.out" }, '-=0.3');
+      .from(buttonsRef.current, { opacity: 0, x: 500, duration: 0.7, ease: "power2.out" }, '-=0.3');
 
     // Efeito de iluminação intermitente na plaqueta
     const glow = document.getElementById('plaqueta-glow');
