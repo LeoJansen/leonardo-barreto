@@ -21,7 +21,7 @@ function Topbar() {
   }, []);
 
   return (
-    <nav ref={navRef} className="flex items-center p-4 bg-[#145251] text-white min-h-[7vh] ">
+    <nav ref={navRef} className="flex items-center p-4 bg-[#145251] text-white h-[7vh] md:h-[10vh] ">
       <div className='p-2' ref={menuRef}>
         {/* Ícone de menu */}
         <FaBars className="h-5 w-5 cursor-pointer text-[#b1cece]" />

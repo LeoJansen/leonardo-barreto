@@ -24,7 +24,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <header ref={headerRef} className="relative h-full w-full flex flex-col justify-between pt-[40vh] ">
+    <header ref={headerRef} className="relative h-[93vh] md:h-[90vh] w-full flex flex-col justify-between pt-[40vh] ">
       {/* Imagem de fundo */}
       <Image
         fill
@@ -47,7 +47,7 @@ function HeroSection() {
 
       <div
         ref={plaqueRef}
-        className="relative w-[309.6px] h-[103.2px] md:w-[387px] md:h-[129px] z-20 rounded-r-[5px] md:rounded-r-[7px] bg-[#145251] flex justify-center items-center p-4 shadow-[2px_2px_6px_2px_rgba(30,45,40,0.51924)] "
+        className="relative  z-20 rounded-r-[5px] md:rounded-r-[7px] bg-[#145251] flex justify-center items-center w-fit p-4  shadow-[2px_2px_6px_2px_rgba(30,45,40,0.51924)] "
       >
         <span className='text-[#757474] xl:mb-5'>Dr.</span>
         <div className='flex flex-col items-center justify-center '>
@@ -68,17 +68,17 @@ function HeroSection() {
         <div className="flex gap-7 w-full items-start justify-center text-center font-medium text-[#afc9c9] text-[13px]">
 
           {/* Ícone de Terapia */}
-          <div className='flex flex-col items-center justify-center gap-1 w-1/3 self-end'>
-            <Image src="/assets/Terapia2.svg" alt="Terapia" width={40} height={40} className='w-10 h-10 md:w-12 md:h-12' />
-            <p className='leading-4'>Terapia<br />Online</p>
+          <div className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-2 '>
+            <Image src="/assets/terapia.svg" alt="Terapia" width={40} height={40} className='w-10 h-10 md:w-12 md:h-12 ' />
+            <p className='leading-4 text-[#8c9494]'>Terapia<br/>Online</p>
           </div>
-          <div className='flex flex-col items-center justify-center gap-1 w-1/3'>
-            <Image src="/assets/Medicacao2.svg" alt="Medicação" width={40} height={40} className='w-10 h-10 md:w-12 md:h-12' />
-            <p className='leading-4'>Medicação<br />Precisa</p>
+          <div className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm g p-2 '>
+            <Image src="/assets/medicacao.svg" alt="Medicação" width={40} height={40} className='w-10 h-10 md:w-12 md:h-12' />
+            <p className='leading-4 text-[#8c9494]'>Medicação<br/>Precisa</p>
           </div>
-          <div className='flex flex-col items-center justify-center gap-1 w-1/3'>
+          <div className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-2 '>
             <Image src="/assets/atendimento.svg" alt="Atendimento" width={40} height={40} className='w-10 h-10 md:w-12 md:h-12' />
-            <p className='leading-4'>Atendimento Humanizado</p>
+            <p className='leading-4 text-[#8c9494]'>Atendimento<br/>Humanizado</p>
           </div>
         </div>
       </div>

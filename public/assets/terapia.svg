@@ -1,10 +1,10 @@
 <svg width="118" height="118" viewBox="0 0 118 118" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<path d="M59.452 3.01526C90.5443 3.01526 115.75 28.2214 115.75 59.3151C115.75 90.4088 90.5444 115.615 59.452 115.615C28.3596 115.615 3.15414 90.4087 3.15414 59.3151C3.15425 28.2215 28.3597 3.0153 59.452 3.01526Z" stroke="#DEFFFF" stroke-width="4.5"/>
-<mask id="mask0_48_5" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="24" y="24" width="70" height="70">
-<rect x="24" y="24" width="70" height="70" fill="url(#pattern0_48_5)"/>
+<path d="M58.5479 2C89.7783 2 115.096 27.3181 115.096 58.5498C115.096 89.7816 89.7783 115.1 58.5479 115.1C27.3174 115.1 2 89.7815 2 58.5498C2.00011 27.3182 27.3175 2.00004 58.5479 2Z" fill="#014646" stroke="#025C5C" stroke-width="4"/>
+<mask id="mask0_48_5" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="31" y="32" width="54" height="54">
+<rect x="31.0959" y="32.2347" width="53" height="53" fill="url(#pattern0_48_5)"/>
 </mask>
 <g mask="url(#mask0_48_5)">
-<rect x="24" y="24" width="70" height="70" fill="#DEFFFF"/>
+<rect x="31.0959" y="32.2347" width="53" height="53" fill="#919191"/>
 </g>
 <defs>
 <pattern id="pattern0_48_5" patternContentUnits="objectBoundingBox" width="1" height="1">

@@ -16,12 +16,8 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const App = () => {
     return (
         <div className="max-w-screen min-h-screen overflow-x-hidden bg-[rgb(250,255,255)] ">
-            <div className='flex flex-col w-full h-[100vh] '>
-                <Topbar />
-                <HeroSection />
-
-            </div>
-
+            <Topbar />
+            <HeroSection />
             <WhenToSeek />
             <About />
             <Conditions />

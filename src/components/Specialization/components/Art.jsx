@@ -18,7 +18,7 @@ function Specialization() {
                 end: '600px bottom',
                 scrub: 1.5,
 
-                markers: true
+             
             }
         });
 
