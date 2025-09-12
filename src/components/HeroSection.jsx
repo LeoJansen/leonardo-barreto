@@ -76,15 +76,15 @@ function HeroSection() {
           {/* Ícone de Terapia */}
           <div ref={button1Ref} className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-5 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-4 '>
             <Image src="/assets/terapiaIcon.svg" alt="Terapia" width={40} height={40} className='w-6 h-6 ' />
-            <p className='leading-4 text-[#999999] md:text-[12px]'>Terapia<br/>Online</p>
+            <p className='leading-4 text-[#bebdbd] md:text-[12px]'>Terapia<br/>Online</p>
           </div>
           <div ref={button2Ref} className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-5  w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-4 '>
             <Image src="/assets/medicacaoIcon.svg" alt="Medicação" width={40} height={40} className='w-6 h-6 ' />
-            <p className='leading-4 text-[#999999] md:text-[12px]'>Medicação<br/>Precisa</p>
+            <p className='leading-4 text-[#bebdbd] md:text-[12px]'>Medicação<br/>Precisa</p>
           </div>
           <div ref={button3Ref} className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-5 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-4 '>
             <Image src="/assets/atendimentoIcon.svg" alt="Atendimento" width={40} height={40} className='w-6 h-6 ' />
-            <p className='leading-4 text-[#999999] md:text-[12px]'>Atendimento<br/>Humanizado</p>
+            <p className='leading-4 text-[#bebdbd] md:text-[12px]'>Atendimento<br/>Humanizado</p>
           </div>
         </div>
       </div>
