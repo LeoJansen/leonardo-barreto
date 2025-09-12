@@ -10,21 +10,25 @@ import { ScrollTrigger, SplitText } from "gsap/all"
 import gsap from "gsap"
 import { useGSAP } from '@gsap/react';
 
-gsap.registerPlugin(useGSAP); 
+gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
     return (
-        <div className="max-w-screen min-h-screen overflow-x-hidden bg-[#eafffc] ">
-            <Topbar />
-            <HeroSection />
+        <div className="max-w-screen min-h-screen overflow-x-hidden bg-[rgb(250,255,255)] ">
+            <div className='flex flex-col w-full h-[100vh] '>
+                <Topbar />
+                <HeroSection />
+
+            </div>
+
             <WhenToSeek />
             <About />
             <Conditions />
             <Specialization />
-         
+
             <Footer />
-         
+
         </div>
 
     )

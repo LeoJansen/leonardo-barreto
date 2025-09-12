@@ -24,7 +24,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <header ref={headerRef} className="relative h-[93vh] flex flex-col justify-between pt-[40vh] ">
+    <header ref={headerRef} className="relative h-full w-full flex flex-col justify-between pt-[40vh] ">
       {/* Imagem de fundo */}
       <Image
         fill
@@ -35,7 +35,7 @@ function HeroSection() {
         className='hidden md:block'
         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 100vw, 100vw"
       />
-         <Image
+      <Image
         fill
         quality={100}
         src="/assets/leonardo-barreto-hero.jpeg"
@@ -47,10 +47,17 @@ function HeroSection() {
 
       <div
         ref={plaqueRef}
-        className="relative w-[309.6px] h-[103.2px] md:w-[387px] md:h-[129px] z-20 rounded-r-[4px] bg-[#145251]"
+        className="relative w-[309.6px] h-[103.2px] md:w-[387px] md:h-[129px] z-20 rounded-r-[5px] md:rounded-r-[7px] bg-[#145251] flex justify-center items-center p-4 shadow-[2px_2px_6px_2px_rgba(30,45,40,0.51924)] "
       >
-      
-       
+        <span className='text-[#757474] xl:mb-5'>Dr.</span>
+        <div className='flex flex-col items-center justify-center '>
+          <h3 className='text-[#a6aaac] text-[34px] md:text-[36px]  font-light tracking-[-0.054em] leading-8 '><span></span>Leonardo Barreto</h3>
+          <h1 className='text-[#949b9b] text-[24px] md:text-[26px] font-extralight leading-tight md:leading-tight'>PSIQUIATRIA </h1>
+
+
+        </div>
+
+
       </div>
 
       {/* Botões sobre a imagem */}

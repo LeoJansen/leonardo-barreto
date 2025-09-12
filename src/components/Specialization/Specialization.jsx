@@ -6,7 +6,7 @@ function Specialization() {
     return (
         <section>
             <div className=' flex w-full items-center justify-center my-10  '>
-                <div className='flex flex-col bg-[#025C5C]  p-5 px-10 rounded-r-xl z-20'>
+                <div className='flex flex-col bg-[#025C5C]  p-5 px-10 rounded-r-xl z-20 border-2 border-[#024f520c] shadow-[2px_2px_6px_2px_rgba(10,51,40,0.6781924)] '>
                     {/* Título da seção */}
                     <h2 className="text-[23px] xl:text-[25px] tracking-[-0.008em] leading-3 xl:leading-8 text-[#29B8B4] font-extralight">
                         Especialização em

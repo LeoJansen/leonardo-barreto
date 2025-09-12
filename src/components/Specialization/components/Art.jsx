@@ -40,7 +40,7 @@ function Specialization() {
                         <div className="flex w-2/3">
                             <img src="/assets/under-img.png" alt="cocktail" className="absolute  lg:left-[-25%] masked-img mask-size-[50%] xl:mask-size-[40%] size-full object-cover max-w-[100vw] rounded-[40px]" />
                         </div>
-                        <div className="hidden xl:flex w-1/3 h-full bg-[#025C5C] rounded-l-2xl text-[#d4d4d4] align z-20 items-center justify-center text-justify leading-relaxed py-10 px-10 text-md">
+                        <div className="hidden xl:flex w-1/3 h-full bg-[#025C5C] rounded-l-xl text-[#d4d4d4] align z-20 items-center justify-center text-justify leading-relaxed py-10 px-10 text-md">
                             <p>A busca pela excelência é um pilar na trajetória do Dr. Leonardo Barreto. Sua formação em Psiquiatria foi aprimorada com a especialização realizada no Hospital Israelita Albert Einstein, uma das instituições de saúde mais prestigiadas do Brasil.
                                 Este percurso acadêmico lhe proporcionou uma sólida base teórica e prática, com acesso a uma metodologia de ensino de ponta e o contato com os mais renomados especialistas da área. Essa experiência garante que o Dr. Leonardo aplique em sua prática clínica os mais altos padrões de conhecimento, sempre atualizado com as inovações da psiquiatria.</p>
 
