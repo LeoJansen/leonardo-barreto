@@ -11,6 +11,9 @@ function HeroSection() {
   const headerRef = useRef(null);
   const plaqueRef = useRef(null);
   const buttonsRef = useRef(null);
+  const button1Ref = useRef(null);
+  const button2Ref = useRef(null);
+  const button3Ref = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -18,13 +21,16 @@ function HeroSection() {
       .from(headerRef.current, { opacity: 0, duration: 1, ease: "power2.out" })
       .from(plaqueRef.current, { opacity: 0, x: -80, duration: 0.8, ease: "power2.out" }, '+=0.2')
       .from(buttonsRef.current, { opacity: 0, x: 500, duration: 0.7, ease: "power2.out" }, '-=0.3');
+    tl.from(button1Ref.current, { opacity: 0, y: 50, duration: 0.5, ease: "power2.out" }, '=0.2')
+      .from(button2Ref.current, { opacity: 0, y: 50, duration: 0.5, ease: "power2.out" }, '=0.3')
+      .from(button3Ref.current, { opacity: 0, y: 50, duration: 0.5, ease: "power2.out" }, '=0.3');
 
     // Efeito de iluminação intermitente na plaqueta
 
   }, []);
 
   return (
-    <header ref={headerRef} className="relative h-[93vh] md:h-[90vh] w-full flex flex-col justify-between pt-[40vh] ">
+    <header ref={headerRef} className="relative h-[calc(93vh-58px)] md:h-[90vh] w-full flex flex-col justify-between pt-[40vh] ">
       {/* Imagem de fundo */}
       <Image
         fill
@@ -51,7 +57,7 @@ function HeroSection() {
       >
         <span className='text-[#757474] xl:mb-5'>Dr.</span>
         <div className='flex flex-col items-center justify-center '>
-          <h3 className='text-[#a6aaac] text-[34px] md:text-[36px]  font-light tracking-[-0.054em] leading-8 '><span></span>Leonardo Barreto</h3>
+          <h3 className='text-[#d8d8d8] text-[34px] md:text-[36px]  font-light tracking-[-0.054em] leading-8 '><span></span>Leonardo Barreto</h3>
           <h1 className='text-[#949b9b] text-[24px] md:text-[26px] font-extralight leading-tight md:leading-tight'>PSIQUIATRIA </h1>
 
 
@@ -68,17 +74,17 @@ function HeroSection() {
         <div className="flex gap-7 w-full items-start justify-center text-center font-medium text-[#afc9c9] text-[13px]">
 
           {/* Ícone de Terapia */}
-          <div className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-2 '>
-            <Image src="/assets/terapia.svg" alt="Terapia" width={40} height={40} className='w-10 h-10 md:w-12 md:h-12 ' />
-            <p className='leading-4 text-[#8c9494]'>Terapia<br/>Online</p>
+          <div ref={button1Ref} className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-5 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-4 '>
+            <Image src="/assets/terapiaIcon.svg" alt="Terapia" width={40} height={40} className='w-6 h-6 ' />
+            <p className='leading-4 text-[#999999] md:text-[12px]'>Terapia<br/>Online</p>
           </div>
-          <div className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm g p-2 '>
-            <Image src="/assets/medicacao.svg" alt="Medicação" width={40} height={40} className='w-10 h-10 md:w-12 md:h-12' />
-            <p className='leading-4 text-[#8c9494]'>Medicação<br/>Precisa</p>
+          <div ref={button2Ref} className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-5  w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-4 '>
+            <Image src="/assets/medicacaoIcon.svg" alt="Medicação" width={40} height={40} className='w-6 h-6 ' />
+            <p className='leading-4 text-[#999999] md:text-[12px]'>Medicação<br/>Precisa</p>
           </div>
-          <div className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-2 '>
-            <Image src="/assets/atendimento.svg" alt="Atendimento" width={40} height={40} className='w-10 h-10 md:w-12 md:h-12' />
-            <p className='leading-4 text-[#8c9494]'>Atendimento<br/>Humanizado</p>
+          <div ref={button3Ref} className='flex flex-col md:flex-row items-center justify-center gap-1 md:gap-5 w-1/3 self-end shadow-[0px_4px_6px_0px_rgba(0,0,0,0.12)] rounded-sm p-4 '>
+            <Image src="/assets/atendimentoIcon.svg" alt="Atendimento" width={40} height={40} className='w-6 h-6 ' />
+            <p className='leading-4 text-[#999999] md:text-[12px]'>Atendimento<br/>Humanizado</p>
           </div>
         </div>
       </div>
