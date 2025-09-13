@@ -27,7 +27,7 @@ function Conditions() {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const cardRefs = useRef([]);
-  const bottomImageRef = useRef(null);
+ 
 
   const handleEnter = (index) => {
     const el = overlayRefs.current[index];
@@ -68,7 +68,7 @@ function Conditions() {
           y: 28,
           duration: 1.2,
           ease: 'power3.out',
-          stagger: 0.12,
+          stagger: 0.5,
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 45%',
@@ -77,27 +77,14 @@ function Conditions() {
         });
       }
 
-      // Bottom image gentle fade-in
-      if (bottomImageRef.current) {
-        gsap.from(bottomImageRef.current, {
-          opacity: 0,
-          y: 20,
-          duration: 1.2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: bottomImageRef.current,
-            start: 'top 45%',
-            once: true,
-          },
-        });
-      }
+      
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef}>
+    <section ref={sectionRef} className='md:h-max-screen w-full bg-[rgb(250,255,255)] '>
       <div ref={titleRef} className='bg-[#3c3f3f] w-full h-25 flex justify-center items-center gap-2 md:gap-4 '>
         <h2 className='text-[32px] md:text-[56px] text-center py-8 gradient2 font-semibold tracking-tight'>Fique</h2>
         <span className='text-[36px] md:text-[64px] text-center py-8 text-[#29B8B4] font-bold tracking-tighter'>ATENTO</span>
@@ -177,19 +164,7 @@ function Conditions() {
           </div>
         ))}
       </div>
-      <div ref={bottomImageRef} className='flex justify-center items-center bg-[#2E3333] '>
-        <div className='py-18'>
-          <Image
-            src="/assets/sofrer.png"
-            alt="Insônia"
-            width={1000}  // Coloque a largura original da imagem
-            height={600} // Coloque a altura original da imagem
-            className="w-[85vw] md:w-[70vw] h-auto"
-          />
-
-        </div>
-
-      </div>
+    
     </section>
   );
 }

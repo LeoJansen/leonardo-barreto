@@ -9,6 +9,7 @@ import Footer from '../components/Footer'
 import { ScrollTrigger, SplitText } from "gsap/all"
 import gsap from "gsap"
 import { useGSAP } from '@gsap/react';
+import InterSectionDivider from '../components/InterSectionDivider'
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -21,6 +22,7 @@ const App = () => {
             <WhenToSeek />
             <About />
             <Conditions />
+            <InterSectionDivider />
             <Specialization />
 
             <Footer />
