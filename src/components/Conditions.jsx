@@ -54,7 +54,7 @@ function Conditions() {
           ease: 'power2.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 55%',
+            start: 'top 65%',
             once: true,
           },
         });
@@ -71,7 +71,7 @@ function Conditions() {
           stagger: 0.5,
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 45%',
+            start: 'top 55%',
             once: true,
           },
         });
@@ -85,31 +85,38 @@ function Conditions() {
 
   return (
     <section ref={sectionRef} className='md:h-max-screen w-full bg-[rgb(250,255,255)] '>
-      <div ref={titleRef} className='bg-[#3c3f3f] w-full h-25 flex justify-center items-center gap-2 md:gap-4 '>
-        <h2 className='text-[32px] md:text-[56px] text-center py-8 gradient2 font-semibold tracking-tight'>Fique</h2>
+      <div className='bg-[#3c3f3f] w-full h-25 flex  '>
+        <div ref={titleRef} className='w-full flex justify-center items-center gap-2 md:gap-4'>
+          <h2 className='text-[32px] md:text-[56px] text-center py-8 gradient2 font-semibold tracking-tight'>Fique</h2>
         <span className='text-[36px] md:text-[64px] text-center py-8 text-[#29B8B4] font-bold tracking-tighter'>ATENTO</span>
         <h2 className='text-[32px] md:text-[56px] text-center py-8 gradient2 font-semibold tracking-tight'>aos sinais</h2>
 
+        </div>
+        
+
       </div>
-      <div className="grid md:grid-cols-2 items-center my-8 md:my-8 gap-2  p-4 md:p-14">
+      <div className="grid md:grid-cols-2 items-center gap-6  px-12 p-6  md:px-14">
         {conditions.map((condition, index) => (
           <div
-            className='flex flex-col md:flex-row justify-center items-center  m-4'
+            className='flex flex-col md:flex-row justify-center items-center  '
             key={index}
             ref={(el) => (cardRefs.current[index] = el)}
           >
-            <div className='flex flex-col items-center '>
-              <span className="mt-2 text-md font-bold text-[#5f5f5f]">
+            <div className='flex flex-col items-center  rounded-[2px]'>
+              <div className='w-56 md:w-64 h-full flex justify-center items-center bg-[hsl(0,0%,15%)] p-2 rounded-t-md'>
+                <span className="mt-2 text-[19px]  font-medium text-[#9e9e9e]">
                 {condition.name}
               </span>
+                 </div>
+              
 
               <div
                 key={condition.name}
-                className="flex flex-col items-center select-none p-4  rounded-l-[8px] "
+                className="flex flex-col items-center select-none    "
               >
 
                 <div
-                  className="relative w-48 h-48 md:w-64 md:h-64 cursor-pointer"
+                  className="relative w-56 h-56 md:w-64 md:h-64 cursor-pointer"
                   onMouseEnter={() => handleEnter(index)}
                   onMouseLeave={() => handleLeave(index)}
                   onFocus={() => handleEnter(index)}
@@ -124,7 +131,7 @@ function Conditions() {
                     alt={condition.name}
                     width={1024}
                     height={1024}
-                    className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-md"
+                    className="w-56 h-56 md:w-64 md:h-64 object-cover rounded-b-md"
                     priority={false}
                   />
 
@@ -140,7 +147,7 @@ function Conditions() {
                       alt={condition.name}
                       width={1024}
                       height={1024}
-                      className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-md"
+                      className="w-56 h-56 md:w-64 md:h-64 object-cover rounded-b-md"
                     />
                   </div>
                 </div>
@@ -150,14 +157,26 @@ function Conditions() {
             </div>
    {conditionsDetails[condition.key]?.bullets?.length ? (
               <div className='flex flex-col items-center select-none h-full justify-center '>
-                <ul className='list-inside '>
+                <div className='list-inside '>
                   {conditionsDetails[condition.key].bullets.map((bullet, idx) => (
-                    <li key={idx} className="max-w-md text-sm p-4 text-[#929292] text-justify bullet-icon">
-                      <h3 className="font-semibold  text-[#686868] ">{bullet.title}</h3>
-                      <p className="">{bullet.description}</p>
-                    </li>
+                    <div key={idx} className="max-w-md text-[14px] leading-relaxed p-4 text-[#929292] text-justify ">
+                      <div className='flex items-start'> 
+                        <Image 
+                          src="/assets/listIcon.svg"
+                          alt="list icon"
+                          width={20}
+                          height={20}
+                          className="mr-2"
+                        />
+                        <h3 className="font-semibold  text-[#686868] ">{bullet.title}</h3>
+
+                      </div>
+                      <div className='pl-6'>
+                        <p className="">{bullet.description}</p>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             ) : null}
          

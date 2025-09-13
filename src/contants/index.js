@@ -10,6 +10,9 @@
  * }
  */
 
+
+
+
 export const conditionsDetails = {
 	depressao: {
 		title: 'Depressão',
