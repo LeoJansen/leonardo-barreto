@@ -125,10 +125,10 @@ function Conditions() {
   return (
     <section ref={sectionRef} className='md:h-max-screen w-full bg-[rgb(250,255,255)] '>
       <div className='bg-[#3c3f3f] w-full h-25 flex  '>
-        <div ref={titleRef} className='w-full flex justify-center items-center gap-2 md:gap-4'>
-          <h2 className='text-[32px] md:text-[56px] text-center py-8 gradient2 font-semibold tracking-tight'>Fique</h2>
+        <div ref={titleRef} className='w-full flex justify-center items-center gap-2 md:gap-4 text-[#cacaca] text-shadow-2xs'>
+          <h2 className='text-[32px] md:text-[56px] text-center py-8 font-semibold tracking-tight'>Fique</h2>
         <span ref={atentoRef} className='text-[36px] md:text-[64px] text-center py-8 text-[#29B8B4] font-bold tracking-tighter'>ATENTO</span>
-        <h2 className='text-[32px] md:text-[56px] text-center py-8 gradient2 font-semibold tracking-tight'>aos sinais</h2>
+        <h2 className='text-[32px] md:text-[56px] text-center py-8 font-semibold tracking-tight'>aos sinais</h2>
 
         </div>
         
