@@ -20,9 +20,10 @@ const App = () => {
             <Topbar />
             <HeroSection />
             <WhenToSeek />
-            <About />
+           
             <Conditions />
             <InterSectionDivider />
+             <About />
             <Specialization />
 
             <Footer />
