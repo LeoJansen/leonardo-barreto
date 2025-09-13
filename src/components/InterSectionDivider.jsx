@@ -17,7 +17,7 @@ const InterSectionDivider = () => {
 
     const loadAndAnimate = async () => {
       try {
-        const res = await fetch("/assets/sofrer2.svg");
+        const res = await fetch("/assets/sofrer3.svg");
         const svgText = await res.text();
         if (isCancelled || !svgHostRef.current) return;
         svgHostRef.current.innerHTML = svgText;

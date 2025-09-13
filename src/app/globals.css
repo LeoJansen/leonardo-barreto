@@ -75,7 +75,7 @@ body {
 }
 
 .gradient2 {
-  background: radial-gradient(circle,rgb(187, 187, 187)  0% ,rgb(128, 127, 127)100%);
+  background: radial-gradient(circle,hsl(0, 0%, 73%)  0% ,hsl(0, 0%, 55%)100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

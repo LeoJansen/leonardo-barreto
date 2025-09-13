@@ -27,6 +27,7 @@ function Conditions() {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const cardRefs = useRef([]);
+  const atentoRef = useRef(null);
  
 
   const handleEnter = (index) => {
@@ -46,6 +47,7 @@ function Conditions() {
     // Scope animations to this component for easy cleanup
     const ctx = gsap.context(() => {
       // Title bar fade-up
+      
       if (titleRef.current) {
         gsap.from(titleRef.current, {
           opacity: 0,
@@ -57,6 +59,43 @@ function Conditions() {
             start: 'top 65%',
             once: true,
           },
+        });
+      }
+
+      // Continuous pulse/glow + color animation for "ATENTO"
+      // Ends at initial state each loop without using yoyo
+      if (atentoRef.current) {
+        const el = atentoRef.current;
+        const baseColor = '#29B8B4'; // initial text color from class
+        const glowColor = '#53E2DE'; // accent color during pulse
+
+        gsap.set(el, {
+          display: 'inline-block',
+          transformOrigin: '50% 50%',
+          willChange: 'transform, text-shadow, opacity, color',
+        });
+
+        gsap.to(el, {
+          keyframes: [
+            {
+              scale: 1.07891,
+              color: glowColor,
+              textShadow: '0px 0px 18px rgba(41, 184, 180, 0.75)',
+              opacity: 0.96,
+              duration: 0.86,
+              ease: 'sine.inOut',
+            },
+            {
+              scale: 1,
+              opacity: 1, 
+              color: baseColor,
+              textShadow: '0px 0px 0px rgba(0,0,0,0)',
+              duration: 0.86,
+              ease: 'sine.inOut',
+            },
+          ],
+          repeat: -1,
+          repeatDelay: 3.4,
         });
       }
 
@@ -88,7 +127,7 @@ function Conditions() {
       <div className='bg-[#3c3f3f] w-full h-25 flex  '>
         <div ref={titleRef} className='w-full flex justify-center items-center gap-2 md:gap-4'>
           <h2 className='text-[32px] md:text-[56px] text-center py-8 gradient2 font-semibold tracking-tight'>Fique</h2>
-        <span className='text-[36px] md:text-[64px] text-center py-8 text-[#29B8B4] font-bold tracking-tighter'>ATENTO</span>
+        <span ref={atentoRef} className='text-[36px] md:text-[64px] text-center py-8 text-[#29B8B4] font-bold tracking-tighter'>ATENTO</span>
         <h2 className='text-[32px] md:text-[56px] text-center py-8 gradient2 font-semibold tracking-tight'>aos sinais</h2>
 
         </div>
