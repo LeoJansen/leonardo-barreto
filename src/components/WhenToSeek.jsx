@@ -71,7 +71,8 @@ function WhenToSeek() {
               alt="Quando procurar um psiquiatra"
               width={500}
               height={500}
-              className="object-cover w-[300px] md:w-[350px] lg:w-[400px] h-auto rounded-[14px]"
+              quality={100}
+              className="object-cover w-[300px] md:w-[350px] lg:w-[400px] xl:w-[500px] h-auto rounded-[14px]"
             />
           </div>
         </div>
