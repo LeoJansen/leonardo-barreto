@@ -1,15 +1,46 @@
+"use client";
 // src/components/AboutSection.jsx
 
 import Image from 'next/image';
-import React from 'react';
+import React, { use, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { useMediaQuery } from 'react-responsive';
 
 function About() {
+    const root = useRef(null);
+ const isPortrait = useMediaQuery({ orientation: 'portrait' });
+    // Register ScrollTrigger once in module scope (safe to call multiple times)
+    gsap.registerPlugin(ScrollTrigger);
+
+    useGSAP(() => {
+        const q = gsap.utils.selector(root);
+       
+
+        const tl = gsap.timeline({
+            defaults: { ease: 'power2.out' },
+            scrollTrigger: {
+                trigger: root.current,
+                start: isPortrait ? '10% 20%' : '50% 20%',
+                end: 'bottom 40%',
+                toggleActions: 'play none none reverse',
+                once: true,
+   
+            }
+        });
+
+        tl.from(q('.about-title'), { y: 24, autoAlpha: 0, duration: 0.6 })
+          .from(q('.about-image'), { y: 24, autoAlpha: 0, duration: 0.6 }, '-=0.2')
+          .from(q('.about-text p'), { y: 16, autoAlpha: 0, duration: 0.5, stagger: 0.15 }, '-=0.2');
+    }, { scope: root });
+
     return (
-        <section className="p-6 px-10 bg-[#fbfeff]">
+        <section ref={root} className="p-6 px-10 bg-[#fbfeff]">
             <div className='w-full h-full grid grid-cols-1 md:grid-cols-2 py-16 gap-16 md:gap-10 items-center justify-items-center'>
 
 
-                <div className='flex flex-col w-fit min-w-[300px] md:min-w-[330px] xl:min-w-[360px] col-start-1 row-start-1 md:col-start-2'>
+                <div className="about-title flex flex-col w-fit min-w-[300px] md:min-w-[330px] xl:min-w-[360px] col-start-1 row-start-1 md:col-start-2">
                     {/* Título */}
                     <h2 className="text-[30px] md:text-[33px] xl:text-[36px] tracking-[-0.0645em] leading-1 font-extralight text-[#7e7e7e]">
                         Uma paixão pela
@@ -30,13 +61,13 @@ function About() {
                     </h2>
                 </div>
 
-                <div className='col-start-1 row-start-2 md:row-span-2 md:row-start-1 flex w-full h-full justify-center items-center'>
+                <div className="about-image col-start-1 row-start-2 md:row-span-2 md:row-start-1 flex w-full h-full justify-center items-center">
                     <Image src="/assets/estudo2.png" alt="Leonardo Barreto" width={300} height={300} className="rounded-lg shadow-md md:w-[400px] md:h-auto" />
                 </div>
 
 
                 {/* Parágrafos de texto */}
-                <div className="col-start-1 row-start-3 md:row-start-2 md:col-start-2 flex flex-col h-full items-start justify-start text-sm text-[#5e5e5e] leading-relaxed text-justify space-y-4 px-2 xl:px-10">
+                <div className="about-text col-start-1 row-start-3 md:row-start-2 md:col-start-2 flex flex-col h-full items-start justify-start text-sm text-[#5e5e5e] leading-relaxed text-justify space-y-4 px-2 xl:px-10">
                     <p>
                         Desde o início de sua jornada na medicina, o <strong className='text-[#26A2A0]'>Dr. Leonardo Barreto</strong> nutriu um
                         interesse profundo pela complexidade da mente humana e sua relação com o
