@@ -16,10 +16,10 @@ function Conditions() {
 
   const conditions = [
     // Use existing PNG assets for base images
-    { key: 'depressao', name: 'DEPRESSÃO', icon: '/assets/depressao-icon.svg', pic: '/assets/depressao2.png', picBefore: '/assets/depressao1.png' },
-    { key: 'ansiedade', name: 'ANSIEDADE', icon: '/assets/ansiedade-icon.svg', pic: '/assets/ansiedade2.png', picBefore: '/assets/ansiedade1.png' },
-    { key: 'insonia', name: 'INSÔNIA', icon: '/assets/insonia-icon.svg', pic: '/assets/insonia2.png', picBefore: '/assets/insonia1.png' },
-    { key: 'tdah', name: 'TDAH', icon: '/assets/tdah-icon.svg', pic: '/assets/tdah2.png', picBefore: '/assets/tdah1.png' },
+    { key: 'depressao', name: 'DEPRESSÃO', icon: '/assets/depressao-icon.svg', pic: '/assets/depressao2.png', picBefore: '/assets/depressao4.png' },
+    { key: 'ansiedade', name: 'ANSIEDADE', icon: '/assets/ansiedade-icon.svg', pic: '/assets/ansiedade2.png', picBefore: '/assets/ansiedade4.png' },
+    { key: 'insonia', name: 'INSÔNIA', icon: '/assets/insonia-icon.svg', pic: '/assets/insonia2.png', picBefore: '/assets/insonia4.png' },
+    { key: 'tdah', name: 'TDAH', icon: '/assets/tdah-icon.svg', pic: '/assets/tdah2.png', picBefore: '/assets/tdah4.png' },
   ];
 
   // Refs to overlay wrappers to animate opacity/scale on hover
@@ -123,7 +123,7 @@ function Conditions() {
   }, []);
 
   return (
-    <section ref={sectionRef} className='md:h-max-screen w-full bg-[rgb(250,255,255)] '>
+    <section ref={sectionRef} className='md:h-max-screen md:h-screen w-full bg-[rgb(250,255,255)] '>
       <div className='bg-[#3c3f3f] w-full h-25 flex  '>
         <div ref={titleRef} className='w-full flex justify-center items-center gap-2 md:gap-4 text-[#cacaca] text-shadow-2xs'>
           <h2 className='text-[32px] md:text-[56px] text-center py-8 font-semibold tracking-tight'>Fique</h2>
@@ -141,11 +141,12 @@ function Conditions() {
             key={index}
             ref={(el) => (cardRefs.current[index] = el)}
           >
-            <div className='flex flex-col items-center  rounded-[2px]'>
-              <div className='w-56 md:w-64 h-full flex justify-center items-center bg-[hsl(0,0%,15%)] p-2 rounded-t-md'>
-                <span className="mt-2 text-[19px]  font-medium text-[#9e9e9e]">
-                {condition.name}
-              </span>
+            <div className='flex flex-col items-center  rounded-[2px] bg-[#262626] rounded-t-md'>
+              <div className='w-57 md:w-64 h-full flex justify-center items-end p-2 text-[21px] font-medium text-[hsl(0,0%,51%)] text-shadow-[0_3px_15px_rgb(182_200_220_/_0.35)] leading-none align-bottom pt-4'>
+                <p>{condition.name}</p>
+             
+             
+           
                  </div>
               
 
