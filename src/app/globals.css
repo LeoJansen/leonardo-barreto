@@ -24,6 +24,12 @@ body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
+/* Prevent flash before GSAP animations initialize */
+.gsap-prehidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .specialization {
   background: #025C5C;
   background: -webkit-linear-gradient(180deg, rgba(2, 92, 92, 1) 42%, rgba(255, 255, 255, 1) 42%);
@@ -82,18 +88,3 @@ body {
   color: transparent;
 }
 
-.bullet-icon {
-  position: relative;
-  padding-left: 2.25rem; /* ajuste conforme o tamanho do ícone */
-}
-
-.bullet-icon::before {
-  content: '';
-  position: absolute;
-  left: 0rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: var(--bullet-size, 1.25rem);  /* 20px default */
-  height: var(--bullet-size, 1.25rem);
-  background: url('/assets/listIcon.svg') no-repeat center/contain;
-}
