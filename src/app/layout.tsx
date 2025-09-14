@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import dynamic from 'next/dynamic';
+
+// Evita problemas de SSR com ícones/DOM (só por segurança)
+const WhatsAppFloat = dynamic(() => import('@/components/WhatsAppFloat'));
 
 export const metadata: Metadata = {
   title: 'Leonardo Barreto - Psiquiatra',
@@ -9,7 +13,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-br">
-      <body>{children}</body>
+      <body>
+        {children}
+        <WhatsAppFloat />
+      </body>
     </html>
   );
 }
