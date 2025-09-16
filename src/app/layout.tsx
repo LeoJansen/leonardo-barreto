@@ -8,6 +8,13 @@ const WhatsAppFloat = dynamic(() => import('@/components/WhatsAppFloat'));
 export const metadata: Metadata = {
   title: 'Leonardo Barreto - Psiquiatra',
   description: 'Site oficial do Dr. Leonardo Barreto, psiquiatra.',
+
+  icons: {
+    icon: '/logobranco.svg',
+    shortcut: '/logobranco.svg',
+    apple: '/logobranco.svg',
+  },
+  
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
