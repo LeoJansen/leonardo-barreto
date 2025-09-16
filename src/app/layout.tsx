@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   description: 'Site oficial do Dr. Leonardo Barreto, psiquiatra.',
 
   icons: {
-    icon: '/logobranco.svg',
-    shortcut: '/logobranco.svg',
-    apple: '/logobranco.svg',
+    icon: 'assets/logobranco.svg',
+    shortcut: 'assets/logobranco.svg',
+    apple: 'assets/logobranco.svg',
   },
   
 };
