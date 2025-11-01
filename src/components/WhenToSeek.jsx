@@ -85,9 +85,9 @@ function WhenToSeek() {
               ref={paragraph1Ref}
               className="text-sm md:text-base text-[#5e5e5e] leading-relaxed text-justify "
             >
-              Manter a <strong>saúde mental</strong> é crucial para o seu bem-estar geral, influenciando positivamente diversas áreas da sua vida, como a famipar, a profissional e a social. Momentos de dificdivdade podem provocar ansiedade e desequilíbrios emocionais, afetando a sua paz de espírito e a capacidade de tomar decisões.
+              Manter a <strong>saúde mental</strong> é crucial para o seu bem-estar geral, influenciando positivamente diversas áreas da sua vida, como a familiar, a profissional e a social. Momentos de dificuldade podem provocar ansiedade e desequilíbrios emocionais, afetando a sua paz de espírito e a capacidade de tomar decisões.
 
-              Quando esses sintomas se intensificam a ponto de atrapalhar suas atividades diárias no <strong>trabalho</strong>, na <strong>vida pessoal</strong> e nos seus <strong>relacionamentos</strong>, é um sinal de que a ajuda profissional pode ser necessária. Um psiquiatra pode oferecer o suporte e o tratamento adequados para que você recupere o controle sobre a sua vida.
+              Quando esses sintomas se intensificam a ponto de atrapalhar suas atividades diárias no <strong>trabalho</strong>, na <strong>vida pessoal</strong> e nos seus <strong>relacionamentos</strong>, é um sinal de que a ajuda profissional pode ser necessária. Um médico capacitado pode oferecer o suporte e o tratamento adequados para que você recupere o controle sobre a sua vida.
             </p>
           </div>
           <div
@@ -99,7 +99,7 @@ function WhenToSeek() {
               Quando procurar um
             </h2>
             <h2 className="text-[40px] md:text-[48px] lg:text-[64px] font-medium text-[#176565] tracking-[-0.045em]">
-              PSIQUIATRA?
+              AJUDA?
             </h2>
           </div>
           <div>

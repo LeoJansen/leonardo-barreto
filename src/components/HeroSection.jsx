@@ -75,7 +75,7 @@ function HeroSection() {
         <span className='text-[#757474] xl:mb-5'>Dr.</span>
         <div className='flex flex-col items-center justify-center '>
           <h3 className='text-[#d8d8d8] text-[34px] md:text-[36px]  font-light tracking-[-0.054em] leading-8 '><span></span>Leonardo Barreto</h3>
-          <h1 className='text-[#949b9b] text-[24px] md:text-[26px] font-extralight leading-tight md:leading-tight'>PSIQUIATRIA </h1>
+          <h1 className='text-[#949b9b] text-[24px] md:text-[26px] font-extralight leading-tight md:leading-tight'>Saúde Mental </h1>
 
 
         </div>
