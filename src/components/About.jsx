@@ -42,27 +42,27 @@ function About() {
 
                 <div className="about-title flex flex-col w-fit min-w-[300px] md:min-w-[330px] xl:min-w-[360px] col-start-1 row-start-1 md:col-start-2">
                     {/* Título */}
-                    <h2 className="text-[30px] md:text-[33px] xl:text-[36px] tracking-[-0.0645em] leading-1 font-extralight text-[#7e7e7e]">
+                    <h2 className="text-[30px] md:text-[33px] lg:text-[36px] tracking-[-0.0645em] leading-1 font-extralight text-[#7e7e7e]">
                         Uma paixão pela
                     </h2>
-                    <h2 className="text-[50px] md:text-[55px] xl:text-[60px] tracking-[-0.07645em]      text-[#1C7A79]">
+                    <h2 className="text-[50px] md:text-[55px] lg:text-[60px] tracking-[-0.07645em]      text-[#1C7A79]">
                         Saúde Mental
                     </h2>
                     <div className='flex items-start w-0-full justify-end'>
-                        <h2 className="text-[40px] md:text-[44px] xl:text-[48px] leading-0 font-medium text-[#06aaa2] tracking-[-0.045em] ">
+                        <h2 className="text-[40px] md:text-[44px] lg:text-[48px] leading-0 font-medium text-[#06aaa2] tracking-[-0.045em] ">
                             e
                         </h2>
-                        <h2 className="text-[50px] md:text-[55px] xl:text-[60px] leading-3 font-medium text-[#30CCC9] tracking-[-0.045em] ml-2">
+                        <h2 className="text-[50px] md:text-[55px] lg:text-[60px] leading-3 font-medium text-[#30CCC9] tracking-[-0.045em] ml-2">
                             Bem-Estar
                         </h2>
                     </div>
-                    <h2 className="text-[35px] md:text-[38.5px] xl:text-[42px] leading-14 text-[#008582] text-right">
+                    <h2 className="text-[35px] md:text-[38.5px] lg:text-[42px] leading-15 text-[#008582] text-right">
                         Integral
                     </h2>
                 </div>
 
                 <div className="about-image col-start-1 row-start-2 md:row-span-2 md:row-start-1 flex w-full h-full justify-center items-center">
-                    <Image src="/assets/estudo2.png" alt="Leonardo Barreto" width={300} height={300} className="rounded-lg shadow-md md:w-[400px] md:h-auto" />
+                    <Image src="/assets/estudo2.png" alt="Leonardo Barreto" width={300} height={300} className="rounded-lg shadow-md md:w-[400px]  md:h-auto" />
                 </div>
 
 

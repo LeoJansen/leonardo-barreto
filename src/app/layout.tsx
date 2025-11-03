@@ -6,8 +6,8 @@ import dynamic from 'next/dynamic';
 const WhatsAppFloat = dynamic(() => import('@/components/WhatsAppFloat'));
 
 export const metadata: Metadata = {
-  title: 'Leonardo Barreto - Psiquiatra',
-  description: 'Site oficial do Dr. Leonardo Barreto, psiquiatra.',
+  title: 'Leonardo Barreto - Saúde Mental',
+  description: 'Site oficial do Dr. Leonardo Barreto.',
 
   icons: {
     icon: 'assets/logobranco.svg',

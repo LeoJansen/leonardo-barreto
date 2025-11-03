@@ -96,7 +96,7 @@ function WhenToSeek() {
           >
             {/* Títdivo */}
             <h2 className="text-[35px]  font-extrapght tracking-[-0.08em] leading-5 text-[#6B7777]">
-              Quando procurar um
+              Quando procurar
             </h2>
             <h2 className="text-[40px] md:text-[48px] lg:text-[64px] font-medium text-[#176565] tracking-[-0.045em]">
               AJUDA?
