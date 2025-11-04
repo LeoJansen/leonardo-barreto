@@ -85,10 +85,10 @@ function About() {
 
                     <div data-animate="copy" className="space-y-4 text-justify text-sm leading-relaxed text-[#5e5e5e] md:text-base">
                         <p>
-                            Desde o início de sua jornada na medicina, o <strong className="text-[#26A2A0]">Dr. Leonardo Barreto</strong> nutriu um interesse profundo pela complexidade da mente humana e sua relação com o corpo e o bem-estar. Essa paixão o levou a se especializar em Psiquiatria, área onde encontrou propósito ao ajudar pessoas a navegarem pelos desafios emocionais e psicológicos da vida.
+                            Desde o início de sua jornada na medicina, o <strong className="text-[#26A2A0]">Dr. Leonardo Barreto</strong> nutriu um interesse profundo pela complexidade da mente humana e sua relação com o corpo e o bem-estar. Essa paixão o levou a se especializar em Saúde Mental, área onde encontrou propósito ao ajudar pessoas a navegarem pelos desafios emocionais e psicológicos da vida.
                         </p>
                         <p>
-                            Sua abordagem vai muito além do tratamento de sintomas. Ele acredita em uma <strong className="text-[#26A2A0]">psiquiatria humanizada</strong>, que enxerga o paciente como um ser único, considerando histórico de vida, experiências e contexto. O foco não é apenas aliviar o sofrimento, mas fortalecer o indivíduo para que reconquiste autonomia e qualidade de vida.
+                            Sua abordagem vai muito além do tratamento de sintomas. Ele acredita em uma <strong className="text-[#26A2A0]">abordagem humanizada</strong>, que enxerga o paciente como um ser único, considerando histórico de vida, experiências e contexto. O foco não é apenas aliviar o sofrimento, mas fortalecer o indivíduo para que reconquiste autonomia e qualidade de vida.
                         </p>
                     </div>
 
@@ -104,8 +104,7 @@ function About() {
 
                 <div data-animate="image" className="relative flex items-center justify-center">
                     <div className="relative w-full max-w-sm">
-                        <div aria-hidden="true" className="absolute -inset-6 rounded-[42px] bg-gradient-to-br from-[#30ccc9]/50 via-[#06aaa2]/40 to-[#008582]/20 blur-2xl" />
-                        <div className="relative overflow-hidden rounded-[36px] border border-white/60 bg-white">
+                        <div className="relative overflow-hidden rounded-[6px] border border-[#dfeeed] bg-white/80">
                             <Image
                                 src="/assets/estudo2.png"
                                 alt="Dr. Leonardo Barreto estudando"
