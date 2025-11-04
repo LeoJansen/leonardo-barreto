@@ -15,8 +15,8 @@ const Footer = () => {
                     />
                     <div className='flex flex-col h-full items-center justify-center opacity-80'>
                        
-                        <span className="text-[12px] font-[500]  text-[#DBE8E8] tracking-wide">LEONARDO BARRETO</span>
-                        <span className="text-[10px] text-[#878f8f] leading-2">PSIQUIATRIA</span>
+                        <span className="text-[12px] font-[500]  text-[#DBE8E8] tracking-wide">Leonardo Barreto</span>
+                        <span className="text-[10px] text-[#878f8f] leading-2">Saúde Mental</span>
                     </div>
 
 

@@ -39,9 +39,11 @@ function Topbar() {
         </span>
         <div ref={textRef} className='flex flex-col h-full justify-self-center self-center items-center justify-center md:gap-1'>
           <div className='w-1 h-2'/>
-          
-          <span className="text-[12px] md:text-[18px]   text-[#c9cccc] font-light tracking-[-0.02em] leading-4">Leonardo Barreto</span>
-          <span className="text-[9px] md:text-[13px] text-[#878f8f] leading-2 font-light">Saúde Mental</span>
+          <div className='flex gap-1 items-end'>
+            <span className="text-[10px] md:text-[14px] font-light  text-[#8a8a8a] tracking-wide">Dr.</span>
+            <h3 className='text-[#d4d4d4] text-[20px] md:text-[25px]  font-light tracking-[-0.054em] leading-8'>Leonardo Barreto</h3>
+          </div>
+          <span className="text-[12px] md:text-[18px] text-[#878f8f] leading-2 font-light">Saúde Mental</span>
         </div>
       </div>
       {/* Placeholder para alinhar o layout */}

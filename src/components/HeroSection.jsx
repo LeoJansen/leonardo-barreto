@@ -72,9 +72,13 @@ function HeroSection() {
         ref={plaqueRef}
         className="gsap-prehidden relative  z-20 rounded-r-[5px] md:rounded-r-[7px] bg-[#145251] flex justify-center items-center w-fit p-4  shadow-[2px_2px_6px_2px_rgba(30,45,40,0.51924)] "
       >
-        <span className='text-[#757474] xl:mb-5'>Dr.</span>
+        
         <div className='flex flex-col items-center justify-center '>
-          <h3 className='text-[#d8d8d8] text-[34px] md:text-[36px]  font-light tracking-[-0.054em] leading-8 '>Leonardo Barreto</h3>
+          <div className='flex gap-1 items-end'>
+            <span className='text-[#757474] xl:mb-5'>Dr.</span>
+            <h3 className='text-[#d8d8d8] text-[34px] md:text-[36px]  font-light tracking-[-0.054em] leading-8 '>Leonardo Barreto</h3>
+          </div>
+          
           <h1 className='text-[#949b9b] text-[24px] md:text-[26px] font-extralight leading-tight md:leading-tight'>Saúde Mental </h1>
 
 
