@@ -38,7 +38,7 @@ function Specialization() {
 });
 
   return (
-    <section ref={sectionRef}>
+    <section id="especializacao" ref={sectionRef}>
       <div ref={divRef} className=' flex w-full items-center justify-start my-10  '>
         <div ref={placa1} className='spec-head flex flex-col bg-[#025C5C]  p-5 px-10 rounded-r-xl z-20 border-2 border-[#024f520c] shadow-[2px_2px_6px_2px_rgba(10,51,40,0.6781924)] '>
           {/* Título da seção */}

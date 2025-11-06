@@ -123,7 +123,7 @@ function Conditions() {
   }, []);
 
   return (
-    <section ref={sectionRef} className='md:h-max-screen md:h-screen w-full bg-[rgb(250,255,255)] '>
+    <section id="condicoes" ref={sectionRef} className='md:h-max-screen md:h-screen w-full bg-[rgb(250,255,255)] '>
       <div className='bg-[#3c3f3f] w-full h-25 flex  '>
         <div ref={titleRef} className='w-full flex justify-center items-center gap-2 md:gap-4 text-[#cacaca] text-shadow-2xs'>
           <h2 className='text-[32px] md:text-[56px] text-center py-8 font-semibold tracking-tight'>Fique</h2>

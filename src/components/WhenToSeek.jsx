@@ -59,7 +59,7 @@ function WhenToSeek() {
   }, []);
 
   return (
-    <section id="when-to-seek" ref={sectionRef}>
+  <section id="quando-procurar" ref={sectionRef}>
       <div className="p-10 flex flex-col md:flex-row justify-center items-center gap-10 md:gap-0 py-15 ">
         <div className="flex justify-center md:w-1/2 ">
           <div

@@ -68,7 +68,7 @@ function About() {
     );
 
     return (
-        <section ref={root} className="bg-[#fbfeff] py-20">
+        <section id="sobre" ref={root} className="bg-[#fbfeff] py-20">
             <div className="mx-auto flex max-w-6xl flex-col-reverse gap-16 px-6 md:px-10 lg:grid lg:grid-cols-[1.15fr_minmax(320px,0.9fr)] lg:items-center">
                 <article className="flex flex-col gap-10 text-[#4b4b4b]">
                     <header data-animate="heading" className="flex flex-col gap-4">

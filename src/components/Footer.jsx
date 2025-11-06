@@ -14,8 +14,12 @@ const Footer = () => {
                         className="h-14 w-14 filter opacity-80"
                     />
                     <div className='flex flex-col h-full items-center justify-center opacity-80'>
-                       
+                       <div className='flex gap-1 items-center'>
+                        <span className="text-[10px]   text-[#DBE8E8] tracking-wide">Dr.</span>
                         <span className="text-[12px] font-[500]  text-[#DBE8E8] tracking-wide">Leonardo Barreto</span>
+
+                       </div>
+                        
                         <span className="text-[10px] text-[#878f8f] leading-2">Saúde Mental</span>
                     </div>
 

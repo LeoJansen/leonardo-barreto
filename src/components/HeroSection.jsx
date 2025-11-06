@@ -47,7 +47,7 @@ function HeroSection() {
   }, { scope: headerRef });
 
   return (
-    <header ref={headerRef} className="gsap-prehidden relative h-[calc(93vh-58px)] md:h-[90vh] w-full flex flex-col justify-between pt-[40vh] ">
+    <header id="inicio" ref={headerRef} className="gsap-prehidden relative h-[calc(93vh-58px)] md:h-[90vh] w-full flex flex-col justify-between pt-[40vh] ">
       {/* Imagem de fundo */}
       <Image
         fill
