@@ -80,6 +80,6 @@ export const conditionsDetails = {
 // Dica: use apenas números com DDI + DDD + número (ex.: Brasil 55 + 11 + 91234-5678 => "5511912345678")
 export const WHATSAPP_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '+5546999808231';
 export const WHATSAPP_MESSAGE =
-	process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE || 'Olá! Gostaria de agendar uma consulta com o Dr. Leonardo Barreto. Link disponível em www.leonardobarreto.com.br';
+	process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE || 'Olá! Gostaria de agendar uma consulta com o Dr. Leonardo Barreto. Link disponível em www.drleonardobarreto.med.br';
 
 export default conditionsDetails;
