@@ -80,7 +80,7 @@ function Topbar() {
                 height={52}
                 src="/assets/logocinza.svg"
                 alt="Leonardo Barreto"
-                className="h-8 w-8 object-contain"
+                className="h-8 w-8 md:h-12 md:w-12 object-contain"
                 priority
               />
             </span>
