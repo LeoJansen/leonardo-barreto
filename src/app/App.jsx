@@ -6,13 +6,7 @@ import About from '../components/About'
 import Conditions from '../components/Conditions'
 import Specialization from '../components/Specialization/Specialization'
 import Footer from '../components/Footer'
-import { ScrollTrigger, SplitText } from "gsap/all"
-import gsap from "gsap"
-import { useGSAP } from '@gsap/react';
 import InterSectionDivider from '../components/InterSectionDivider'
-
-gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
     return (

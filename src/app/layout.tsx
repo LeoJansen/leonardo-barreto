@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import dynamic from 'next/dynamic';
+import { Inter } from 'next/font/google';
+import WhatsAppFloatClient from '@/components/WhatsAppFloatClient';
 
-// Evita problemas de SSR com ícones/DOM (só por segurança)
-const WhatsAppFloat = dynamic(() => import('@/components/WhatsAppFloat'));
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: 'Leonardo Barreto - Saúde Mental',
@@ -19,10 +23,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-br" className={inter.variable}>
       <body>
         {children}
-        <WhatsAppFloat />
+        <WhatsAppFloatClient />
       </body>
     </html>
   );

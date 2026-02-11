@@ -51,20 +51,13 @@ function HeroSection() {
       {/* Imagem de fundo */}
       <Image
         fill
-        quality={100}
-        src="/assets/leonardo-barreto-hero.png"
-        alt="Leonardo Barreto"
-        style={{ objectFit: 'cover' }}
-        className='hidden md:block'
-        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 100vw, 100vw"
-      />
-      <Image
-        fill
-        quality={100}
+        quality={75}
         src="/assets/leonardo-barreto-hero.jpeg"
         alt="Leonardo Barreto"
         style={{ objectFit: 'cover' }}
-        className='md:hidden'
+        priority
+        fetchPriority="high"
+        className=''
         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 100vw, 100vw"
       />
 

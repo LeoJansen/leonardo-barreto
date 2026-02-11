@@ -33,22 +33,25 @@ const InterSectionDivider = () => {
         const paths = Array.from(svgEl.querySelectorAll("path"));
 
         // Estado inicial: efeito "desenhar" no traço e preencher depois
+        // Obs: `getTotalLength()` pode forçar reflow (medição síncrona). Para evitar isso,
+        // normalizamos o comprimento do path para 1 via `pathLength` e animamos dashoffset em [0..1].
         paths.forEach((p) => {
-          try {
-            const length = p.getTotalLength();
-            const fill = p.getAttribute("fill") || "#ffffff";
-            gsap.set(p, {
-              stroke: fill,
-              strokeWidth: 1.6,
-              strokeOpacity: 1,
-              fillOpacity: 0,
-              strokeDasharray: length,
-              strokeDashoffset: length,
-              vectorEffect: "non-scaling-stroke",
-            });
-          } catch (_) {
-            // Alguns elementos podem não suportar getTotalLength (ex: se não forem paths válidos)
-          }
+          const rawFill = p.getAttribute("fill");
+          const fill = !rawFill || rawFill === "none" ? "#ffffff" : rawFill;
+
+          // Normaliza a métrica do path; assim dasharray/dashoffset = 1 cobre o traço inteiro.
+          p.setAttribute("pathLength", "1");
+
+          gsap.set(p, {
+            stroke: fill,
+            strokeWidth: 1.6,
+            strokeOpacity: 1,
+            fillOpacity: 0,
+            strokeDasharray: 1,
+            strokeDashoffset: 1,
+            vectorEffect: "non-scaling-stroke",
+            willChange: "stroke-dashoffset, fill-opacity, stroke-opacity",
+          });
         });
 
         // Timeline: desenhar no scroll + preencher e esconder o traço
