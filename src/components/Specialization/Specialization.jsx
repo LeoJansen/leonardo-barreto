@@ -1,41 +1,65 @@
 "use client";
 import React, { useRef } from 'react';
 import Art from './components/Art';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-import { useMediaQuery } from 'react-responsive';
+import { useEffect } from 'react';
+import { useOnScreen } from '@/hooks/useOnScreen';
 
 function Specialization() {
   const placa1 = useRef(null);
   const sectionRef = useRef(null);
   const divRef = useRef(null);
   const placa2 = useRef(null);
- const isPortrait = useMediaQuery({ orientation: 'portrait' })
- console.log("isPortrait: ", isPortrait)
-    // Register ScrollTrigger once in module scope (safe to call multiple times)
-    gsap.registerPlugin(ScrollTrigger);
 
-    // Animation for the header
-    useGSAP(() => {
-      const tl = gsap.timeline({
-        defaults: { ease: 'power2.out' },
-        scrollTrigger: {
-            trigger: placa1.current,
-            start: '50% 20%' ,
-            end: '100% 40%',
-            toggleActions: 'play none none reverse',
-            once: true,
-           
-        },
-      });
-      tl.from(placa1.current, { opacity: 0, y: 24, duration: 0.6 })
-      tl.from(placa2.current, { opacity: 0, y: 24, duration: 0.6 }, '+=.3')
+  const isVisible = useOnScreen(sectionRef, { rootMargin: '300px', threshold: 0.01, once: true });
 
+  useEffect(() => {
+    if (!isVisible) return;
 
+    let ctx;
+    let cancelled = false;
 
+    const init = async () => {
+      try {
+        const gsapMod = await import('gsap');
+        const gsap = gsapMod.gsap ?? gsapMod.default ?? gsapMod;
+        const stMod = await import('gsap/ScrollTrigger');
+        const ScrollTrigger = stMod.ScrollTrigger ?? stMod.default;
+        gsap.registerPlugin(ScrollTrigger);
 
-});
+        if (cancelled) return;
+        if (!placa1.current || !placa2.current) return;
+
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+
+        ctx = gsap.context(() => {
+          const tl = gsap.timeline({
+            defaults: { ease: 'power2.out' },
+            scrollTrigger: {
+              trigger: placa1.current,
+              start: '50% 20%',
+              end: '100% 40%',
+              toggleActions: 'play none none reverse',
+              once: true,
+            },
+          });
+
+          tl.from(placa1.current, { opacity: 0, y: 24, duration: 0.6 });
+          tl.from(placa2.current, { opacity: 0, y: 24, duration: 0.6 }, '+=.3');
+        }, sectionRef);
+      } catch (_) {
+        // animação é opcional
+      }
+    };
+
+    init();
+
+    return () => {
+      cancelled = true;
+      ctx?.revert?.();
+    };
+  }, [isVisible]);
 
   return (
     <section id="especializacao" ref={sectionRef}>

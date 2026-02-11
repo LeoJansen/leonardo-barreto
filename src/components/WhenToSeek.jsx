@@ -4,59 +4,82 @@
 
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useOnScreen } from "@/hooks/useOnScreen";
 
 function WhenToSeek() {
-  // Register plugin on cpent
-  gsap.registerPlugin(ScrollTrigger);
-
   const sectionRef = useRef(null);
   const imageWrapRef = useRef(null);
   const titleGroupRef = useRef(null);
   const paragraph1Ref = useRef(null);
   const paragraph2Ref = useRef(null);
 
+  const isVisible = useOnScreen(sectionRef, { rootMargin: '300px', threshold: 0.01, once: true });
+
   useEffect(() => {
-    // Scope timeline to this section for easy cleanup
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 60%",
-          end: "bottom 10%",
-          once: true,
-        },
-      });
+    if (!isVisible) return;
 
-      if (imageWrapRef.current) {
-        tl.from(
-          imageWrapRef.current,
-          { opacity: 0, x: -40, duration: 0.9 },
-          0
-        );
-      }
+    let ctx;
+    let cancelled = false;
 
+    const init = async () => {
+      try {
+        const gsapMod = await import('gsap');
+        const gsap = gsapMod.gsap ?? gsapMod.default ?? gsapMod;
+        const stMod = await import('gsap/ScrollTrigger');
+        const ScrollTrigger = stMod.ScrollTrigger ?? stMod.default;
+        gsap.registerPlugin(ScrollTrigger);
 
-      if (paragraph1Ref.current) {
-        tl.from(paragraph1Ref.current, { opacity: 0, y: 16, duration: 0.9 }, 0.35);
-      }
+        if (cancelled) return;
+        if (!sectionRef.current) return;
 
-      if (titleGroupRef.current) {
-        const titles = titleGroupRef.current.querySelectorAll("h2");
-        if (titles.length) {
-          tl.from(titles, { opacity: 0, y: 22, duration: 0.9, stagger: 0.12 }, 0.5);
+        // Respect reduced motion preferences
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
         }
-      }
 
-      if (paragraph2Ref.current) {
-        tl.from(paragraph2Ref.current, { opacity: 0, y: 16, duration: 0.9 }, 0.35);
-      }
-    }, sectionRef);
+        // Scope timeline to this section for easy cleanup
+        ctx = gsap.context(() => {
+          const tl = gsap.timeline({
+            defaults: { ease: 'power2.out' },
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 60%',
+              end: 'bottom 10%',
+              once: true,
+            },
+          });
 
-    return () => ctx.revert();
-  }, []);
+          if (imageWrapRef.current) {
+            tl.from(imageWrapRef.current, { opacity: 0, x: -40, duration: 0.9 }, 0);
+          }
+
+          if (paragraph1Ref.current) {
+            tl.from(paragraph1Ref.current, { opacity: 0, y: 16, duration: 0.9 }, 0.35);
+          }
+
+          if (titleGroupRef.current) {
+            const titles = titleGroupRef.current.querySelectorAll('h2');
+            if (titles.length) {
+              tl.from(titles, { opacity: 0, y: 22, duration: 0.9, stagger: 0.12 }, 0.5);
+            }
+          }
+
+          if (paragraph2Ref.current) {
+            tl.from(paragraph2Ref.current, { opacity: 0, y: 16, duration: 0.9 }, 0.35);
+          }
+        }, sectionRef);
+      } catch (_) {
+        // falha silenciosa: animação não é crítica
+      }
+    };
+
+    init();
+
+    return () => {
+      cancelled = true;
+      ctx?.revert?.();
+    };
+  }, [isVisible]);
 
   return (
   <section id="quando-procurar" ref={sectionRef}>
@@ -71,7 +94,8 @@ function WhenToSeek() {
               alt="Quando procurar um psiquiatra"
               width={500}
               height={500}
-              quality={100}
+              quality={75}
+              sizes="(max-width: 768px) 300px, (max-width: 1024px) 350px, (max-width: 1280px) 400px, 500px"
               className="object-cover w-[300px] md:w-[350px] lg:w-[400px] xl:w-[500px] h-auto rounded-[14px]"
             />
           </div>

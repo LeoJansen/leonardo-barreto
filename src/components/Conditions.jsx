@@ -5,14 +5,12 @@
 
 
 import Image from 'next/image';
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef, useState } from 'react';
 import { conditionsDetails } from '../contants/index.js';
+import { useOnScreen } from '@/hooks/useOnScreen';
 
 function Conditions() {
-  // Register plugins once on the client
-  gsap.registerPlugin(ScrollTrigger);
+  const [activeCards, setActiveCards] = useState({});
 
   const conditions = [
     // Use existing PNG assets for base images
@@ -22,112 +20,87 @@ function Conditions() {
     { key: 'tdah', name: 'TDAH', icon: '/assets/tdah-icon.svg', pic: '/assets/tdah2.png', picBefore: '/assets/tdah4.png' },
   ];
 
-  // Refs to overlay wrappers to animate opacity/scale on hover
-  const overlayRefs = useRef([]);
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const cardRefs = useRef([]);
-  const atentoRef = useRef(null);
- 
 
-  const handleEnter = (index) => {
-    const el = overlayRefs.current[index];
-    if (!el) return;
-    gsap.to(el, { opacity: 1, duration: 1, ease: 'slow' });
-  };
-
-  const handleLeave = (index) => {
-    const el = overlayRefs.current[index];
-    if (!el) return;
-    gsap.to(el, { opacity: 0, duration: 1, ease: 'slow' });
-  };
+  const isVisible = useOnScreen(sectionRef, { rootMargin: '300px', threshold: 0.01, once: true });
 
   // Entrance animations on scroll
   useEffect(() => {
-    // Scope animations to this component for easy cleanup
-    const ctx = gsap.context(() => {
-      // Title bar fade-up
-      
-      if (titleRef.current) {
-        gsap.from(titleRef.current, {
-          opacity: 0,
-          y: 24,
-          duration: 1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 65%',
-            once: true,
-          },
-        });
+    if (!isVisible) return;
+
+    let ctx;
+    let cancelled = false;
+
+    const init = async () => {
+      try {
+        const gsapMod = await import('gsap');
+        const gsap = gsapMod.gsap ?? gsapMod.default ?? gsapMod;
+        const stMod = await import('gsap/ScrollTrigger');
+        const ScrollTrigger = stMod.ScrollTrigger ?? stMod.default;
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (cancelled) return;
+        if (!sectionRef.current) return;
+
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+
+        // Scope animations to this component for easy cleanup
+        ctx = gsap.context(() => {
+          // Title bar fade-up
+          if (titleRef.current) {
+            gsap.from(titleRef.current, {
+              opacity: 0,
+              y: 24,
+              duration: 1,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 65%',
+                once: true,
+              },
+            });
+          }
+
+          // Card items staggered fade-up
+          const items = cardRefs.current.filter(Boolean);
+          if (items.length) {
+            gsap.from(items, {
+              opacity: 0,
+              y: 28,
+              duration: 1.2,
+              ease: 'power3.out',
+              stagger: 0.5,
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 55%',
+                once: true,
+              },
+            });
+          }
+        }, sectionRef);
+      } catch (_) {
+        // animação é opcional
       }
+    };
 
-      // Continuous pulse/glow + color animation for "ATENTO"
-      // Ends at initial state each loop without using yoyo
-      if (atentoRef.current) {
-        const el = atentoRef.current;
-        const baseColor = '#29B8B4'; // initial text color from class
-        const glowColor = '#53E2DE'; // accent color during pulse
+    init();
 
-        gsap.set(el, {
-          display: 'inline-block',
-          transformOrigin: '50% 50%',
-          willChange: 'transform, text-shadow, opacity, color',
-        });
-
-        gsap.to(el, {
-          keyframes: [
-            {
-              scale: 1.07891,
-              color: glowColor,
-              textShadow: '0px 0px 18px rgba(41, 184, 180, 0.75)',
-              opacity: 0.96,
-              duration: 0.86,
-              ease: 'sine.inOut',
-            },
-            {
-              scale: 1,
-              opacity: 1, 
-              color: baseColor,
-              textShadow: '0px 0px 0px rgba(0,0,0,0)',
-              duration: 0.86,
-              ease: 'sine.inOut',
-            },
-          ],
-          repeat: -1,
-          repeatDelay: 3.4,
-        });
-      }
-
-      // Card items staggered fade-up
-      const items = cardRefs.current.filter(Boolean);
-      if (items.length) {
-        gsap.from(items, {
-          opacity: 0,
-          y: 28,
-          duration: 1.2,
-          ease: 'power3.out',
-          stagger: 0.5,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 55%',
-            once: true,
-          },
-        });
-      }
-
-      
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+    return () => {
+      cancelled = true;
+      ctx?.revert?.();
+    };
+  }, [isVisible]);
 
   return (
     <section id="condicoes" ref={sectionRef} className='md:h-max-screen md:h-screen w-full bg-[rgb(250,255,255)] '>
       <div className='bg-[#3c3f3f] w-full h-25 flex  '>
         <div ref={titleRef} className='w-full flex justify-center items-center gap-2 md:gap-4 text-[#cacaca] text-shadow-2xs'>
           <h2 className='text-[32px] md:text-[56px] text-center py-8 font-semibold tracking-tight'>Fique</h2>
-        <span ref={atentoRef} className='text-[36px] md:text-[64px] text-center py-8 text-[#29B8B4] font-bold tracking-tighter'>ATENTO</span>
+        <span className='atento-pulse text-[36px] md:text-[64px] text-center py-8 text-[#29B8B4] font-bold tracking-tighter'>ATENTO</span>
         <h2 className='text-[32px] md:text-[56px] text-center py-8 font-semibold tracking-tight'>aos sinais</h2>
 
         </div>
@@ -156,40 +129,41 @@ function Conditions() {
               >
 
                 <div
-                  className="relative w-56 h-56 md:w-64 md:h-64 cursor-pointer"
-                  onMouseEnter={() => handleEnter(index)}
-                  onMouseLeave={() => handleLeave(index)}
-                  onFocus={() => handleEnter(index)}
-                  onBlur={() => handleLeave(index)}
+                  className="group relative w-56 h-56 md:w-64 md:h-64 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#29B8B4]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#262626]"
+                  tabIndex={0}
                   role="img"
                   aria-label={condition.name}
+                  onMouseEnter={() => setActiveCards((prev) => (prev[condition.key] ? prev : { ...prev, [condition.key]: true }))}
+                  onFocus={() => setActiveCards((prev) => (prev[condition.key] ? prev : { ...prev, [condition.key]: true }))}
                 >
                   {/* Base image (initially visible) */}
                   <Image
-                    quality={100}
+                    quality={75}
                     src={condition.picBefore}
                     alt={condition.name}
-                    width={1024}
-                    height={1024}
+                    width={256}
+                    height={256}
+                    sizes="(max-width: 768px) 224px, 256px"
                     className="w-56 h-56 md:w-64 md:h-64 object-cover rounded-b-md"
-                    priority={false}
                   />
 
                   {/* Overlay image (animates in on hover) */}
-                  <div
-                    ref={(el) => (overlayRefs.current[index] = el)}
-                    className="absolute inset-0 opacity-0 scale-100"
-                    style={{ pointerEvents: 'none' }}
-                  >
-                    <Image
-                      quality={100}
-                      src={condition.pic}
-                      alt={condition.name}
-                      width={1024}
-                      height={1024}
-                      className="w-56 h-56 md:w-64 md:h-64 object-cover rounded-b-md"
-                    />
-                  </div>
+                  {activeCards[condition.key] ? (
+                    <div
+                      className="absolute inset-0 opacity-0 scale-100 transition-opacity duration-700 ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      <Image
+                        quality={75}
+                        src={condition.pic}
+                        alt={condition.name}
+                        width={256}
+                        height={256}
+                        sizes="(max-width: 768px) 224px, 256px"
+                        className="w-56 h-56 md:w-64 md:h-64 object-cover rounded-b-md"
+                      />
+                    </div>
+                  ) : null}
                 </div>
 
 

@@ -1,13 +1,8 @@
 "use client";
 
 import Image from 'next/image';
-import { useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-import { useMediaQuery } from 'react-responsive';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useRef } from 'react';
+import { useOnScreen } from '@/hooks/useOnScreen';
 
 const highlights = [
     {
@@ -22,50 +17,92 @@ const highlights = [
 
 function About() {
     const root = useRef(null);
-    const isPortrait = useMediaQuery({ orientation: 'portrait' });
 
-    useGSAP(
-        (context) => {
-            const q = context.selector;
+    const isVisible = useOnScreen(root, { rootMargin: '300px', threshold: 0.01, once: true });
 
-            const timeline = gsap.timeline({
-                defaults: { ease: 'power2.out' },
-                scrollTrigger: {
-                    trigger: context.scope,
-                    start: isPortrait ? 'top 80%' : 'top 65%',
-                    end: 'bottom 40%',
-                    toggleActions: 'play none none reverse',
-                    once: true
+    useEffect(() => {
+        if (!isVisible) return;
+
+        let ctx;
+        let cancelled = false;
+
+        const init = async () => {
+            try {
+                const gsapMod = await import('gsap');
+                const gsap = gsapMod.gsap ?? gsapMod.default ?? gsapMod;
+                const stMod = await import('gsap/ScrollTrigger');
+                const ScrollTrigger = stMod.ScrollTrigger ?? stMod.default;
+                gsap.registerPlugin(ScrollTrigger);
+
+                if (cancelled) return;
+                if (!root.current) return;
+
+                if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return;
                 }
-            });
 
-            timeline
-                .from(q('[data-animate="heading"] > *'), {
-                    y: 24,
-                    autoAlpha: 0,
-                    duration: 0.6,
-                    stagger: 0.12
-                })
-                .from(q('[data-animate="copy"] p'), {
-                    y: 16,
-                    autoAlpha: 0,
-                    duration: 0.5,
-                    stagger: 0.15
-                }, '-=0.25')
-                .from(q('[data-animate="highlights"] > div'), {
-                    y: 18,
-                    autoAlpha: 0,
-                    duration: 0.45,
-                    stagger: 0.1
-                }, '-=0.3')
-                .from(q('[data-animate="image"]'), {
-                    y: 32,
-                    autoAlpha: 0,
-                    duration: 0.7
-                }, '-=0.7');
-        },
-        { scope: root, dependencies: [isPortrait] }
-    );
+                const isPortrait = window.matchMedia && window.matchMedia('(orientation: portrait)').matches;
+                const q = gsap.utils.selector(root);
+
+                ctx = gsap.context(() => {
+                    gsap.timeline({
+                        defaults: { ease: 'power2.out' },
+                        scrollTrigger: {
+                            trigger: root.current,
+                            start: isPortrait ? 'top 80%' : 'top 65%',
+                            end: 'bottom 40%',
+                            toggleActions: 'play none none reverse',
+                            once: true,
+                        },
+                    })
+                        .from(q('[data-animate="heading"] > *'), {
+                            y: 24,
+                            autoAlpha: 0,
+                            duration: 0.6,
+                            stagger: 0.12,
+                        })
+                        .from(
+                            q('[data-animate="copy"] p'),
+                            {
+                                y: 16,
+                                autoAlpha: 0,
+                                duration: 0.5,
+                                stagger: 0.15,
+                            },
+                            '-=0.25'
+                        )
+                        .from(
+                            q('[data-animate="highlights"] > div'),
+                            {
+                                y: 18,
+                                autoAlpha: 0,
+                                duration: 0.45,
+                                stagger: 0.1,
+                            },
+                            '-=0.3'
+                        )
+                        .from(
+                            q('[data-animate="image"]'),
+                            {
+                                y: 32,
+                                autoAlpha: 0,
+                                duration: 0.7,
+                            },
+                            '-=0.7'
+                        );
+                }, root);
+            } catch (_) {
+                // animação é opcional
+            }
+        };
+
+        init();
+
+        return () => {
+            cancelled = true;
+            ctx?.revert?.();
+        };
+    }, [isVisible]);
 
     return (
         <section id="sobre" ref={root} className="bg-[#fbfeff] py-20">
@@ -111,7 +148,8 @@ function About() {
                                 width={420}
                                 height={520}
                                 className="h-full w-full object-cover"
-                                sizes="(max-width: 1023px) 80vw, 360px"
+                                quality={75}
+                                sizes="(max-width: 640px) 220px, (max-width: 1023px) 320px, 360px"
                             />
                         </div>
                     </div>

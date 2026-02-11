@@ -21,6 +21,113 @@ body {
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
+/* Lightweight hero entrance animations (avoid JS work in above-the-fold) */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroSlideLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-60px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroSlideRight {
+  from {
+    opacity: 0;
+    transform: translate3d(80px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-anim-up {
+  opacity: 0;
+  animation: heroFadeUp 0.7s ease-out forwards;
+}
+
+.hero-anim-left {
+  opacity: 0;
+  animation: heroSlideLeft 0.75s ease-out forwards;
+}
+
+.hero-anim-right {
+  opacity: 0;
+  animation: heroSlideRight 0.75s ease-out forwards;
+}
+
+.hero-delay-1 { animation-delay: 0.15s; }
+.hero-delay-2 { animation-delay: 0.30s; }
+.hero-delay-3 { animation-delay: 0.45s; }
+.hero-delay-4 { animation-delay: 0.60s; }
+.hero-delay-5 { animation-delay: 0.75s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim-up,
+  .hero-anim-left,
+  .hero-anim-right {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* CSS pulse for "ATENTO" (replaces continuous JS timeline) */
+@keyframes atentoPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    color: #29B8B4;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  16% {
+    transform: scale(1.08);
+    opacity: 0.96;
+    color: #53E2DE;
+    text-shadow: 0 0 18px rgba(41, 184, 180, 0.75);
+  }
+  32% {
+    transform: scale(1);
+    opacity: 1;
+    color: #29B8B4;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    color: #29B8B4;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.atento-pulse {
+  display: inline-block;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity, text-shadow, color;
+  /* 5.12s total: pulse ~1.6s + idle ~3.5s */
+  animation: atentoPulse 5.12s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atento-pulse {
+    animation: none;
+  }
+}
+
 /* Prevent flash before GSAP animations initialize */
 .gsap-prehidden {
   opacity: 0;
@@ -62,7 +169,13 @@ body {
 }
 
 @utility masked-img {
+  /* Prefer modern formats (when available) for smaller downloads; fall back to PNG */
   mask-image: url("/assets/albertEinsteinLogo.png");
+  mask-image: image-set(
+    url("/assets/albertEinsteinLogo.avif") type("image/avif"),
+    url("/assets/albertEinsteinLogo.webp") type("image/webp"),
+    url("/assets/albertEinsteinLogo.png") type("image/png")
+  );
   mask-repeat: no-repeat;
   mask-position: center;
 

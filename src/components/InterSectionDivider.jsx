@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useOnScreen } from "@/hooks/useOnScreen";
 
 const InterSectionDivider = () => {
   const wrapperRef = useRef(null);
@@ -10,13 +9,28 @@ const InterSectionDivider = () => {
   const tlRef = useRef(null);
   const floatRef = useRef(null);
 
+  const isVisible = useOnScreen(wrapperRef, { rootMargin: '300px', threshold: 0.01, once: true });
+
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    if (!isVisible) return;
 
     let isCancelled = false;
+    let ctx;
+    let tl;
+    let floatTl;
 
     const loadAndAnimate = async () => {
       try {
+        const gsapMod = await import('gsap');
+        const gsap = gsapMod.gsap ?? gsapMod.default ?? gsapMod;
+        const stMod = await import('gsap/ScrollTrigger');
+        const ScrollTrigger = stMod.ScrollTrigger ?? stMod.default;
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+
         const res = await fetch("/assets/sofrer3.svg");
         const svgText = await res.text();
         if (isCancelled || !svgHostRef.current) return;
@@ -55,7 +69,7 @@ const InterSectionDivider = () => {
         });
 
         // Timeline: desenhar no scroll + preencher e esconder o traço
-        tlRef.current = gsap
+        tl = gsap
           .timeline({
             defaults: { ease: "power2.out" },
             scrollTrigger: {
@@ -87,14 +101,18 @@ const InterSectionDivider = () => {
             "-=0.3"
           );
 
+        tlRef.current = tl;
+
         // Animação sutil contínua para dar vida à seção
-        floatRef.current = gsap.timeline({
+        floatTl = gsap.timeline({
           repeat: -1,
           repeatDelay: 5, // pausa de 0.6s só após concluir a ida+volta
           defaults: { ease: "sine.inOut" },
         })
           .to(svgEl, { opacity: 0.185, y: 10, rotate: 0.1, duration: 0.51 })
           .to(svgEl, { opacity: 1, y: 0, rotate: 0, duration: 0.81 });
+
+        floatRef.current = floatTl;
       } catch (e) {
         // Em caso de falha no fetch, não quebra a página
         // Pode-se manter um fallback simples (imagem estática) se desejado
@@ -111,10 +129,11 @@ const InterSectionDivider = () => {
         tlRef.current.kill();
       }
       if (floatRef.current) floatRef.current.kill();
+      ctx?.revert?.();
       // Limpa o SVG injetado para evitar vazamento no hot reload
       if (svgHostRef.current) svgHostRef.current.innerHTML = "";
     };
-  }, []);
+  }, [isVisible]);
 
   return (
     <div ref={wrapperRef} className="flex justify-center items-center bg-[#2E3333]">
