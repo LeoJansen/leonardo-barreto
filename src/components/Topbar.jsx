@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { WHATSAPP_MESSAGE, WHATSAPP_PHONE } from '../contants/index.js';
 
 function IconBars(props) {
@@ -41,6 +41,8 @@ const navLinks = [
 function Topbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const menuToggleRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
@@ -68,11 +70,53 @@ function Topbar() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const menu = mobileMenuRef.current;
+    const getFocusableElements = () =>
+      Array.from(menu?.querySelectorAll('a[href], button:not([disabled])') ?? []);
+
+    getFocusableElements()[0]?.focus();
+
+    const handleMenuKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMenuOpen(false);
+        window.requestAnimationFrame(() => menuToggleRef.current?.focus({ preventScroll: true }));
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+
+      const focusableElements = getFocusableElements();
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (!firstElement || !lastElement) return;
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleMenuKeyDown);
+    return () => window.removeEventListener('keydown', handleMenuKeyDown);
+  }, [menuOpen]);
+
   const sanitizedPhone = WHATSAPP_PHONE.replace(/\D+/g, '');
   const whatsappHref = `https://wa.me/${sanitizedPhone}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = (restoreFocus = false) => {
+    setMenuOpen(false);
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => menuToggleRef.current?.focus({ preventScroll: true }));
+    }
+  };
 
   return (
     <nav
@@ -85,9 +129,13 @@ function Topbar() {
       <div className="flex w-full  items-center justify-between gap-3 px-4 py-3 md:gap-6 md:px-8 md:py-4">
         <div className="flex items-center gap-3">
           <button
+            ref={menuToggleRef}
             type="button"
             onClick={toggleMenu}
             aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={menuOpen}
+            aria-controls={menuOpen ? 'mobile-navigation' : undefined}
+            aria-haspopup="dialog"
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-white/40 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 md:hidden"
           >
             {menuOpen ? <IconTimes className="h-4 w-4" /> : <IconBars className="h-4 w-4" />}
@@ -166,18 +214,35 @@ function Topbar() {
           <button
             type="button"
             aria-label="Fechar menu"
+            aria-hidden="true"
+            tabIndex={-1}
             className="fixed inset-0 z-40 bg-black/60"
-            onClick={closeMenu}
+            onClick={() => closeMenu(true)}
           />
-          <div className="fixed top-0 left-0 z-50 flex h-full w-[82vw] max-w-xs flex-col gap-8 bg-[#0f3d3b] px-6 py-10 shadow-[12px_0_36px_-16px_rgba(3,23,26,0.9)]">
-            
+          <div
+            ref={mobileMenuRef}
+            id="mobile-navigation"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navegação móvel"
+            className="fixed top-0 left-0 z-50 flex h-full w-[82vw] max-w-xs flex-col gap-8 bg-[#0f3d3b] px-6 py-10 shadow-[12px_0_36px_-16px_rgba(3,23,26,0.9)]"
+          >
+            <button
+              type="button"
+              onClick={() => closeMenu(true)}
+              aria-label="Fechar menu"
+              className="self-end rounded-full border border-white/20 p-2 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+            >
+              <IconTimes className="h-4 w-4" />
+            </button>
+
             <nav className="flex flex-col gap-5 " aria-label="Navegação móvel">
         <ul className="flex flex-col gap-3">
                 {navLinks.map(({ label, href }) => (
                   <li key={href}>
                     <Link
                       href={href}
-                      onClick={closeMenu}
+                      onClick={() => closeMenu(true)}
                       className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.08] px-4 py-3 text-[15px] font-medium uppercase tracking-[0.18em] text-[#edfdfa] shadow-[0_12px_24px_-16px_rgba(3,23,26,0.9)] transition hover:bg-white/[0.14] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
                     >
                       <span>{label}</span>

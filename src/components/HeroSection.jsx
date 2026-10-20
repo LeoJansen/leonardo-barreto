@@ -1,31 +1,40 @@
-import Image from 'next/image';
+import Image, { getImageProps } from 'next/image';
+
+const { props: desktopImageProps } = getImageProps({
+  src: '/assets/hero-desktop.png',
+  alt: 'Leonardo Barreto',
+  width: 2041,
+  height: 1176,
+  quality: 75,
+  sizes: '100vw',
+});
+
+const {
+  props: { srcSet: mobileImageSrcSet },
+} = getImageProps({
+  src: '/assets/hero-mobile.jpeg',
+  alt: 'Leonardo Barreto',
+  width: 832,
+  height: 912,
+  quality: 85,
+  sizes: '100vw',
+});
 
 function HeroSection() {
 
   return (
     <header id="inicio" className="relative h-[calc(93vh-58px)] md:h-[90vh] w-full flex flex-col justify-between pt-[40vh] ">
       {/* Imagem de fundo */}
-       <Image
-        fill
-        quality={75}
-        src="/assets/hero-desktop.png"
-        alt="Leonardo Barreto"
-        loading="eager"
-        style={{ objectFit: 'cover' }}
-        className='hidden md:block'
-    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 100vw, 100vw"
-      />
-      <Image
-        fill
-        quality={100}
-        src="/assets/hero-mobile.jpeg"
-        alt="Leonardo Barreto"
-        priority
-        fetchPriority="high"
-        style={{ objectFit: 'cover' }}
-        className='md:hidden'
-       
-      />
+      <picture className="absolute inset-0">
+        <source media="(max-width: 767px)" srcSet={mobileImageSrcSet} sizes="100vw" />
+        <img
+          {...desktopImageProps}
+          alt="Leonardo Barreto"
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectFit: 'cover' }}
+        />
+      </picture>
 
 
 
@@ -49,7 +58,7 @@ function HeroSection() {
 
       {/* Botões sobre a imagem */}
       <div
-        className="hero-anim-right hero-delay-2 -max-w-[400px] -w-[90%] bg-[#145251] -rounded-xl shadow-lg p-3 md:p-4 flex border-2 border-[#005E61]/40 z-20"
+        className="hero-anim-right hero-delay-2 max-w-[400px] w-[90%] bg-[#145251] rounded-xl shadow-lg p-3 md:p-4 flex border-2 border-[#005E61]/40 z-20"
       >
         <div className="flex gap-7 w-full items-start justify-center text-center font-medium text-[#afc9c9] text-[13px]">
 

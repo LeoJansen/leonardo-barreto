@@ -69,7 +69,7 @@ function Specialization() {
           <h2 className="text-[23px] xl:text-[32px] tracking-[-0.008em] leading-3 xl:leading-8 text-[#29B8B4] font-extralight">
             Especialização em
           </h2>
-          <h2 className="text-[40px] xl:text-[55px] tracking-[-0.08em] font-semilight leading-14 text-[#f2fffd]">
+          <h2 className="text-[40px] xl:text-[55px] tracking-[-0.08em] font-light leading-14 text-[#f2fffd]">
             SAÚDE MENTAL
           </h2>
         </div>

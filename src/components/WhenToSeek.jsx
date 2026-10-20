@@ -87,7 +87,7 @@ function WhenToSeek() {
         <div className="flex justify-center md:w-1/2 ">
           <div
             ref={imageWrapRef}
-            className="relative w-fdivl h-fdivl flex justify-center items-center "
+            className="relative w-full h-full flex justify-center items-center"
           >
             <Image
               src="/assets/whenToSeek.png"
@@ -103,7 +103,7 @@ function WhenToSeek() {
 
         <div className="flex flex-col md:w-1/2 md:px-10 xl:px-20 gap-8">
 
-          <div className='px-2 w-fdivl flex justify-center'>
+          <div className="px-2 w-full flex justify-center">
             {/* Parágrafo de texto */}
             <p
               ref={paragraph1Ref}
@@ -116,10 +116,10 @@ function WhenToSeek() {
           </div>
           <div
             ref={titleGroupRef}
-            className='flex flex-col items-start leading-[1.2] w-fdivl'
+            className="flex flex-col items-start leading-[1.2] w-full"
           >
-            {/* Títdivo */}
-            <h2 className="text-[35px]  font-extrapght tracking-[-0.08em] leading-5 text-[#6B7777]">
+            {/* Título */}
+            <h2 className="text-[35px] font-extralight tracking-[-0.08em] leading-5 text-[#6B7777]">
               Quando procurar
             </h2>
             <h2 className="text-[40px] md:text-[48px] lg:text-[64px] font-medium text-[#176565] tracking-[-0.045em]">
@@ -133,7 +133,7 @@ function WhenToSeek() {
               Você deve considerar a ajuda de um profissional quando os sintomas começam a afetar seu dia a dia. Isso inclui:</p>
             <div className="text-sm md:text-base text-[#5e5e5e] leading-relaxed text-justify mt-2">
               <p>
-                <strong className="text-[#0b8585]">Problemas no trabalho:</strong> Queda de produtividade, dificuldade de concentração ou de pdar com o estresse no ambiente profissional.
+                <strong className="text-[#0b8585]">Problemas no trabalho:</strong> Queda de produtividade, dificuldade de concentração ou de lidar com o estresse no ambiente profissional.
               </p>
               <p>
                 <strong className="text-[#0b8585]">Vida pessoal e social:</strong> Isolamento, perda de interesse em hobbies, dificuldade de se relacionar com amigos e familiares ou de realizar tarefas simples.
@@ -142,7 +142,10 @@ function WhenToSeek() {
                 <strong className="text-[#0b8585]">Vida afetiva:</strong> Conflitos constantes, problemas de comunicação ou incapacidade de manter relacionamentos saudáveis.
               </p>
             </div>
-            <p className="text-sm md:text-base text-[#5e5e5e] leading-relaxed text-justify mt-2">
+            <p
+              ref={paragraph2Ref}
+              className="text-sm md:text-base text-[#5e5e5e] leading-relaxed text-justify mt-2"
+            >
               Um psiquiatra pode te ajudar a entender a origem desses sintomas e a encontrar o tratamento adequado, para que você recupere o controle e a serenidade em sua vida.
             </p>
           </div>

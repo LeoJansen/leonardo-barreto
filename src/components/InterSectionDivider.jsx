@@ -14,6 +14,7 @@ const InterSectionDivider = () => {
   useEffect(() => {
     if (!isVisible) return;
 
+    const svgHost = svgHostRef.current;
     let isCancelled = false;
     let ctx;
     let tl;
@@ -21,28 +22,32 @@ const InterSectionDivider = () => {
 
     const loadAndAnimate = async () => {
       try {
+        const res = await fetch("/assets/sofrer3.svg");
+        if (!res.ok) return;
+
+        const svgText = await res.text();
+        if (isCancelled || !svgHost) return;
+        svgHost.innerHTML = svgText;
+
+        const svgEl = svgHost.querySelector("svg");
+        if (!svgEl) return;
+
+        // A versão estática continua visível para quem prefere movimento reduzido.
+        svgEl.setAttribute("preserveAspectRatio", "xMidYMid meet");
+        svgEl.style.width = "100%";
+        svgEl.style.height = "auto";
+
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+
         const gsapMod = await import('gsap');
         const gsap = gsapMod.gsap ?? gsapMod.default ?? gsapMod;
         const stMod = await import('gsap/ScrollTrigger');
         const ScrollTrigger = stMod.ScrollTrigger ?? stMod.default;
         gsap.registerPlugin(ScrollTrigger);
 
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          return;
-        }
-
-        const res = await fetch("/assets/sofrer3.svg");
-        const svgText = await res.text();
-        if (isCancelled || !svgHostRef.current) return;
-        svgHostRef.current.innerHTML = svgText;
-
-        const svgEl = svgHostRef.current.querySelector("svg");
-        if (!svgEl) return;
-
-        // Responsividade e nitidez
-        svgEl.setAttribute("preserveAspectRatio", "xMidYMid meet");
-        svgEl.style.width = "100%";
-        svgEl.style.height = "auto";
+        if (isCancelled || !svgHost) return;
 
         const paths = Array.from(svgEl.querySelectorAll("path"));
 
@@ -131,7 +136,7 @@ const InterSectionDivider = () => {
       if (floatRef.current) floatRef.current.kill();
       ctx?.revert?.();
       // Limpa o SVG injetado para evitar vazamento no hot reload
-      if (svgHostRef.current) svgHostRef.current.innerHTML = "";
+      if (svgHost) svgHost.innerHTML = "";
     };
   }, [isVisible]);
 

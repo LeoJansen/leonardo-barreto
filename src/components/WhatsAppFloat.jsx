@@ -6,7 +6,8 @@ import Image from 'next/image';
 // Botão flutuante do WhatsApp fixo no canto inferior direito
 // Acessível (aria-label), abre em nova aba, sem bloquear navegação
 export default function WhatsAppFloat() {
-  const href = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  const sanitizedPhone = WHATSAPP_PHONE.replace(/\D+/g, '');
+  const href = `https://wa.me/${sanitizedPhone}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   return (
     <a

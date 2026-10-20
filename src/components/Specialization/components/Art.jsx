@@ -86,7 +86,7 @@ function Specialization() {
                                 />
                             </div>
                         </div>
-                        <div className="hidden xl:flex w-2/5 h-full bg-[#145251] rounded-l-xl text-[#f8f8f8] align z-20 items-center justify-center text-justify leading-relaxed py-10 px-10   text-md">
+                        <div className="hidden xl:flex w-2/5 h-full bg-[#145251] rounded-l-xl text-[#f8f8f8] z-20 items-center justify-center text-justify leading-relaxed py-10 px-10 text-base">
                             <p>A busca pela excelência é um pilar na trajetória do Dr. Leonardo Barreto. Pós-graduando em Saúde Mental pelo Hospital Israelita Albert Einstein, uma das instituições de saúde mais prestigiadas do Brasil.
                                 Este percurso acadêmico lhe proporcionou uma sólida base teórica e prática, com acesso a uma metodologia de ensino de ponta e o contato com os mais renomados especialistas da área. Essa experiência garante que o Dr. Leonardo aplique em sua prática clínica os mais altos padrões de conhecimento, sempre atualizado com as inovações da saúde mental.</p>
 

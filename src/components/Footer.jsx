@@ -26,7 +26,7 @@ const Footer = () => {
 
                 </div>
 
-                <p className="text-[10px] font-extralight mt-2 text-[#bbbbbb]">© 2025 Leonardo Barreto. Todos os direitos reservados.</p>
+                <p className="text-[10px] font-extralight mt-2 text-[#bbbbbb]">© {new Date().getFullYear()} Leonardo Barreto. Todos os direitos reservados.</p>
                 <div className='w-full flex flex-col items-end justify-center mt-2'>
                     <p className="text-[10px] font-extralight leading-3 text-[#9c9c9c]">Desenvolvido por</p>
                     <a className="text-[11px] font-light leading-3 text-[#bbbbbb]" href='https://www.leonardojansen.com'>www.leonardojansen.com</a>

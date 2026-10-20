@@ -23,9 +23,9 @@ export function useOnScreen<T extends Element>(
     if (!el) return;
     if (once && isOnScreen) return;
     if (typeof IntersectionObserver === 'undefined') {
-      // Old browsers: just run immediately
-      setIsOnScreen(true);
-      return;
+      // Old browsers: defer the fallback update to avoid a synchronous effect update.
+      const timeoutId = window.setTimeout(() => setIsOnScreen(true), 0);
+      return () => window.clearTimeout(timeoutId);
     }
 
     const observer = new IntersectionObserver(
