@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { WHATSAPP_MESSAGE, WHATSAPP_PHONE } from '../contants/index.js';
 
 const { props: desktopImageProps } = getImageProps({
-  src: '/assets/hero-desktop-v4.png',
+  src: '/assets/hero-desktop-v5.png',
   alt: 'Dr. Leonardo Barreto em seu consultório',
   width: 1672,
   height: 941,
@@ -15,7 +15,7 @@ const { props: desktopImageProps } = getImageProps({
 const {
   props: { srcSet: mobileImageSrcSet },
 } = getImageProps({
-  src: '/assets/hero-mobile-v4.png',
+  src: '/assets/hero-mobile-v5.png',
   alt: 'Dr. Leonardo Barreto em seu consultório',
   width: 941,
   height: 1672,
