@@ -6,12 +6,12 @@ import { useOnScreen } from '@/hooks/useOnScreen';
 
 const highlights = [
     {
-        title: 'Visão Integrada',
-        description: 'Cada plano terapêutico considera história, contexto e objetivos individuais.'
+        title: 'Escuta individual',
+        description: 'A conversa considera a história, o momento de vida e as necessidades de cada pessoa.'
     },
     {
-        title: 'Autonomia do Paciente',
-        description: 'Acompanhamento focado em fortalecer o protagonismo e a qualidade de vida.'
+        title: 'Cuidado em conjunto',
+        description: 'As possibilidades de cuidado são discutidas com o paciente, de acordo com cada caso.'
     }
 ];
 
@@ -91,7 +91,7 @@ function About() {
                             '-=0.7'
                         );
                 }, root);
-            } catch (_) {
+            } catch {
                 // animação é opcional
             }
         };
@@ -105,35 +105,35 @@ function About() {
     }, [isVisible]);
 
     return (
-        <section id="sobre" ref={root} className="bg-[#fbfeff] py-20">
+        <section id="sobre" ref={root} aria-labelledby="about-heading" tabIndex={-1} className="scroll-mt-24 bg-surface py-16 focus:outline-none sm:py-20 lg:py-24">
             <div className="mx-auto flex max-w-6xl flex-col-reverse gap-16 px-6 md:px-10 lg:grid lg:grid-cols-[1.15fr_minmax(320px,0.9fr)] lg:items-center">
-                <article className="flex flex-col gap-10 text-[#4b4b4b]">
+                <article className="flex flex-col gap-10 text-ink">
                     <header data-animate="heading" className="flex flex-col gap-4">
-                        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#bce2e1] bg-white px-4 py-1 text-xs font-medium uppercase tracking-[0.3em] text-[#008582]">
-                            Sobre
+                        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-site-border bg-white px-4 py-1 text-xs font-medium uppercase tracking-[0.3em] text-accent">
+                            Conheça o profissional
                         </span>
-                        <h2 className="text-3xl font-semibold tracking-tight text-[#124d4c] md:text-4xl lg:text-[44px]">
-                            Uma paixão pela saúde mental e bem-estar integral
+                        <h2 id="about-heading" className="text-3xl font-semibold tracking-tight text-brand-deep md:text-4xl lg:text-[44px]">
+                            Cuidado em saúde mental começa com escuta
                         </h2>
-                        <p className="max-w-xl text-base leading-relaxed text-[#5e5e5e]">
-                            A trajetória do Dr. Leonardo Barreto combina ciência, empatia e compromisso em apoiar pessoas a viverem com equilíbrio emocional e propósito.
+                        <p className="max-w-xl text-base leading-relaxed text-ink">
+                            Dr. Leonardo Barreto é médico (CRM-PR 58107) e atua na área de saúde mental, com atenção à história e às necessidades de cada pessoa.
                         </p>
                     </header>
 
-                    <div data-animate="copy" className="space-y-4 text-justify text-sm leading-relaxed text-[#5e5e5e] md:text-base">
+                    <div data-animate="copy" className="max-w-2xl space-y-4 text-left text-sm leading-7 text-ink md:text-base">
                         <p>
-                            Desde o início de sua jornada na medicina, o <strong className="text-[#26A2A0]">Dr. Leonardo Barreto</strong> nutriu um interesse profundo pela complexidade da mente humana e sua relação com o corpo e o bem-estar. Essa paixão o levou a se especializar em Saúde Mental, área onde encontrou propósito ao ajudar pessoas a navegarem pelos desafios emocionais e psicológicos da vida.
+                            O atendimento parte de uma conversa sobre o que a pessoa está vivendo, seu contexto e o que espera do cuidado. Esse olhar ajuda a compreender cada caso antes de discutir os próximos passos.
                         </p>
                         <p>
-                            Sua abordagem vai muito além do tratamento de sintomas. Ele acredita em uma <strong className="text-[#26A2A0]">abordagem humanizada</strong>, que enxerga o paciente como um ser único, considerando histórico de vida, experiências e contexto. O foco não é apenas aliviar o sofrimento, mas fortalecer o indivíduo para que reconquiste autonomia e qualidade de vida.
+                            A proposta é construir caminhos de cuidado de forma clara e individualizada, respeitando as necessidades e os objetivos apresentados em consulta.
                         </p>
                     </div>
 
                     <div data-animate="highlights" className="grid gap-4 sm:grid-cols-2">
                         {highlights.map(({ title, description }) => (
-                            <div key={title} className="rounded-2xl border border-[#dfeeed] bg-white/70 p-5 shadow-sm backdrop-blur">
-                                <h3 className="text-sm font-semibold text-[#008582]">{title}</h3>
-                                <p className="mt-2 text-sm leading-relaxed text-[#5e5e5e]">{description}</p>
+                            <div key={title} className="rounded-2xl border border-site-border bg-white/70 p-5 shadow-sm backdrop-blur">
+                                <h3 className="text-sm font-semibold text-accent">{title}</h3>
+                                <p className="mt-2 text-sm leading-relaxed text-ink">{description}</p>
                             </div>
                         ))}
                     </div>
@@ -141,7 +141,7 @@ function About() {
 
                 <div data-animate="image" className="relative flex items-center justify-center">
                     <div className="relative w-full max-w-sm">
-                        <div className="relative overflow-hidden rounded-[6px] border border-[#dfeeed] bg-white/80">
+                        <div className="relative overflow-hidden rounded-[6px] border border-site-border bg-white/80">
                             <Image
                                 src="/assets/estudo2.png"
                                 alt="Dr. Leonardo Barreto estudando"

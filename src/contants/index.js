@@ -18,14 +18,14 @@ export const conditionsDetails = {
 		title: 'Depressão',
 		bullets: [
 			{
-				title: 'Tristeza persistente e perda de interesse',
+				title: 'Humor e interesse',
 				description:
-					'Sentimento de tristeza, desesperança ou perda de prazer em atividades que antes eram prazerosas.',
+					'Tristeza, desânimo ou diminuição do interesse e do prazer em atividades do cotidiano.',
 			},
 			{
-				title: 'Alterações físicas',
+				title: 'Energia e sono',
 				description:
-					'Mudanças significativas no apetite e no sono, além de falta de energia e fadiga constante.',
+					'Mudanças no sono ou no apetite, cansaço e dificuldade de concentração também podem ocorrer.',
 			},
 		],
 	},
@@ -33,14 +33,14 @@ export const conditionsDetails = {
 		title: 'Ansiedade',
 		bullets: [
 			{
-				title: 'Preocupação e nervosismo',
+				title: 'Preocupação e inquietação',
 				description:
-					'Sentimento de preocupação excessiva, inquietação e nervosismo constante, sem um motivo claro.',
+					'Preocupação intensa ou difícil de controlar e sensação frequente de inquietação.',
 			},
 			{
-				title: 'Sintomas físicos',
+				title: 'Reações no corpo',
 				description:
-					'Aumento da frequência cardíaca, sudorese, tremores ou tensão muscular.',
+					'Em algumas situações, podem ocorrer aceleração dos batimentos, suor, tremores ou tensão muscular.',
 			},
 		],
 	},
@@ -48,14 +48,14 @@ export const conditionsDetails = {
 		title: 'Insônia',
 		bullets: [
 			{
-				title: 'Problemas para dormir',
+				title: 'Mudanças no sono',
 				description:
-					'Dificuldade para adormecer, permanecer dormindo ou acordar muito cedo.',
+					'Dificuldade para adormecer, manter o sono ou voltar a dormir depois de despertar.',
 			},
 			{
-				title: 'Cansaço diurno',
+				title: 'Efeitos durante o dia',
 				description:
-					'Sensação de não ter tido um sono reparador, resultando em sonolência, irritabilidade e falta de concentração durante o dia.',
+					'Sono pouco reparador pode vir acompanhado de sonolência, irritabilidade ou dificuldade de concentração.',
 			},
 		],
 	},
@@ -63,14 +63,14 @@ export const conditionsDetails = {
 		title: 'TDAH (Transtorno do Déficit de Atenção e Hiperatividade)',
 		bullets: [
 			{
-				title: 'Desatenção e impulsividade',
+				title: 'Atenção e organização',
 				description:
-					'Dificuldade em manter o foco e agir ou falar sem pensar nas consequências.',
+					'Dificuldade frequente para manter a atenção, organizar tarefas ou concluir atividades.',
 			},
 			{
-				title: 'Inquietação',
+				title: 'Impulsividade ou inquietação',
 				description:
-					'Sensação de estar sempre "ligado" e ter dificuldade em ficar parado por muito tempo.',
+					'Agir sem pensar ou sentir inquietação são experiências que também podem merecer avaliação.',
 			},
 		],
 	},
@@ -81,5 +81,17 @@ export const conditionsDetails = {
 export const WHATSAPP_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '+5546999808231';
 export const WHATSAPP_MESSAGE =
 	process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE || 'Olá! Gostaria de agendar uma consulta com o Dr. Leonardo Barreto. Link disponível em www.drleonardobarreto.med.br';
+
+export const SITE_URL = 'https://www.drleonardobarreto.med.br';
+export const DOCTORALIA_PROFILE_URL =
+	'https://www.doctoralia.com.br/leonardo-barreto-3/psiquiatra/foz-do-iguacu';
+export const CONSULTATION_LOCATION = {
+	streetAddress: 'Av. José Maria de Brito, 1707',
+	neighborhood: 'Monjolo',
+	addressLocality: 'Foz do Iguaçu',
+	addressRegion: 'PR',
+	postalCode: '85864-320',
+	addressCountry: 'BR',
+};
 
 export default conditionsDetails;

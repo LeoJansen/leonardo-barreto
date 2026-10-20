@@ -1,23 +1,16 @@
-// src/components/Conditions.jsx
-
-// Enable client-side behavior for GSAP animations
 'use client';
 
-
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { conditionsDetails } from '../contants/index.js';
 import { useOnScreen } from '@/hooks/useOnScreen';
 
 function Conditions() {
-  const [activeCards, setActiveCards] = useState({});
-
   const conditions = [
-    // Use existing PNG assets for base images
-    { key: 'depressao', name: 'DEPRESSÃO', icon: '/assets/depressao-icon.svg', pic: '/assets/depressao2.png', picBefore: '/assets/depressao4.png' },
-    { key: 'ansiedade', name: 'ANSIEDADE', icon: '/assets/ansiedade-icon.svg', pic: '/assets/ansiedade2.png', picBefore: '/assets/ansiedade4.png' },
-    { key: 'insonia', name: 'INSÔNIA', icon: '/assets/insonia-icon.svg', pic: '/assets/insonia2.png', picBefore: '/assets/insonia4.png' },
-    { key: 'tdah', name: 'TDAH', icon: '/assets/tdah-icon.svg', pic: '/assets/tdah2.png', picBefore: '/assets/tdah4.png' },
+    { key: 'depressao', name: 'Depressão', pic: '/assets/conditions-depressao-salvia.webp' },
+    { key: 'ansiedade', name: 'Ansiedade', pic: '/assets/conditions-ansiedade-salvia.webp' },
+    { key: 'insonia', name: 'Insônia', pic: '/assets/conditions-insonia-salvia.webp' },
+    { key: 'tdah', name: 'TDAH', pic: '/assets/conditions-tdah-salvia.webp' },
   ];
 
   const sectionRef = useRef(null);
@@ -26,9 +19,8 @@ function Conditions() {
 
   const isVisible = useOnScreen(sectionRef, { rootMargin: '300px', threshold: 0.01, once: true });
 
-  // Entrance animations on scroll
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible) return undefined;
 
     let ctx;
     let cancelled = false;
@@ -41,21 +33,14 @@ function Conditions() {
         const ScrollTrigger = stMod.ScrollTrigger ?? stMod.default;
         gsap.registerPlugin(ScrollTrigger);
 
-        if (cancelled) return;
-        if (!sectionRef.current) return;
+        if (cancelled || !sectionRef.current) return;
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
 
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          return;
-        }
-
-        // Scope animations to this component for easy cleanup
         ctx = gsap.context(() => {
-          // Title bar fade-up
           if (titleRef.current) {
             gsap.from(titleRef.current, {
-              opacity: 0,
-              y: 24,
-              duration: 1,
+              y: 20,
+              duration: 0.55,
               ease: 'power2.out',
               scrollTrigger: {
                 trigger: sectionRef.current,
@@ -65,15 +50,13 @@ function Conditions() {
             });
           }
 
-          // Card items staggered fade-up
-          const items = cardRefs.current.filter(Boolean);
-          if (items.length) {
-            gsap.from(items, {
-              opacity: 0,
-              y: 28,
-              duration: 1.2,
+          const cards = cardRefs.current.filter(Boolean);
+          if (cards.length) {
+            gsap.from(cards, {
+              y: 16,
+              duration: 0.6,
               ease: 'power3.out',
-              stagger: 0.5,
+              stagger: 0.1,
               scrollTrigger: {
                 trigger: sectionRef.current,
                 start: 'top 55%',
@@ -82,8 +65,8 @@ function Conditions() {
             });
           }
         }, sectionRef);
-      } catch (_) {
-        // animação é opcional
+      } catch {
+        // A animação é opcional; o conteúdo permanece visível sem o GSAP.
       }
     };
 
@@ -96,127 +79,91 @@ function Conditions() {
   }, [isVisible]);
 
   return (
-    <section id="condicoes" ref={sectionRef} className='md:h-max-screen md:h-screen w-full bg-[rgb(250,255,255)] '>
-      <div className='bg-[#3c3f3f] w-full h-25 flex  '>
-        <div ref={titleRef} className='w-full flex justify-center items-center gap-2 md:gap-4 text-[#cacaca] text-shadow-2xs'>
-          <h2 className='text-[32px] md:text-[56px] text-center py-8 font-semibold tracking-tight'>Fique</h2>
-        <span className='atento-pulse text-[36px] md:text-[64px] text-center py-8 text-[#29B8B4] font-bold tracking-tighter'>ATENTO</span>
-        <h2 className='text-[32px] md:text-[56px] text-center py-8 font-semibold tracking-tight'>aos sinais</h2>
-
+    <section
+      id="condicoes"
+      ref={sectionRef}
+      aria-labelledby="conditions-heading"
+      tabIndex={-1}
+      className="w-full bg-surface focus:outline-none"
+    >
+      <div className="dark-surface w-full bg-brand-deep px-5 py-12 text-on-brand sm:px-8 sm:py-14 lg:py-16">
+        <div ref={titleRef} className="mx-auto flex w-full max-w-7xl flex-col items-center text-center">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent-on-dark sm:text-sm">
+            Informação para orientar a conversa
+          </p>
+          <h2 id="conditions-heading" className="text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-tight tracking-[-0.04em]">
+            Sinais que merecem atenção
+          </h2>
         </div>
-        
-
       </div>
-      <div className="grid md:grid-cols-2 items-center gap-6  px-12 p-6  md:px-14">
-        {conditions.map((condition, index) => (
-          <div
-            className='flex flex-col md:flex-row justify-center items-center  '
-            key={index}
-            ref={(el) => (cardRefs.current[index] = el)}
-          >
-            <div className='flex flex-col items-center  rounded-[2px] bg-[#262626] rounded-t-md'>
-              <div className='w-57 md:w-64 h-full flex justify-center items-end p-2 text-[21px] font-medium text-[hsl(0,0%,51%)] text-shadow-[0_3px_15px_rgb(182_200_220_/_0.35)] leading-none align-bottom pt-4'>
-                <p>{condition.name}</p>
-             
-             
-           
-                 </div>
-              
 
-              <div
-                key={condition.name}
-                className="flex flex-col items-center select-none    "
+      <div className="mx-auto max-w-7xl px-5 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-10 lg:px-10 lg:pb-24">
+        <p
+          role="note"
+          className="mx-auto flex max-w-4xl items-start gap-3 rounded-2xl border border-site-border bg-surface-soft px-4 py-4 text-sm leading-6 text-ink sm:items-center sm:px-5"
+        >
+          <span aria-hidden="true" className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary text-xs font-bold text-on-brand sm:mt-0">
+            i
+          </span>
+          <span>
+            Esta lista é informativa: sintomas isolados não confirmam uma condição nem substituem avaliação profissional.
+          </span>
+        </p>
+
+        <div className="mt-7 grid grid-cols-1 gap-5 sm:mt-8 md:grid-cols-2 md:gap-6 lg:gap-7">
+          {conditions.map((condition, index) => {
+            const bullets = conditionsDetails[condition.key]?.bullets ?? [];
+
+            return (
+              <article
+                key={condition.key}
+                ref={(element) => {
+                  cardRefs.current[index] = element;
+                }}
+                aria-labelledby={`condition-${condition.key}`}
+                className="group grid min-w-0 overflow-hidden rounded-3xl border border-site-border/80 bg-white shadow-[0_18px_45px_-36px_rgba(15,61,59,0.7)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_-32px_rgba(15,61,59,0.55)] lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)]"
               >
-
-                <div
-                  className="group relative w-56 h-56 md:w-64 md:h-64 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#29B8B4]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#262626]"
-                  tabIndex={0}
-                  role="img"
-                  aria-label={condition.name}
-                  onMouseEnter={() => setActiveCards((prev) => (prev[condition.key] ? prev : { ...prev, [condition.key]: true }))}
-                  onFocus={() => setActiveCards((prev) => (prev[condition.key] ? prev : { ...prev, [condition.key]: true }))}
-                >
-                  {/* Base image (initially visible) */}
+                <div className="relative isolate aspect-[16/10] min-w-0 overflow-hidden bg-brand-deep lg:aspect-auto lg:min-h-[20rem]">
                   <Image
-                    quality={75}
-                    src={condition.picBefore}
-                    alt={condition.name}
-                    width={256}
-                    height={256}
-                    sizes="(max-width: 768px) 224px, 256px"
-                    className="w-56 h-56 md:w-64 md:h-64 object-cover rounded-b-md"
+                    src={condition.pic}
+                    alt=""
+                    fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 40vw"
+                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
                   />
-
-                  {/* Overlay image (animates in on hover) */}
-                  {activeCards[condition.key] ? (
-                    <div
-                      className="absolute inset-0 opacity-0 scale-100 transition-opacity duration-700 ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
-                      style={{ pointerEvents: 'none' }}
-                    >
-                      <Image
-                        quality={75}
-                        src={condition.pic}
-                        alt={condition.name}
-                        width={256}
-                        height={256}
-                        sizes="(max-width: 768px) 224px, 256px"
-                        className="w-56 h-56 md:w-64 md:h-64 object-cover rounded-b-md"
-                      />
-                    </div>
-                  ) : null}
+                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-brand-deep/15 to-transparent" />
+                  <h3
+                    id={`condition-${condition.key}`}
+                    className="absolute inset-x-5 bottom-5 text-2xl font-semibold tracking-[-0.03em] text-white drop-shadow-sm sm:inset-x-6 sm:bottom-6"
+                  >
+                    {condition.name}
+                  </h3>
                 </div>
 
-
-              </div>
-            </div>
-   {conditionsDetails[condition.key]?.bullets?.length ? (
-              <div className='flex flex-col items-center select-none h-full justify-center '>
-                <div className='list-inside '>
-                  {conditionsDetails[condition.key].bullets.map((bullet, idx) => (
-                    <div key={idx} className="max-w-md text-[14px] leading-relaxed p-4 text-[#929292] text-justify ">
-                      <div className='flex items-start'> 
-                        <Image 
-                          src="/assets/listIcon.svg"
-                          alt="list icon"
-                          width={20}
-                          height={20}
-                          className="mr-2"
-                        />
-                        <h3 className="font-semibold  text-[#686868] ">{bullet.title}</h3>
-
-                      </div>
-                      <div className='pl-6'>
-                        <p className="">{bullet.description}</p>
-                      </div>
-                    </div>
-                  ))}
+                <div className="flex min-w-0 items-center p-5 sm:p-6 lg:p-5 xl:p-6">
+                  <ul aria-labelledby={`condition-${condition.key}`} className="w-full space-y-5 xl:space-y-6">
+                    {bullets.map((bullet) => (
+                      <li key={bullet.title} className="flex items-start gap-3">
+                        <span aria-hidden="true" className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-accent ring-4 ring-brand-primary/10" />
+                        <div className="min-w-0">
+                          <h4 className="text-sm font-semibold leading-5 text-ink-strong sm:text-base">
+                            {bullet.title}
+                          </h4>
+                          <p className="mt-1.5 text-sm leading-6 text-ink sm:text-[15px]">
+                            {bullet.description}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            ) : null}
-         
-          </div>
-        ))}
+              </article>
+            );
+          })}
+        </div>
       </div>
-    
     </section>
   );
 }
 
 export default Conditions;
-
-<style jsx>{`
-  .bullet-icon {
-    position: relative;
-    padding-left: 2.25rem; /* ajuste conforme o tamanho do ícone */
-  }
-  .bullet-icon::before {
-    content: '';
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: var(--bullet-size, 1.25rem);  /* 20px default */
-    height: var(--bullet-size, 1.25rem);
-    background: url('/assets/listIcon.svg') no-repeat center/contain;
-  }
-`}</style>
