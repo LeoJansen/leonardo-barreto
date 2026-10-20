@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import DoctoraliaConsentGate from './DoctoraliaConsentGate';
 import {
     CONSULTATION_LOCATION,
     DOCTORALIA_PROFILE_URL,
@@ -85,6 +85,8 @@ const DoctoraliaBooking = () => (
                     </a>
                 </div>
 
+                <DoctoraliaConsentGate />
+
                 <a
                     href={DOCTORALIA_PROFILE_URL}
                     target="_blank"
@@ -97,11 +99,6 @@ const DoctoraliaBooking = () => (
             </div>
         </div>
 
-        <Script
-            id="zl-widget-s"
-            src="https://platform.docplanner.com/js/widget.js"
-            strategy="afterInteractive"
-        />
     </section>
 );
 

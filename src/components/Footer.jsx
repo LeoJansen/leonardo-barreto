@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { WHATSAPP_MESSAGE, WHATSAPP_PHONE } from '../contants/index.js'
+import CookieSettingsButton from './CookieSettingsButton'
 
 const Footer = () => {
     const whatsappHref = `https://wa.me/${WHATSAPP_PHONE.replace(/\D+/g, '')}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
@@ -52,6 +53,18 @@ const Footer = () => {
                 </div>
 
                 <p className="mt-2 text-xs font-light text-on-brand-muted">© {new Date().getFullYear()} Leonardo Barreto. Todos os direitos reservados.</p>
+                <nav aria-label="Informações legais" className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+                    <Link className="inline-flex min-h-11 items-center text-sm text-on-brand-muted underline underline-offset-4 transition hover:text-on-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark" href="/politica-de-privacidade">
+                        Política de Privacidade
+                    </Link>
+                    <Link className="inline-flex min-h-11 items-center text-sm text-on-brand-muted underline underline-offset-4 transition hover:text-on-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark" href="/politica-de-cookies">
+                        Política de Cookies
+                    </Link>
+                    <Link className="inline-flex min-h-11 items-center text-sm text-on-brand-muted underline underline-offset-4 transition hover:text-on-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark" href="/termos-de-uso">
+                        Termos de Uso
+                    </Link>
+                    <CookieSettingsButton />
+                </nav>
                 <div className="mt-2 flex w-full flex-col items-end justify-center">
                     <p className="text-xs font-light leading-4 text-on-brand-muted">Desenvolvido por</p>
                     <a className="inline-flex min-h-11 items-center text-xs font-light leading-4 text-on-brand underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark" href="https://www.leonardojansen.com">www.leonardojansen.com</a>

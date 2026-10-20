@@ -129,6 +129,7 @@ function Conditions() {
                     alt=""
                     fill
                     sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 40vw"
+                    style={{ objectPosition: 'center 15%' }}
                     className="object-cover transition duration-500 group-hover:scale-[1.03]"
                   />
                   <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-brand-deep/15 to-transparent" />

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import WhatsAppFloatClient from '@/components/WhatsAppFloatClient';
+import { CookieConsentProvider } from '@/components/CookieConsentManager';
 import {
   CONSULTATION_LOCATION,
   DOCTORALIA_PROFILE_URL,
@@ -64,12 +65,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={inter.variable}>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: physicianJsonLdString }}
-        />
-        {children}
-        <WhatsAppFloatClient />
+        <CookieConsentProvider>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: physicianJsonLdString }}
+          />
+          {children}
+          <WhatsAppFloatClient />
+        </CookieConsentProvider>
       </body>
     </html>
   );
