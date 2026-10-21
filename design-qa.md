@@ -97,4 +97,72 @@ Resultado da comparação anterior: passed
 - [x] Ajustar paisagem baixa e tablet para manter texto e botões dentro da seção.
 - [x] Conferir os treze tamanhos da matriz, a proporção 21:9 em desktop, os destinos e o console.
 
+Resultado da comparação responsiva anterior: passed
+
+## Iteração — hero preenchendo o viewport em paisagem — 20/10/2026
+
+- **Referências:** `C:\Users\leooa\AppData\Local\Temp\codex-clipboard-8700a5a6-9f49-4c01-a31b-b96a1c6f4fe9.png` e `C:\Users\leooa\AppData\Local\Temp\codex-clipboard-00f44465-b23a-4c92-b12b-9d504a0e9ab7.png`, com exemplos de desktop e mobile.
+- **Alteração:** removido o teto de 21:9 em telas landscape. O hero conserva a altura do viewport descontada a navegação sticky; o contêiner usado apenas para aplicar aquele teto também foi removido.
+- **Captura da implementação:** preview local em `http://localhost:3001/`, conferido no navegador in-app. A captura de tela não foi persistida em arquivo. A inspeção visual foi feita nos frames 1024 × 768 e 1439 × 1079 px.
+- **Matriz de viewports CSS:** 1024 × 768, 1280 × 960, 1350 × 1013, 1439 × 1079, 640 × 320 e 320 × 600 px. Em todos, a soma das alturas da navegação e do hero coincide com a altura do viewport e a borda inferior do hero coincide com o fim do viewport; sem overflow horizontal.
+- **Medidas landscape:** em 1024 × 768, navegação 77 px e hero 691 px; em 1280 × 960, hero 883 px; em 1350 × 1013, hero 936 px; em 1439 × 1079, hero 1002 px. Paisagem compacta 640 × 320 mantém navegação 69 px e hero 251 px.
+- **Retrato:** em 320 × 600, navegação 69 px e hero 531 px, preservando o comportamento anterior.
+- **Região focada:** no frame 1439 × 1079, eyebrow, título, descrição, dois CTAs e imagem permanecem visíveis. O CTA Doctoralia continua no header e os dois CTAs do hero mantêm a composição existente.
+- **Console:** nenhuma mensagem de erro ou aviso após a atualização CSS.
+
+**Findings:** nenhum P0, P1 ou P2 pendente.
+
+**Checklist**
+
+- [x] Remover o limite de proporção 21:9 das telas horizontais.
+- [x] Confirmar que a navegação e o hero preenchem juntos a altura do viewport em quatro tamanhos horizontais.
+- [x] Conferir paisagem compacta e retrato para preservar o comportamento responsivo.
+
+Resultado da iteração anterior: passed
+
+## Iteração — seção “Sobre” conforme mockup — 20/10/2026
+
+- **Referências visuais:** mobile `C:\Users\leooa\AppData\Local\Temp\codex-clipboard-0acee82e-8c33-4668-9e26-9a4015d95ef9.png` (346 × 540 px) e desktop `C:\Users\leooa\AppData\Local\Temp\codex-clipboard-f057e0f4-59d2-4a14-8a65-bd02b04ac71d.png` (793 × 379 px).
+- **Implementação:** preview `http://localhost:3001/#sobre`. A foto ocupa o topo no mobile e fica à direita no desktop; o eyebrow deixou de ser uma cápsula; texto e cartões seguem a hierarquia do mockup. Os cartões mantêm os ícones de usuário e grupo em círculos verdes com pictogramas brancos.
+- **Capturas e comparação combinada:** `C:\Users\leooa\.codex\visualizations\2026\10\20\01a15b5e-bb05-7ac0-9e5f-c10d5d9b4c15\about-section-qa\about-mobile-comparison.png` coloca a referência à esquerda e a implementação à direita; `about-desktop-comparison.png` faz o mesmo para desktop. As imagens fonte e as capturas do navegador foram abertas e comparadas lado a lado.
+- **Dimensões e normalização mobile:** viewport CSS 346 × 540 px; captura do navegador 331 × 517 px, densidade efetiva 0,957 por conta da área de rolagem da captura. A implementação foi escalada uniformemente a 346 × 540 px na comparação.
+- **Dimensões e normalização desktop:** viewport CSS 1024 × 490 px; captura do navegador 1009 × 483 px, densidade efetiva 0,985. A implementação foi redimensionada a 793 × 379 px para coincidir com o raster da referência. O enquadramento contém uma faixa de 8 px da seção anterior no topo; título, imagem e cartões estão visíveis.
+- **Estado:** rota `/#sobre`, menu fechado, animações de entrada concluídas. Nenhum CTA externo ou agenda foi acionado.
+- **Comparação de tela completa:** imagem e conteúdo seguem a mesma ordem do mockup em cada viewport. No mobile, imagem, eyebrow, título, os dois parágrafos e ambos os cartões aparecem no frame de 346 × 540 px. No desktop, os cartões avançam cerca de 48 px sobre a borda esquerda da imagem, como na referência.
+- **Região focada:** não foi necessária captura recortada adicional; os elementos de texto, foto e cartões estão presentes nas duas comparações completas.
+- **Tipografia, cores e imagem:** Inter e hierarquia de pesos permanecem coerentes com o site; o eyebrow usa caixa alta e espaçamento amplo. A paleta mantém o fundo claro e o teal da identidade. Foi reutilizada a imagem existente `/assets/estudo2.png`, com recorte horizontal no mobile e próximo de quadrado no desktop. Os pictogramas vêm de `react-icons/hi2`.
+- **Console e responsividade:** nenhum erro ou aviso. Sem overflow horizontal em 320 × 600, 346 × 540, 390 × 844, 640 × 800, 768 × 900, 1024 × 768 e 1280 × 900 px.
+
+**Histórico da comparação**
+
+- **P2 inicial — mobile:** a primeira comparação em 346 × 540 deixava o segundo cartão fora do frame (seção com 718 px). Reduzi tipografia, espaçamentos e altura dos cartões e ajustei a proporção da foto. Na captura revisada, a seção mede 546 px; os cartões começam em y=338 e y=441, têm 91 px de altura e aparecem completos.
+- **P2 inicial — desktop:** os cartões terminavam junto à borda da foto. Ampliei a faixa dos cartões; na captura revisada em 1024 px, a foto começa em x=618 e os cartões terminam em x=666, cobrindo 48 px da imagem.
+- **Resultado pós-correção:** as comparações mobile e desktop não mostram diferenças acionáveis P0/P1/P2. Pequenas variações de rasterização e a faixa superior de 8 px na captura desktop não alteram a avaliação da estrutura.
+
+**Checklist**
+
+- [x] Colocar a imagem primeiro no mobile e à direita no desktop.
+- [x] Reorganizar eyebrow, título, textos e cartões conforme o mockup.
+- [x] Adicionar os ícones brancos em fundos verdes.
+- [x] Comparar referências e capturas lado a lado em ambos os layouts e conferir a matriz responsiva.
+
+Resultado da comparação inicial da seção: passed
+
+## Iteração — espaçamento da seção “Sobre” em telas estreitas — 20/10/2026
+
+- **Referência:** `C:\Users\leooa\AppData\Local\Temp\codex-clipboard-d05a1ff6-f292-433b-835d-07e5c68bc8e5.png` (808 × 619 px), com frames de 320 × 569, 390 × 693 e 450 × 800 px.
+- **Alteração:** o intervalo entre os blocos do artigo passa de 4 px para 8 px em 320 px, 10 px a partir de 375 px e 12 px a partir de 430 px. O intervalo entre a foto e o eyebrow continua em 12 px; o espaço entre cartões permanece em 12 px.
+- **Captura e comparação:** os três tamanhos foram abertos no preview `http://localhost:3001/#sobre`; as capturas finais foram inspecionadas visualmente contra a referência fornecida na conversa. As capturas desta iteração não foram persistidas como arquivos separados.
+- **Medidas CSS:** seção com 559 px a 320, 547 px a 390 e 561 px a 450. Em cada frame, ambos os cartões permanecem dentro da seção; o texto tem 8/10/12 px entre os blocos; sem overflow horizontal.
+- **Captura do navegador:** raster de 305 × 542 px para viewport CSS 320 × 569, 375 × 666 px para 390 × 693 e 435 × 773 px para 450 × 800. A área menor corresponde à captura do browser in-app com a barra de rolagem visível.
+- **Console:** sem erros ou avisos após a atualização.
+
+**Findings:** nenhum P0, P1 ou P2 pendente.
+
+**Checklist**
+
+- [x] Aumentar a separação entre descrição e cartões sem inflar o frame de 320 px.
+- [x] Graduar os intervalos nas larguras de 320, 390 e 450 px.
+- [x] Conferir os dois cartões, a foto, overflow e console nos três frames.
+
 final result: passed

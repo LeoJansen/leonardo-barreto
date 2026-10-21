@@ -1,15 +1,18 @@
 "use client";
 
 import Image from 'next/image';
+import { HiOutlineUser, HiOutlineUserGroup } from 'react-icons/hi2';
 import { useEffect, useRef } from 'react';
 import { useOnScreen } from '@/hooks/useOnScreen';
 
 const highlights = [
     {
+        Icon: HiOutlineUser,
         title: 'Escuta individual',
         description: 'A conversa considera a história, o momento de vida e as necessidades de cada pessoa.'
     },
     {
+        Icon: HiOutlineUserGroup,
         title: 'Cuidado em conjunto',
         description: 'As possibilidades de cuidado são discutidas com o paciente, de acordo com cada caso.'
     }
@@ -105,46 +108,51 @@ function About() {
     }, [isVisible]);
 
     return (
-        <section id="sobre" ref={root} aria-labelledby="about-heading" tabIndex={-1} className="scroll-mt-24 bg-surface py-12 focus:outline-none sm:py-16 lg:py-20">
-            <div className="mx-auto flex max-w-6xl flex-col-reverse gap-10 px-5 sm:px-8 lg:grid lg:grid-cols-[1.15fr_minmax(320px,0.9fr)] lg:items-center lg:gap-14">
-                <article className="flex flex-col gap-6 text-ink sm:gap-8">
-                    <header data-animate="heading" className="flex flex-col gap-4">
-                        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-site-border bg-white px-4 py-1 text-xs font-medium uppercase tracking-[0.3em] text-accent">
+        <section id="sobre" ref={root} aria-labelledby="about-heading" tabIndex={-1} className="scroll-mt-24 bg-surface pt-2 pb-3 focus:outline-none sm:py-8 lg:py-12">
+            <div className="mx-auto flex max-w-6xl flex-col-reverse gap-3 px-5 sm:gap-7 sm:px-8 lg:grid lg:grid-cols-[1.2fr_minmax(300px,0.8fr)] lg:items-start lg:gap-12">
+                <article className="relative z-10 flex flex-col gap-2 text-ink min-[375px]:gap-2.5 min-[430px]:gap-3 sm:gap-5 lg:gap-6">
+                    <header data-animate="heading" className="flex flex-col gap-2 sm:gap-4">
+                        <span className="w-fit text-[0.625rem] font-semibold uppercase tracking-[0.28em] text-accent sm:text-xs">
                             Conheça o profissional
                         </span>
-                        <h2 id="about-heading" className="text-3xl font-semibold tracking-tight text-brand-deep md:text-4xl lg:text-[44px]">
+                        <h2 id="about-heading" className="max-w-[42rem] text-[1.375rem] font-semibold leading-[1.12] tracking-tight text-brand-deep sm:text-3xl lg:text-[2.25rem]">
                             Cuidado em saúde mental começa com escuta
                         </h2>
-                        <p className="max-w-xl text-base leading-relaxed text-ink">
+                        <p className="max-w-xl text-xs leading-[1.4] text-ink sm:text-sm sm:leading-6">
                             Dr. Leonardo Barreto é médico (CRM-PR 58107) e atua na área de saúde mental, com atenção à história e às necessidades de cada pessoa.
                         </p>
                     </header>
 
-                    <div data-animate="copy" className="max-w-2xl space-y-4 text-left text-sm leading-7 text-ink md:text-base">
+                    <div data-animate="copy" className="max-w-2xl space-y-2 text-left text-xs leading-[1.4] text-ink sm:text-sm sm:leading-6">
                         <p>
-                            O atendimento parte de uma conversa sobre o que a pessoa está vivendo, com escuta cuidadosa e respeito ao seu contexto. Os próximos passos são discutidos em conjunto, de acordo com cada caso.
+                            O atendimento é um espaço de conversa sobre o que a pessoa está vivendo, com escuta cuidadosa e respeito ao seu contexto.
                         </p>
                     </div>
 
-                    <div data-animate="highlights" className="grid gap-4 sm:grid-cols-2">
-                        {highlights.map(({ title, description }) => (
-                            <div key={title} className="rounded-2xl border border-site-border bg-white p-4 shadow-[0_12px_30px_-24px_rgba(15,61,59,0.5)] sm:p-5">
-                                <h3 className="text-sm font-semibold text-accent">{title}</h3>
-                                <p className="mt-2 text-sm leading-relaxed text-ink">{description}</p>
+                    <div data-animate="highlights" className="grid gap-3 sm:grid-cols-2 lg:relative lg:z-20 lg:w-[calc(100%+6rem)]">
+                        {highlights.map(({ Icon, title, description }) => (
+                            <div key={title} className="flex items-start gap-3 rounded-xl border border-site-border bg-white p-3 shadow-[0_8px_24px_-20px_rgba(15,61,59,0.5)] sm:p-4">
+                                <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white">
+                                    <Icon aria-hidden="true" className="size-5" />
+                                </span>
+                                <div>
+                                    <h3 className="text-xs font-semibold text-brand-deep sm:text-sm">{title}</h3>
+                                    <p className="mt-1 text-[0.7rem] leading-[1.35] text-ink sm:text-sm sm:leading-snug">{description}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </article>
 
-                <div data-animate="image" className="relative flex items-center justify-center">
-                    <div className="relative aspect-[4/3] w-full max-w-[34rem] overflow-hidden rounded-3xl border border-site-border bg-white shadow-[0_22px_56px_-34px_rgba(15,61,59,0.4)]">
+                <div data-animate="image" className="relative flex items-start justify-center lg:justify-end">
+                    <div className="relative aspect-[2.24/1] w-full max-w-[34rem] overflow-hidden rounded-xl border border-site-border bg-white shadow-[0_18px_36px_-28px_rgba(15,61,59,0.35)] lg:aspect-[1.08/1] lg:max-w-full">
                         <Image
                             src="/assets/estudo2.png"
                             alt="Dr. Leonardo Barreto estudando"
                             fill
                             quality={75}
                             sizes="(max-width: 1023px) calc(100vw - 2.5rem), 34rem"
-                            className="object-cover object-center"
+                            className="object-cover object-[center_46%] lg:object-center"
                         />
                     </div>
                 </div>
