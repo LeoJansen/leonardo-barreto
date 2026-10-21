@@ -25,7 +25,7 @@ function Specialization() {
           <dl className="mt-7 divide-y divide-brand-primary/15 rounded-2xl border border-secondary bg-secondary px-5 text-secondary-foreground sm:mt-9 sm:px-6">
             <div className="py-5">
               <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-deep">
-                Pós-graduação
+                Pós-graduação em andamento
               </dt>
               <dd className="mt-1 text-lg font-semibold text-secondary-foreground sm:text-xl">
                 Hospital Israelita Albert Einstein

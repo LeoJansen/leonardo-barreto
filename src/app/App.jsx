@@ -14,7 +14,7 @@ const App = () => {
         <div className="max-w-screen min-h-screen overflow-x-hidden bg-surface">
             <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
             <Topbar />
-            <main id="conteudo-principal" tabIndex={-1} className="focus:outline-none">
+            <main id="conteudo-principal" tabIndex={-1} className="hero-width-container focus:outline-none">
                 <HeroSection />
                 <About />
                 <WhenToSeek />

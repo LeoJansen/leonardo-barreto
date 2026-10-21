@@ -2,15 +2,35 @@
 
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
-import { conditionsDetails } from '../contants/index.js';
+import { HiOutlineInformationCircle } from 'react-icons/hi2';
 import { useOnScreen } from '@/hooks/useOnScreen';
 
 function Conditions() {
   const conditions = [
-    { key: 'depressao', name: 'Depressão', pic: '/assets/conditions-depressao-salvia.webp' },
-    { key: 'ansiedade', name: 'Ansiedade', pic: '/assets/conditions-ansiedade-salvia.webp' },
-    { key: 'insonia', name: 'Insônia', pic: '/assets/conditions-insonia-salvia.webp' },
-    { key: 'tdah', name: 'TDAH', pic: '/assets/conditions-tdah-salvia.webp' },
+    {
+      key: 'depressao',
+      name: 'Depressão',
+      pic: '/assets/conditions-depressao-salvia.webp',
+      summary: 'Tristeza ou desânimo persistentes, perda de interesse, mudanças no sono ou no apetite e dificuldade de concentração podem ocorrer.',
+    },
+    {
+      key: 'ansiedade',
+      name: 'Ansiedade',
+      pic: '/assets/conditions-ansiedade-salvia.webp',
+      summary: 'Preocupação intensa ou difícil de controlar pode vir com inquietação, aceleração dos batimentos, suor, tremores ou tensão muscular.',
+    },
+    {
+      key: 'insonia',
+      name: 'Insônia',
+      pic: '/assets/conditions-insonia-salvia.webp',
+      summary: 'Dificuldade para adormecer ou manter o sono pode causar cansaço, sonolência, irritabilidade ou dificuldade de concentração durante o dia.',
+    },
+    {
+      key: 'tdah',
+      name: 'TDAH',
+      pic: '/assets/conditions-tdah-salvia.webp',
+      summary: 'Dificuldades frequentes de atenção, organização ou conclusão de tarefas, às vezes junto à impulsividade ou inquietação, podem merecer avaliação.',
+    },
   ];
 
   const sectionRef = useRef(null);
@@ -102,18 +122,14 @@ function Conditions() {
           role="note"
           className="mx-auto flex max-w-4xl items-start gap-3 rounded-2xl border border-site-border bg-surface-soft px-4 py-4 text-sm leading-6 text-ink sm:items-center sm:px-5"
         >
-          <span aria-hidden="true" className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary text-xs font-bold text-on-brand sm:mt-0">
-            i
-          </span>
+          <HiOutlineInformationCircle aria-hidden="true" className="mt-0.5 h-6 w-6 shrink-0 text-brand-support sm:mt-0" />
           <span>
             Esta lista é informativa: sintomas isolados não confirmam uma condição nem substituem avaliação profissional.
           </span>
         </p>
 
-        <div className="mt-7 grid grid-cols-1 gap-5 sm:mt-8 md:grid-cols-2 md:gap-6 lg:gap-7">
+        <div className="mt-7 grid grid-cols-1 gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4">
           {conditions.map((condition, index) => {
-            const bullets = conditionsDetails[condition.key]?.bullets ?? [];
-
             return (
               <article
                 key={condition.key}
@@ -121,42 +137,28 @@ function Conditions() {
                   cardRefs.current[index] = element;
                 }}
                 aria-labelledby={`condition-${condition.key}`}
-                className="group grid min-w-0 overflow-hidden rounded-3xl border border-site-border/80 bg-white shadow-[0_18px_45px_-36px_rgba(15,61,59,0.7)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_-32px_rgba(15,61,59,0.55)] lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)]"
+                className="group grid min-w-0 grid-cols-[6.25rem_minmax(0,1fr)] overflow-hidden rounded-2xl border border-site-border/80 bg-white shadow-[0_18px_45px_-36px_rgba(15,61,59,0.7)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_48px_-32px_rgba(15,61,59,0.55)] sm:grid-cols-1 sm:rounded-3xl"
               >
-                <div className="relative isolate aspect-[16/10] min-w-0 overflow-hidden bg-brand-deep lg:aspect-auto lg:min-h-[20rem]">
+                <div className="relative isolate min-h-[8.75rem] min-w-0 overflow-hidden bg-brand-deep sm:aspect-[16/10] sm:min-h-0">
                   <Image
                     src={condition.pic}
                     alt=""
                     fill
-                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 40vw"
-                    style={{ objectPosition: 'center 15%' }}
-                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                    sizes="(max-width: 639px) 6.25rem, (max-width: 1279px) 50vw, 25vw"
+                    className="object-cover object-[center_30%] transition duration-500 group-hover:scale-[1.03]"
                   />
-                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-brand-deep/15 to-transparent" />
+                </div>
+
+                <div className="flex min-w-0 flex-col justify-center p-3 sm:p-5">
                   <h3
                     id={`condition-${condition.key}`}
-                    className="absolute inset-x-5 bottom-5 text-2xl font-semibold tracking-[-0.03em] text-white drop-shadow-sm sm:inset-x-6 sm:bottom-6"
+                    className="text-base font-semibold tracking-[-0.02em] text-brand-deep sm:text-lg"
                   >
                     {condition.name}
                   </h3>
-                </div>
-
-                <div className="flex min-w-0 items-center p-5 sm:p-6 lg:p-5 xl:p-6">
-                  <ul aria-labelledby={`condition-${condition.key}`} className="w-full space-y-5 xl:space-y-6">
-                    {bullets.map((bullet) => (
-                      <li key={bullet.title} className="flex items-start gap-3">
-                        <span aria-hidden="true" className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-accent ring-4 ring-brand-primary/10" />
-                        <div className="min-w-0">
-                          <h4 className="text-sm font-semibold leading-5 text-ink-strong sm:text-base">
-                            {bullet.title}
-                          </h4>
-                          <p className="mt-1.5 text-sm leading-6 text-ink sm:text-[15px]">
-                            {bullet.description}
-                          </p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="mt-1.5 text-xs leading-5 text-ink sm:text-sm sm:leading-6">
+                    {condition.summary}
+                  </p>
                 </div>
               </article>
             );

@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  devIndicators: false,
     images: {
     qualities: [25, 50, 75, 85, 100],
     // Add intermediate widths so responsive images (e.g. ~300px) don't jump to 640w.

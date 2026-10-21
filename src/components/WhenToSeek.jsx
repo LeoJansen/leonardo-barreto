@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import {
-  HiOutlineBriefcase,
+  HiOutlineChatBubbleLeftRight,
   HiOutlineHeart,
   HiOutlineUserGroup,
 } from 'react-icons/hi2';
@@ -11,10 +11,10 @@ import { useOnScreen } from '@/hooks/useOnScreen';
 
 const supportAreas = [
   {
-    title: 'No trabalho ou nos estudos',
+    title: 'Na relação com suas emoções',
     description:
-      'Dificuldade de concentração, mudanças no rendimento ou sensação de que a rotina ficou difícil de sustentar.',
-    Icon: HiOutlineBriefcase,
+      'Tristeza, desânimo, irritabilidade ou outras mudanças emocionais que causam sofrimento.',
+    Icon: HiOutlineHeart,
   },
   {
     title: 'Na vida pessoal e social',
@@ -26,7 +26,7 @@ const supportAreas = [
     title: 'Nas relações',
     description:
       'Conflitos frequentes, dificuldade de comunicação ou sofrimento que afeta a convivência.',
-    Icon: HiOutlineHeart,
+    Icon: HiOutlineChatBubbleLeftRight,
   },
 ];
 
@@ -159,14 +159,14 @@ function WhenToSeek() {
             <p className="mb-3 text-sm font-semibold text-ink-strong md:text-base">
               Vale observar se o sofrimento começa a afetar diferentes áreas do cotidiano:
             </p>
-            <ul ref={listRef} className="grid gap-3" aria-label="Sinais de que pode ser hora de buscar ajuda">
+            <ul ref={listRef} className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" aria-label="Sinais de que pode ser hora de buscar ajuda">
               {supportAreas.map(({ title, description, Icon }) => (
                 <li
                   key={title}
-                  className="flex items-start gap-3 rounded-2xl border border-site-border/70 bg-surface px-4 py-3.5 shadow-[0_8px_24px_-20px_rgba(15,61,59,0.45)] sm:gap-4 sm:px-5"
+                  className="flex items-start gap-3 rounded-2xl border border-site-border/70 bg-surface px-4 py-4 shadow-[0_8px_24px_-20px_rgba(15,61,59,0.45)] sm:gap-4 sm:px-4 lg:flex-col lg:gap-3 lg:p-4"
                 >
                   <span
-                    className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-soft text-brand-support"
+                    className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-soft text-brand-support lg:mt-0"
                     aria-hidden="true"
                   >
                     <Icon className="h-5 w-5" />

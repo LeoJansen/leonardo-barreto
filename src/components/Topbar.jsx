@@ -3,33 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { HiOutlineBars3, HiOutlineCalendarDays, HiOutlineXMark } from 'react-icons/hi2';
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
-
-function IconBars(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function IconTimes(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function IconCalendar(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <rect x="3.5" y="5" width="17" height="15.5" rx="2" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M7.5 3.5v3M16.5 3.5v3M4 9.5h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="m9.5 14 1.5 1.5 3.5-3.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 const navLinks = [
   { label: 'Início', href: '#inicio' },
@@ -37,6 +12,7 @@ const navLinks = [
   { label: 'Quando buscar ajuda', href: '#quando-procurar' },
   { label: 'Sinais', href: '#condicoes' },
   { label: 'Formação', href: '#especializacao' },
+  { label: 'Contato', href: '#contato' },
 ];
 
 function Topbar() {
@@ -217,7 +193,7 @@ function Topbar() {
             aria-haspopup="dialog"
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-white/50 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark lg:hidden"
           >
-            {menuOpen ? <IconTimes className="h-4 w-4" /> : <IconBars className="h-4 w-4" />}
+            {menuOpen ? <HiOutlineXMark className="h-5 w-5" /> : <HiOutlineBars3 className="h-5 w-5" />}
           </button>
 
           <Link
@@ -270,19 +246,19 @@ function Topbar() {
           <Link
             href="#agendar"
             onClick={() => navigateToSection('#agendar')}
-            className="dark-surface hidden min-h-11 items-center gap-2 rounded-full border border-accent-on-dark/60 px-4 py-2 text-sm font-medium text-on-brand transition hover:border-accent-on-dark hover:bg-accent-on-dark/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark lg:inline-flex"
+            className="hidden min-h-11 items-center gap-2 rounded-full bg-site-cta px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-site-cta-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary lg:inline-flex"
           >
-            <IconCalendar className="h-4 w-4" />
-            Agenda Doctoralia
+            <HiOutlineCalendarDays className="h-4 w-4" />
+            Agendar na Doctoralia
           </Link>
 
           <Link
             href="#agendar"
             onClick={() => navigateToSection('#agendar')}
-            className="dark-surface inline-flex h-11 w-11 items-center justify-center rounded-full border border-accent-on-dark/60 text-on-brand transition hover:border-accent-on-dark hover:bg-accent-on-dark/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-site-cta text-white shadow-sm transition hover:bg-site-cta-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary lg:hidden"
             aria-label="Agendar consulta online pelo Doctoralia"
           >
-            <IconCalendar className="h-4 w-4" />
+            <HiOutlineCalendarDays className="h-5 w-5" />
           </Link>
         </div>
         </div>
@@ -338,7 +314,7 @@ function Topbar() {
                 onClick={() => navigateToSection('#agendar')}
                 className="dark-surface inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-accent-on-dark/60 px-4 py-3 text-sm font-medium text-on-brand transition hover:border-accent-on-dark hover:bg-accent-on-dark/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-on-dark"
               >
-                <IconCalendar className="h-4 w-4" />
+                <HiOutlineCalendarDays className="h-4 w-4" />
                 Agendar na Doctoralia
               </Link>
             </div>

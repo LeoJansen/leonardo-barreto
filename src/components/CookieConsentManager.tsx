@@ -90,54 +90,54 @@ function CookieConsentNotice({
 }) {
   if (!isOpen) return null;
 
-  const buttonClass = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-site-border bg-surface px-4 py-2 text-center text-sm font-semibold text-ink-strong transition hover:bg-surface-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light';
+  const buttonClass = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-site-border bg-surface px-3 py-2 text-center text-sm font-semibold text-ink-strong transition hover:bg-surface-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light';
 
   return (
     <section
       aria-labelledby="cookie-consent-heading"
-      className="fixed inset-x-3 bottom-3 z-[100] mx-auto max-h-[calc(100dvh-1.5rem)] max-w-4xl overflow-y-auto rounded-2xl border border-site-border bg-surface p-5 text-ink-strong shadow-[0_24px_80px_-28px_rgba(15,61,59,0.55)] sm:inset-x-6 sm:bottom-6 sm:p-6"
+      className="fixed inset-x-3 bottom-3 z-[100] mx-auto max-h-[calc(100dvh-1.5rem)] max-w-5xl overflow-y-auto rounded-2xl border border-site-border bg-surface p-4 text-ink-strong shadow-[0_24px_80px_-28px_rgba(15,61,59,0.55)] sm:inset-x-6 sm:bottom-6 sm:p-5"
       role="region"
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">Privacidade e cookies</p>
-          <h2 id="cookie-consent-heading" className="mt-1 text-lg font-semibold tracking-tight">
-            Você escolhe se quer carregar a agenda integrada
+          <h2 id="cookie-consent-heading" className="mt-1 text-base font-semibold tracking-tight sm:text-lg">
+            Agenda integrada da Doctoralia
           </h2>
-          <p className="mt-2 text-sm leading-6 text-ink-muted">
-            A agenda é fornecida pela Doctoralia. Ao permiti-la, o serviço externo poderá receber dados técnicos do acesso e usar suas próprias tecnologias. Você pode recusar e continuar navegando ou abrir o perfil diretamente.
+          <p className="mt-1.5 text-xs leading-5 text-ink-muted sm:text-sm sm:leading-6">
+            A agenda só é carregada com sua autorização. A Doctoralia poderá receber dados técnicos do acesso e usar tecnologias próprias.
           </p>
-          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-            <Link className="min-h-11 inline-flex items-center font-medium text-accent underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light" href="/politica-de-privacidade">
+          <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0 text-xs">
+            <Link className="inline-flex min-h-8 items-center font-medium text-accent underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light" href="/politica-de-privacidade">
               Política de Privacidade
             </Link>
-            <Link className="min-h-11 inline-flex items-center font-medium text-accent underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light" href="/politica-de-cookies">
+            <Link className="inline-flex min-h-8 items-center font-medium text-accent underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light" href="/politica-de-cookies">
               Política de Cookies
             </Link>
           </div>
         </div>
 
-        <div className="grid shrink-0 gap-2 sm:w-56">
+        <div className="grid w-full shrink-0 grid-cols-2 gap-2 sm:w-56 sm:grid-cols-1">
           {!isCustomizing ? (
             <>
               <button className={buttonClass} onClick={onReject} type="button">
                 Recusar opcionais
               </button>
               <button
+                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-site-cta px-3 py-2 text-center text-sm font-semibold text-white transition hover:bg-site-cta-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light focus-visible:ring-offset-2"
+                onClick={onAllow}
+                type="button"
+              >
+                Permitir agenda
+              </button>
+              <button
                 aria-expanded={isCustomizing}
                 aria-controls="cookie-preferences-panel"
-                className={buttonClass}
+                className="col-span-2 inline-flex min-h-9 items-center justify-center rounded-lg px-3 py-1 text-xs font-semibold text-accent underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light sm:col-span-1 sm:min-h-11 sm:text-sm"
                 onClick={onCustomize}
                 type="button"
               >
                 Personalizar
-              </button>
-              <button
-                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-brand-primary px-4 py-2 text-center text-sm font-semibold text-on-brand transition hover:bg-brand-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light focus-visible:ring-offset-2"
-                onClick={onAllow}
-                type="button"
-              >
-                Permitir agenda Doctoralia
               </button>
             </>
           ) : (
@@ -182,7 +182,7 @@ function CookieConsentNotice({
               Recusar opcionais
             </button>
             <button
-              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-brand-primary px-5 py-2 text-sm font-semibold text-on-brand transition hover:bg-brand-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light focus-visible:ring-offset-2"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-site-cta px-5 py-2 text-sm font-semibold text-white transition hover:bg-site-cta-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-on-light focus-visible:ring-offset-2"
               onClick={onSave}
               type="button"
             >

@@ -105,9 +105,9 @@ function About() {
     }, [isVisible]);
 
     return (
-        <section id="sobre" ref={root} aria-labelledby="about-heading" tabIndex={-1} className="scroll-mt-24 bg-surface py-16 focus:outline-none sm:py-20 lg:py-24">
-            <div className="mx-auto flex max-w-6xl flex-col-reverse gap-16 px-6 md:px-10 lg:grid lg:grid-cols-[1.15fr_minmax(320px,0.9fr)] lg:items-center">
-                <article className="flex flex-col gap-10 text-ink">
+        <section id="sobre" ref={root} aria-labelledby="about-heading" tabIndex={-1} className="scroll-mt-24 bg-surface py-12 focus:outline-none sm:py-16 lg:py-20">
+            <div className="mx-auto flex max-w-6xl flex-col-reverse gap-10 px-5 sm:px-8 lg:grid lg:grid-cols-[1.15fr_minmax(320px,0.9fr)] lg:items-center lg:gap-14">
+                <article className="flex flex-col gap-6 text-ink sm:gap-8">
                     <header data-animate="heading" className="flex flex-col gap-4">
                         <span className="inline-flex w-fit items-center gap-2 rounded-full border border-site-border bg-white px-4 py-1 text-xs font-medium uppercase tracking-[0.3em] text-accent">
                             Conheça o profissional
@@ -122,16 +122,13 @@ function About() {
 
                     <div data-animate="copy" className="max-w-2xl space-y-4 text-left text-sm leading-7 text-ink md:text-base">
                         <p>
-                            O atendimento parte de uma conversa sobre o que a pessoa está vivendo, seu contexto e o que espera do cuidado. Esse olhar ajuda a compreender cada caso antes de discutir os próximos passos.
-                        </p>
-                        <p>
-                            A proposta é construir caminhos de cuidado de forma clara e individualizada, respeitando as necessidades e os objetivos apresentados em consulta.
+                            O atendimento parte de uma conversa sobre o que a pessoa está vivendo, com escuta cuidadosa e respeito ao seu contexto. Os próximos passos são discutidos em conjunto, de acordo com cada caso.
                         </p>
                     </div>
 
                     <div data-animate="highlights" className="grid gap-4 sm:grid-cols-2">
                         {highlights.map(({ title, description }) => (
-                            <div key={title} className="rounded-2xl border border-site-border bg-white/70 p-5 shadow-sm backdrop-blur">
+                            <div key={title} className="rounded-2xl border border-site-border bg-white p-4 shadow-[0_12px_30px_-24px_rgba(15,61,59,0.5)] sm:p-5">
                                 <h3 className="text-sm font-semibold text-accent">{title}</h3>
                                 <p className="mt-2 text-sm leading-relaxed text-ink">{description}</p>
                             </div>
@@ -140,18 +137,15 @@ function About() {
                 </article>
 
                 <div data-animate="image" className="relative flex items-center justify-center">
-                    <div className="relative w-full max-w-sm">
-                        <div className="relative overflow-hidden rounded-[6px] border border-site-border bg-white/80">
-                            <Image
-                                src="/assets/estudo2.png"
-                                alt="Dr. Leonardo Barreto estudando"
-                                width={420}
-                                height={520}
-                                className="h-full w-full object-cover"
-                                quality={75}
-                                sizes="(max-width: 640px) 220px, (max-width: 1023px) 320px, 360px"
-                            />
-                        </div>
+                    <div className="relative aspect-[4/3] w-full max-w-[34rem] overflow-hidden rounded-3xl border border-site-border bg-white shadow-[0_22px_56px_-34px_rgba(15,61,59,0.4)]">
+                        <Image
+                            src="/assets/estudo2.png"
+                            alt="Dr. Leonardo Barreto estudando"
+                            fill
+                            quality={75}
+                            sizes="(max-width: 1023px) calc(100vw - 2.5rem), 34rem"
+                            className="object-cover object-center"
+                        />
                     </div>
                 </div>
             </div>

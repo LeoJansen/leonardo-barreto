@@ -10,6 +10,8 @@
   --site-secondary: #dceae5;
   --site-secondary-foreground: #174b49;
   --site-secondary-hover: #cfdfd8;
+  --site-cta: #167a75;
+  --site-cta-hover: #0f6663;
   --site-accent-on-dark: var(--site-secondary);
   --site-ink: #4b5a58;
   --site-ink-strong: #2d3b39;
@@ -36,6 +38,8 @@
   --color-secondary: var(--site-secondary);
   --color-secondary-foreground: var(--site-secondary-foreground);
   --color-secondary-hover: var(--site-secondary-hover);
+  --color-site-cta: var(--site-cta);
+  --color-site-cta-hover: var(--site-cta-hover);
   --color-ink: var(--site-ink);
   --color-ink-strong: var(--site-ink-strong);
   --color-ink-muted: var(--site-ink-muted);
@@ -141,6 +145,75 @@ body {
 .hero-delay-3 { animation-delay: 0.45s; }
 .hero-delay-4 { animation-delay: 0.60s; }
 .hero-delay-5 { animation-delay: 0.75s; }
+
+/* Fill the space below the sticky navigation; wide landscape screens cap at 21:9. */
+.hero-width-container {
+  container-type: inline-size;
+}
+
+.hero-viewport-height {
+  height: calc(100vh - var(--site-topbar-height, 4rem));
+  height: calc(100svh - var(--site-topbar-height, 4rem));
+}
+
+.hero-image {
+  object-position: center 23%;
+}
+
+.hero-actions {
+  margin-top: auto;
+}
+
+@media (orientation: portrait) {
+  .hero-image {
+    object-position: 62% center;
+  }
+}
+
+@media (min-width: 48rem) and (orientation: landscape) {
+  .hero-viewport-height {
+    max-height: 42.857vw;
+    max-height: 42.857cqw;
+  }
+}
+
+@media (min-width: 64rem) and (orientation: landscape) {
+  .hero-actions {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 63.999rem) and (orientation: landscape) {
+  .hero-content {
+    padding-bottom: 0.75rem;
+  }
+}
+
+@media (max-height: 30rem) and (orientation: landscape) {
+  .hero-content {
+    gap: 0.5rem;
+    padding-block: 0.75rem;
+  }
+
+  .hero-content header > p:first-child {
+    margin-bottom: 0.375rem;
+  }
+
+  .hero-content header h1 {
+    font-size: clamp(1.25rem, 3.2vw, 1.5rem);
+    line-height: 1.05;
+  }
+
+  .hero-content header > p:last-child {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .hero-actions > a {
+    min-height: 2.75rem;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .hero-anim-up,

@@ -7,7 +7,7 @@ function Art() {
         src="/assets/under-img.png"
         alt="Dr. Leonardo Barreto em frente ao Hospital Israelita Albert Einstein"
         fill
-        quality={78}
+        quality={75}
         sizes="(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1279px) calc(50vw - 2rem), 36rem"
         className="object-cover object-[42%_center]"
       />
