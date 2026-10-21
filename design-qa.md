@@ -165,4 +165,48 @@ Resultado da comparação inicial da seção: passed
 - [x] Graduar os intervalos nas larguras de 320, 390 e 450 px.
 - [x] Conferir os dois cartões, a foto, overflow e console nos três frames.
 
+Resultado anterior da seção Sobre: passed
+
+## Iteração — seção “Quando buscar ajuda” conforme mockup — 20/10/2026
+
+**Referências e captura**
+
+- **Fontes visuais:** desktop `C:\Users\leooa\AppData\Local\Temp\codex-clipboard-c6b7ba54-040c-4afa-bbe3-582fa54c6cce.png` (570 × 320 px) e mobile `C:\Users\leooa\AppData\Local\Temp\codex-clipboard-d262eb8e-6291-4ee5-8130-502010bee034.png` (212 × 395 px).
+- **Implementação:** `http://localhost:3001/#quando-procurar`; seção alinhada ao topo, animações concluídas. O menu permaneceu fechado.
+- **Captura da implementação:** screenshot capturado no navegador in-app por CUA e pareado com a referência na mesma tela de comparação. As páginas temporárias de comparação foram removidas após a revisão; as imagens de captura não foram persistidas como PNG.
+- **Normalização desktop:** referência 570 × 320 px ampliada uniformemente 2× para 1140 × 640 CSS px; implementação renderizada nesse conteúdo CSS e reduzida a 570 × 320 px no comparador. A medição direta final em 1140 × 640 reportou seção de 1125 × 635 px, imagem de 415 × 332 px e cartões de 335 × 221 px; a diferença de 15 px na largura corresponde à barra de rolagem do navegador.
+- **Normalização mobile:** referência 212 × 395 px ampliada uniformemente 1,84× para 390 × 727 CSS px; implementação renderizada nesse conteúdo CSS e reduzida ao tamanho da referência. A medição direta final no viewport 390 × 727 reportou seção de 375 × 726 px, imagem de 335 × 174 px e cartões de 335 × 106 px; a diferença de 15 px na largura corresponde à barra de rolagem do navegador.
+- **Estado e interações:** a seção não contém CTAs; nenhum link externo ou agenda foi acionado.
+
+**Comparação visual**
+
+- **Tela completa:** a comparação lado a lado confirmou a imagem à esquerda e o bloco de texto à direita no desktop; os três cartões formam uma linha. No mobile, imagem, eyebrow, título, descrição e cartões aparecem em coluna. A proporção da foto e a altura da seção ficaram próximas às duas referências após a normalização.
+- **Região focada:** não foi necessária captura recortada adicional. Título, descrição, pictogramas e texto dos três cartões permanecem visíveis e legíveis nas duas telas completas pareadas.
+- **Tipografia e cópia:** a hierarquia acompanha a tipografia do site; os tamanhos aumentam no desktop e mantêm a leitura no mobile. Eyebrow, título, descrição e os textos dos cartões seguem a referência, sem cortes.
+- **Espaçamento e layout:** o grid reorganiza a foto e o texto no desktop; em tablet os cartões passam a duas colunas e em telas menores ficam em uma ou duas colunas conforme o espaço. Alturas mínimas dos cartões evitam que a linha desktop pareça comprimida.
+- **Cores e tokens:** superfície sálvia clara, cartões brancos e ícones em círculos verde-claro mantêm a paleta existente; o texto e os pictogramas usam o teal da marca.
+- **Imagem e ícones:** mantida a imagem existente `/assets/whenToSeek.png`, que corresponde ao tema e ao recorte da referência. Os pictogramas usam `react-icons/tb` (Tabler): cérebro para emoções, pessoas para vida social e balões de conversa para relações. O traço é uniforme, com escala levemente ampliada e círculos verde-claros preservados.
+
+**Histórico de comparação**
+
+- **P2 inicial — desktop:** em 1140 × 640 CSS px, o primeiro preview tinha seção de aproximadamente 507 px e cartões de 108 px; no mockup normalizado, a seção ocupa cerca de 640 px e os cartões cerca de 222 px. A tipografia e os cartões estavam comprimidos.
+- **Correção:** ajustei a proporção da imagem, escalei tipografia e pictogramas para desktop e aumentei a altura mínima dos cartões de forma fluida. Reorganizei os cartões em duas colunas nos tablets e três colunas a partir de 1024 px.
+- **Evidência após a correção:** a seção mede 635 px, a foto 415 × 332 px e os cartões 221 px no conteúdo CSS 1140 × 640; na referência normalizada medem aproximadamente 640 px, 420 × 334 px e 222 px. A captura pareada final não mostra diferenças acionáveis P0/P1/P2.
+- **Refino dos ícones — 21/10/2026:** após trocar os pictogramas por Tabler, a captura atual no navegador confirmou peso visual mais uniforme entre coração, grupo e conversa; o aumento ficou contido nos círculos existentes e não alterou o espaçamento dos cartões. Nenhum corte ou desalinhamento apareceu.
+- **Substituição por símbolos mais específicos — 21/10/2026:** cérebro, pessoas e balões de conversa substituíram coração, grupo e balão simples para distinguir melhor os três temas sem alterar cards, cores ou espaçamentos. A captura desktop após a troca confirmou alinhamento e escala consistentes nos três círculos.
+
+**Matriz responsiva**
+
+- Viewports conferidos: 320 × 569, 390 × 727, 450 × 800, 640 × 800, 768 × 900, 1024 × 768, 1140 × 640 e 1280 × 800 CSS px.
+- Não houve overflow horizontal. Em 320 px, a seção ultrapassa a altura do viewport por conta da coluna estreita, mantendo todo o conteúdo disponível por rolagem; de 390 px em diante, a distribuição se ajusta sem cortes nos cartões.
+
+**Findings:** nenhum P0, P1 ou P2 pendente. As imagens fonte têm resolução menor que o conteúdo CSS comparado; pequenas diferenças de rasterização permanecem como variação P3.
+
+**Checklist**
+
+- [x] Reproduzir a estrutura desktop e a ordem mobile do mockup.
+- [x] Aplicar os ícones com fundo verde-claro.
+- [x] Conferir tipografia, espaçamento, cores, imagem e cópia nas duas comparações pareadas.
+- [x] Verificar a redistribuição dos cartões e ausência de overflow em oito viewports.
+
 final result: passed

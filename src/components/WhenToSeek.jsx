@@ -3,10 +3,10 @@
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import {
-  HiOutlineChatBubbleLeftRight,
-  HiOutlineHeart,
-  HiOutlineUserGroup,
-} from 'react-icons/hi2';
+  TbBrain,
+  TbMessages,
+  TbUsers,
+} from 'react-icons/tb';
 import { useOnScreen } from '@/hooks/useOnScreen';
 
 const supportAreas = [
@@ -14,19 +14,19 @@ const supportAreas = [
     title: 'Na relação com suas emoções',
     description:
       'Tristeza, desânimo, irritabilidade e outras mudanças emocionais que geram sofrimento.',
-    Icon: HiOutlineHeart,
+    Icon: TbBrain,
   },
   {
     title: 'Na vida pessoal e social',
     description:
       'Dificuldades de convivência, isolamento, perda de interesse em atividades ou mudanças na rotina.',
-    Icon: HiOutlineUserGroup,
+    Icon: TbUsers,
   },
   {
     title: 'Nas relações',
     description:
       'Conflitos frequentes, dificuldade de comunicação ou sofrimento que afeta a convivência.',
-    Icon: HiOutlineChatBubbleLeftRight,
+    Icon: TbMessages,
   },
 ];
 
@@ -113,18 +113,18 @@ function WhenToSeek() {
       tabIndex={-1}
       className="scroll-mt-24 border-y border-site-border/60 bg-surface-soft focus:outline-none"
     >
-      <div className="mx-auto grid w-full max-w-7xl gap-4 px-5 py-4 sm:px-8 sm:py-6 md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] md:items-start md:gap-x-8 md:gap-y-6 md:py-8 lg:gap-x-10 lg:px-10 lg:py-10">
-        <div className="flex justify-center lg:justify-start">
+      <div className="mx-auto grid w-full max-w-7xl gap-3 px-5 py-2.5 sm:px-8 sm:py-6 md:grid-cols-[minmax(0,0.84fr)_minmax(0,1.16fr)] md:items-start md:gap-x-8 md:gap-y-0 md:py-8 lg:gap-x-10 lg:px-12 lg:py-10">
+        <div className="mb-2 flex justify-center md:mb-0 lg:justify-start">
           <div
             ref={imageWrapRef}
-            className="relative aspect-[1.92/1] w-full max-w-[34rem] overflow-hidden rounded-xl bg-surface shadow-[0_16px_40px_-24px_rgba(15,61,59,0.32)] ring-1 ring-brand-deep/10 md:aspect-[1.28/1]"
+            className="relative aspect-[1.92/1] w-full max-w-[34rem] overflow-hidden rounded-xl bg-surface shadow-[0_16px_40px_-24px_rgba(15,61,59,0.32)] ring-1 ring-brand-deep/10 md:aspect-[1.25/1]"
           >
             <Image
               src="/assets/whenToSeek.png"
               alt="Paciente em consulta com profissional de saúde mental"
               fill
               quality={75}
-              sizes="(max-width: 639px) calc(100vw - 2.5rem), (max-width: 767px) calc(100vw - 4rem), (max-width: 1279px) 40vw, 34rem"
+              sizes="(max-width: 639px) calc(100vw - 2.5rem), (max-width: 767px) calc(100vw - 4rem), (max-width: 1279px) 36vw, 34rem"
               className="object-cover"
             />
           </div>
@@ -137,13 +137,13 @@ function WhenToSeek() {
             </p>
             <h2
               id="when-to-seek-heading"
-              className="text-[clamp(1.4rem,2.2vw,1.8rem)] font-semibold leading-[1.12] tracking-tight text-brand-deep"
+              className="text-[clamp(1.4rem,2.2vw,1.8rem)] font-semibold leading-[1.12] tracking-tight text-brand-deep md:text-[clamp(1.75rem,3.5vw,2.75rem)]"
             >
               Quando buscar ajuda?
             </h2>
           </div>
 
-          <div ref={paragraph1Ref} className="text-sm leading-[1.45] text-ink md:text-[0.95rem] md:leading-[1.5]">
+          <div ref={paragraph1Ref} className="text-sm leading-[1.45] text-ink md:text-[clamp(1rem,1.55vw,1.2rem)] md:leading-[1.5]">
             <p>
               Nem sempre é fácil perceber quando uma fase difícil precisa de atenção profissional. Mudanças que persistem, se intensificam ou começam a limitar a rotina podem ser um motivo para conversar com um profissional de saúde.
             </p>
@@ -152,22 +152,22 @@ function WhenToSeek() {
 
         <ul
           ref={listRef}
-          className="grid gap-2.5 sm:grid-cols-2 md:col-span-2 md:grid-cols-3 md:gap-3"
+          className="grid gap-2.5 sm:grid-cols-2 md:col-span-2 md:grid-cols-2 md:gap-3 lg:grid-cols-3"
           aria-label="Sinais de que pode ser hora de buscar ajuda"
         >
           {supportAreas.map(({ title, description, Icon }) => (
             <li
               key={title}
-              className="flex items-start gap-3 rounded-xl border border-site-border/70 bg-surface px-3 py-3 shadow-[0_8px_24px_-20px_rgba(15,61,59,0.3)] sm:px-4 md:py-4"
+              className="flex min-h-[6.5rem] items-center gap-3 rounded-xl border border-site-border/70 bg-surface px-4 py-3 shadow-[0_8px_24px_-20px_rgba(15,61,59,0.3)] md:min-h-[10rem] md:items-start md:gap-4 md:px-5 md:py-4 lg:min-h-[clamp(12rem,19.375vw,15.5rem)] lg:py-6"
             >
               <span
-                className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-soft text-brand-deep"
+                className="mt-0.5 flex size-14 shrink-0 items-center justify-center rounded-full bg-surface-soft text-brand-deep shadow-[inset_0_0_0_1px_rgba(15,61,59,0.08)] md:size-16"
                 aria-hidden="true"
               >
-                <Icon className="size-5" />
+                <Icon className="size-7 md:size-[1.875rem]" strokeWidth={1.8} />
               </span>
-              <span className="min-w-0 text-[0.78rem] leading-[1.35] text-ink md:text-[0.8rem] md:leading-[1.4]">
-                <strong className="block text-[0.78rem] font-semibold leading-[1.2] text-ink-strong md:text-[0.85rem]">{title}</strong>
+              <span className="min-w-0 text-sm leading-[1.4] text-ink md:text-[clamp(1rem,1.58vw,1.125rem)] md:leading-[1.45]">
+                <strong className="block text-sm font-semibold leading-[1.2] text-ink-strong md:text-[clamp(1rem,1.55vw,1.15rem)]">{title}</strong>
                 <span className="mt-1 block">{description}</span>
               </span>
             </li>
